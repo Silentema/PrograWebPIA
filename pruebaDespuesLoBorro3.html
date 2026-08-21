@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MATCHIO - Control de categorías</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --fondo-f5f5f5: #f5f5f5;
+        --header-121212: #121212;
+        --titulos-ffffff: #fff;
+        --botones-d24242: #d24242;
+        --base-rojo: #ff5050;
+        --backgrounds-secondary: #f2f2f7;
+        --texto-222222: #222;
+        --subtexto-777777: #777;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        font-family: "Montserrat", -apple-system, Roboto, Helvetica, sans-serif;
+      }
+
+      body {
+        background-color: var(--fondo-f5f5f5);
+        color: var(--texto-222222);
+      }
+
+      /* Header */
+      .header {
+        width: 100%;
+        height: 70px;
+        background-color: var(--header-121212);
+        display: flex;
+        align-items: center;
+        padding: 0 30px;
+        box-sizing: border-box;
+      }
+
+      .header-content {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex: 1;
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .header-logo-container {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        min-width: fit-content;
+      }
+
+      .header-menu-icon {
+        width: 25px;
+        height: 20px;
+        cursor: pointer;
+      }
+
+      .logo-text-gestion-cat {
+        font-family: "Poppins", sans-serif;
+        font-size: 50px;
+        font-weight: 700;
+        color: var(--titulos-ffffff);
+        line-height: 1;
+      }
+
+      .logo-icon-gestion-cat {
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+      }
+
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        margin-left: auto;
+      }
+
+      .search-icon-gestion-cat,
+      .user-icon {
+        cursor: pointer;
+        width: 25px;
+        height: 25px;
+      }
+
+      .user-avatar-gestion-cat {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+
+      /* Main Container */
+      .main-container {
+        display: flex;
+        width: 100%;
+        min-height: calc(100vh - 70px);
+      }
+
+      /* Left Section */
+      .left-section {
+        flex: 0 0 auto;
+        width: 50%;
+        padding: 40px 51px;
+        background-color: var(--fondo-f5f5f5);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .back-button-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 20px;
+        cursor: pointer;
+      }
+
+      .back-arrow {
+        width: 30px;
+        height: 30px;
+      }
+
+      .page-title {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 40px;
+      }
+
+      .admin-icon {
+        width: 56px;
+        height: 56px;
+      }
+
+      .title-text {
+        font-size: 32px;
+        font-weight: 700;
+        color: var(--texto-222222);
+        line-height: 1.2;
+      }
+
+      .form-section {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+
+      .form-button {
+        align-self: flex-start;
+        margin-top: 30px;
+      }
+
+      .form-label {
+        font-size: 24px;
+        font-weight: 400;
+        color: var(--subtexto-777777);
+        margin-bottom: 22px;
+      }
+
+      .form-input {
+        width: 100%;
+        height: 61px;
+        padding: 0 15px;
+        font-size: 24px;
+        font-weight: 400;
+        color: var(--subtexto-777777);
+        border: 2px solid var(--subtexto-777777);
+        border-radius: 6px;
+        background-color: rgba(217, 217, 217, 0.01);
+        font-family: "Montserrat", sans-serif;
+        display: flex;
+        align-items: center;
+      }
+
+      .form-input::placeholder {
+        color: var(--subtexto-777777);
+      }
+
+      .form-input:focus {
+        outline: none;
+        border-color: var(--texto-222222);
+      }
+
+      /* Right Section */
+      .right-section {
+        flex: 0 0 auto;
+        width: 50%;
+        padding: 40px 51px;
+        background-color: var(--fondo-f5f5f5);
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+      }
+
+      .request-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--texto-222222);
+        margin-bottom: 30px;
+      }
+
+      .category-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        flex: 1;
+      }
+
+      .category-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 0;
+        height: 69px;
+        border-bottom: 1px solid #eee;
+      }
+
+      .category-name {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--texto-222222);
+      }
+
+      .checkbox {
+        width: 24px;
+        height: 24px;
+        min-width: 24px;
+        min-height: 24px;
+        cursor: pointer;
+        appearance: none;
+        border: 2px solid #1d1b20;
+        border-radius: 2px;
+        background-color: transparent;
+      }
+
+      .checkbox:checked {
+        background-color: var(--texto-222222);
+      }
+
+      /* Bottom Buttons */
+      .button-container {
+        display: flex;
+        gap: 20px;
+        justify-content: flex-end;
+        padding: 40px;
+        background-color: var(--fondo-f5f5f5);
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        width: 50%;
+      }
+
+      .btn {
+        width: 122px;
+        height: 40px;
+        font-size: 18px;
+        font-weight: 600;
+        border-radius: 67px;
+        cursor: pointer;
+        font-family: "Montserrat", sans-serif;
+        border: none;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .btn-accept {
+        background-color: var(--botones-d24242);
+        color: var(--titulos-ffffff);
+      }
+
+      .btn-accept:hover {
+        background-color: #c63636;
+      }
+
+      .btn-reject {
+        background-color: var(--backgrounds-secondary);
+        color: var(--botones-d24242);
+        border: 1px solid var(--base-rojo);
+      }
+
+      .btn-reject:hover {
+        background-color: #e8e8ed;
+      }
+
+      .btn-ban {
+        background-color: var(--header-121212);
+        color: var(--titulos-ffffff);
+      }
+
+      .btn-ban:hover {
+        background-color: #2a2a2a;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1024px) {
+        .logo-text {
+          font-size: 36px;
+        }
+
+        .logo-icon {
+          width: 55px;
+          height: 55px;
+        }
+
+        .left-section,
+        .right-section {
+          width: 100%;
+          padding: 30px;
+        }
+
+        .main-container {
+          flex-direction: column;
+        }
+
+        .title-text {
+          font-size: 28px;
+        }
+
+        .form-label,
+        .form-input {
+          font-size: 18px;
+        }
+
+        .button-container {
+          width: 100%;
+          padding: 30px;
+          bottom: auto;
+          position: static;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .header {
+          padding: 0 15px;
+        }
+
+        .logo-text {
+          font-size: 28px;
+        }
+
+        .logo-icon {
+          width: 45px;
+          height: 45px;
+        }
+
+        .header-right {
+          gap: 15px;
+        }
+
+        .left-section,
+        .right-section {
+          width: 100%;
+          padding: 20px;
+        }
+
+        .title-text {
+          font-size: 24px;
+        }
+
+        .form-label {
+          font-size: 18px;
+        }
+
+        .form-input {
+          font-size: 16px;
+          padding: 0 12px;
+          height: 50px;
+        }
+
+        .category-name {
+          font-size: 16px;
+        }
+
+        .btn {
+          width: 110px;
+          height: 36px;
+          font-size: 16px;
+        }
+
+        .button-container {
+          flex-wrap: wrap;
+          gap: 15px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .header-logo-container {
+          gap: 10px;
+        }
+
+        .logo-text {
+          font-size: 20px;
+        }
+
+        .logo-icon {
+          width: 35px;
+          height: 35px;
+        }
+
+        .page-title {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .admin-icon {
+          width: 40px;
+          height: 40px;
+        }
+
+        .title-text {
+          font-size: 20px;
+        }
+
+        .request-title {
+          font-size: 18px;
+        }
+
+        .form-label {
+          font-size: 16px;
+        }
+
+        .form-input {
+          font-size: 14px;
+        }
+
+        .category-item {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+          height: auto;
+          padding: 12px 0;
+        }
+
+        .button-container {
+          justify-content: center;
+        }
+
+        .btn {
+          width: 100px;
+          height: 32px;
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+  
+
+    <div class="main-container">
+      <section class="left-section">
+        <div class="back-button-container">
+          <svg class="back-arrow" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5.746 16.5L17.1385 27.8925L15 30L0 15L15 0L17.1385 2.1075L5.746 13.5H30V16.5H5.746Z" fill="#222222" />
+          </svg>
+        </div>
+
+        <div class="page-title">
+          <svg class="admin-icon" width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_782_42829)">
+              <path
+                d="M28.0007 32.6668V51.3335H9.33398C9.33398 46.3828 11.3006 41.6348 14.8013 38.1342C18.302 34.6335 23.0499 32.6668 28.0007 32.6668ZM28.0007 30.3335C20.2657 30.3335 14.0007 24.0685 14.0007 16.3335C14.0007 8.5985 20.2657 2.3335 28.0007 2.3335C35.7357 2.3335 42.0006 8.5985 42.0006 16.3335C42.0006 24.0685 35.7357 30.3335 28.0007 30.3335ZM49.0006 39.6668H51.334V51.3335H32.6673V39.6668H35.0007V37.3335C35.0007 35.477 35.7381 33.6965 37.0509 32.3837C38.3637 31.071 40.1441 30.3335 42.0006 30.3335C43.8572 30.3335 45.6376 31.071 46.9504 32.3837C48.2632 33.6965 49.0006 35.477 49.0006 37.3335V39.6668ZM44.334 39.6668V37.3335C44.334 36.7147 44.0882 36.1212 43.6506 35.6836C43.213 35.246 42.6195 35.0002 42.0006 35.0002C41.3818 35.0002 40.7883 35.246 40.3507 35.6836C39.9131 36.1212 39.6673 36.7147 39.6673 37.3335V39.6668H44.334Z"
+                fill="black"
+              />
+            </g>
+            <defs>
+              <clipPath id="clip0_782_42829">
+                <rect width="56" height="56" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+          <h1 class="title-text">Control de categorías</h1>
+        </div>
+
+        <div class="form-section">
+          <label class="form-label">Crear nueva categoría</label>
+          <input class="form-input" type="text" placeholder="Nombre de la categoría" />
+          <input class="form-input" type="text" placeholder="Rama" />
+          <button class="btn btn-accept form-button">Aceptar</button>
+        </div>
+      </section>
+
+      <section class="right-section">
+        <h2 class="request-title">Solicitud de nueva categoría</h2>
+        <div class="category-list">
+          <div class="category-item">
+            <span class="category-name">#Mundial2026</span>
+            <input type="checkbox" class="checkbox" />
+          </div>
+          <div class="category-item">
+            <span class="category-name">#WorldCup2026</span>
+            <input type="checkbox" class="checkbox" />
+          </div>
+          <div class="category-item">
+            <span class="category-name">#FIFAWorldCup</span>
+            <input type="checkbox" class="checkbox" />
+          </div>
+          <div class="category-item">
+            <span class="category-name">#México2026</span>
+            <input type="checkbox" class="checkbox" />
+          </div>
+          <div class="category-item">
+            <span class="category-name">#Copa2026</span>
+            <input type="checkbox" class="checkbox" />
+          </div>
+          <div class="category-item">
+            <span class="category-name">#Mundial2026</span>
+            <input type="checkbox" class="checkbox" />
+          </div>
+          <div class="category-item">
+            <span class="category-name">#WorldCup2026</span>
+            <input type="checkbox" class="checkbox" />
+          </div>
+          <div class="category-item">
+            <span class="category-name">#FIFAWorldCup</span>
+            <input type="checkbox" class="checkbox" />
+          </div>
+          <div class="category-item">
+            <span class="category-name">#México2026</span>
+            <input type="checkbox" class="checkbox" />
+          </div>
+          <div class="category-item">
+            <span class="category-name">#Copa2026</span>
+            <input type="checkbox" class="checkbox" />
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="button-container">
+      <button class="btn btn-ban">Banear</button>
+      <button class="btn btn-reject">Rechazar</button>
+      <button class="btn btn-accept">Aceptar</button>
+    </div>
+
+
+
+    
+  </body>
+</html>

@@ -1,0 +1,307 @@
+/* Contraste: solo texto en negritas, sin cambiar fondo */
+.contrast-theme h1,
+.contrast-theme h2,
+.contrast-theme h3,
+.contrast-theme h4,
+.contrast-theme h5,
+.contrast-theme h6,
+.contrast-theme .page-title,
+.contrast-theme .date-day,
+.contrast-theme .date-num,
+.contrast-theme .filter-btn,
+.contrast-theme .match-team,
+.contrast-theme .match-score,
+.contrast-theme .match-label,
+.contrast-theme .match-time,
+.contrast-theme .match-status,
+.contrast-theme .match-location,
+.contrast-theme .match-phase,
+.contrast-theme .match-venue {
+    font-weight: 800 !important;
+}
+/* No cambiar fondo de tarjetas ni overlays en contraste */
+@view-transition {
+  navigation: auto;
+}
+
+/* Animación personalizada para la transición de entrada/salida */
+::view-transition-old(root) {
+  animation: slide-out 0.5s ease-in-out;
+}
+
+::view-transition-new(root) {
+  animation: slide-in 0.5s ease-in-out;
+}
+
+@keyframes slide-out {
+  to {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+}
+
+:root {
+    --bg: #F5F5F5;
+    --text: #222;
+    --sub: #777;
+    --line: #999;
+    --header: #121212;
+    --btn: #D24242;
+    --white: #fff;
+    --card-bg: #ffffff;
+    --input-bg: #f9f9f9;
+    --border: #686868;
+    --hover: #ddd;
+    --match-bg: #ffffff;
+    --date-bg: #f0f0f0;
+    --filter-bg: #ffffff;
+}
+
+/* Dark theme variables */
+body.dark-theme {
+    --bg: #1a1a1a;
+    --text: #e0e0e0;
+    --sub: #aaa;
+    --line: #444;
+    --header: #000;
+    --btn: #ff6b6b;
+    --white: #2d2d2d;
+    --card-bg: #2d2d2d;
+    --input-bg: #333;
+    --border: #555;
+    --hover: #333333;
+    --match-bg: #2d2d2d;
+    --date-bg: #333;
+    --filter-bg: #2d2d2d;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Montserrat', -apple-system, Roboto, Helvetica, Arial, sans-serif;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header styles removed - using header1.css */
+
+/* Page */
+.page {
+    padding: 24px 0 60px;
+}
+
+.page-header {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.back {
+    color: var(--text);
+    background: none;
+    border: 0;
+    cursor: pointer;
+}
+
+.page-title {
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--text);
+}
+
+/* Calendar dates */
+.cal-dates {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 16px 0;
+    margin: 24px 0;
+    position: relative;
+}
+
+.cal-dates::-webkit-scrollbar {
+    height: 4px;
+}
+
+.cal-dates::-webkit-scrollbar-track {
+    background: var(--hover);
+    border-radius: 2px;
+}
+
+.cal-dates::-webkit-scrollbar-thumb {
+    background: #999;
+    border-radius: 2px;
+}
+
+.date-item {
+    flex: 0 0 auto;
+    text-align: center;
+    padding: 9px 12px;
+    min-width: 70px;
+    background: transparent;
+    border-radius: 8px;
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+}
+
+.date-item:hover {
+    background: rgba(128, 128, 128, 0.077);
+    transform: translateY(-2px);
+}
+
+.date-item.active {
+    font-weight: 500;
+    background: rgba(128, 128, 128, 0.14);
+    transform: scale(1.05);
+}
+
+.date-day {
+    font-size: 16px;
+    color: var(--text);
+    display: block;
+}
+
+.date-num {
+    font-size: 20px;
+    color: var(--text);
+    display: block;
+}
+
+/* Filter */
+.filter-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 24px;
+}
+
+.filter-btn {
+    border-radius: 67px;
+    border: 1px solid var(--btn);
+    background: var(--bg);
+    color: var(--btn);
+    font-weight: 500;
+    font-size: 16px;
+    padding: 9px 20px 9px 35px;
+    cursor: pointer;
+    position: relative;
+    font-family: 'Montserrat';
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.filter-btn svg {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Match card */
+.matches {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.match {
+    background: var(--match-bg);
+    border-radius: 20px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, .3);
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 80px 1fr 80px;
+    align-items: center;
+    gap: 16px;
+}
+
+.team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.team-logo {
+    width: 64px;
+    height: 64px;
+    border-radius: 999px;
+    object-fit: cover;
+}
+
+.team-name {
+    font-weight: 600;
+    font-size: 18px;
+    text-align: center;
+    color: var(--text);
+}
+
+.match-info {
+    text-align: center;
+}
+
+.match-phase {
+    font-size: 15px;
+    margin-bottom: 4px;
+    color: var(--sub);
+}
+
+.match-divider {
+    height: 1px;
+    background: var(--line);
+    margin: 8px 0;
+}
+
+.match-venue {
+    font-size: 15px;
+    margin-top: 4px;
+    color: var(--sub);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .brand-title {
+        font-size: 20px;
+    }
+    .page-title {
+        font-size: 20px;
+    }
+    .match {
+        grid-template-columns: 60px 1fr 60px;
+        gap: 12px;
+        padding: 16px;
+    }
+    .team-logo {
+        width: 48px;
+        height: 48px;
+    }
+    .team-name {
+        font-size: 16px;
+    }
+    .match-phase,
+    .match-venue {
+        font-size: 13px;
+    }
+}

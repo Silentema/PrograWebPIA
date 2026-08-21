@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cambiar contraseña</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Montserrat", -apple-system, Roboto, Helvetica, sans-serif;
+      background-color: #ffffff;
+      color: #222222;
+      line-height: 1.5;
+    }
+
+    .change-password-container {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .change-password-form-container {
+      width: 100%;
+      max-width: 795px;
+      position: relative;
+    }
+
+    .change-password-back-button {
+      width: 30px;
+      height: 30px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease;
+    }
+
+    .change-password-back-button:hover {
+      transform: translateX(-4px);
+    }
+
+    .change-password-back-button svg {
+      width: 30px;
+      height: 30px;
+    }
+
+    .change-password-page-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #222222;
+      margin-bottom: 3rem;
+      text-align: center;
+      letter-spacing: -0.5px;
+    }
+
+    .change-password-form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .change-password-form-label {
+      display: block;
+      font-size: 18px;
+      font-weight: 600;
+      color: #222222;
+      margin-bottom: 0.75rem;
+    }
+
+    .change-password-form-input {
+      width: 100%;
+      max-width: 486px;
+      padding: 12.5px 23px;
+      font-family: "Montserrat", -apple-system, Roboto, Helvetica, sans-serif;
+      font-size: 16px;
+      font-weight: 300;
+      color: #686868;
+      border: 0.5px solid #686868;
+      border-radius: 6px;
+      background: rgba(196, 196, 196, 0.01);
+      outline: none;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .change-password-form-input:focus {
+      border-color: #222222;
+      background: #ffffff;
+    }
+
+    .change-password-form-input::placeholder {
+      color: #686868;
+      font-weight: 300;
+    }
+
+    .change-password-forgot-password {
+      display: inline-block;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      font-size: 16px;
+      font-weight: 200;
+      color: #FF5050;
+      text-decoration: none;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+
+    .change-password-forgot-password:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+
+    .change-password-button-group {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 4rem;
+    }
+
+    .change-password-btn {
+      display: flex;
+      padding: 9px 17px;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      border-radius: 67px;
+      font-family: "Montserrat", -apple-system, Roboto, Helvetica, sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-width: 115px;
+      border: 1px solid;
+    }
+
+    .change-password-btn-confirm {
+      color: #222222;
+      background: transparent;
+      border-color: #2F2F2F;
+    }
+
+    .change-password-btn-confirm:hover {
+      background: #f5f5f5;
+      transform: translateY(-1px);
+    }
+
+    .change-password-btn-confirm:active {
+      transform: translateY(0);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .change-password-container {
+        padding: 1.5rem 1rem;
+      }
+
+      .change-password-page-title {
+        font-size: 18px;
+        margin-bottom: 2rem;
+      }
+
+      .change-password-form-label {
+        font-size: 16px;
+      }
+
+      .change-password-form-input {
+        font-size: 15px;
+        max-width: 100%;
+      }
+
+      .change-password-forgot-password {
+        font-size: 15px;
+      }
+
+      .change-password-button-group {
+        justify-content: center;
+        margin-top: 3rem;
+      }
+
+      .change-password-btn {
+        font-size: 15px;
+        min-width: 100px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .change-password-container {
+        padding: 1rem 0.75rem;
+      }
+
+      .change-password-page-title {
+        font-size: 16px;
+        margin-bottom: 1.5rem;
+      }
+
+      .change-password-form-group {
+        margin-bottom: 1.25rem;
+      }
+
+      .change-password-form-label {
+        font-size: 15px;
+        margin-bottom: 0.5rem;
+      }
+
+      .change-password-form-input {
+        font-size: 14px;
+        padding: 10px 18px;
+      }
+
+      .change-password-forgot-password {
+        font-size: 14px;
+        margin-top: 0.4rem;
+      }
+
+      .change-password-button-group {
+        margin-top: 2.5rem;
+      }
+
+      .change-password-btn {
+        font-size: 14px;
+        padding: 8px 14px;
+        min-width: 95px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="change-password-container">
+    <div class="change-password-form-container">
+      <button class="change-password-back-button" aria-label="Volver">
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5.746 16.5L17.1385 27.8925L15 30L0 15L15 0L17.1385 2.1075L5.746 13.5H30V16.5H5.746Z" fill="#222222"/>
+        </svg>
+      </button>
+
+      <h1 class="change-password-page-title">Cambiar contraseña</h1>
+
+      <form>
+        <div class="change-password-form-group">
+          <label for="current-password" class="change-password-form-label">Contraseña actual</label>
+          <input
+            type="password"
+            id="current-password"
+            class="change-password-form-input"
+            placeholder="Ingresa tu contraseña"
+          />
+          <a href="#" class="change-password-forgot-password">¿Olvidó su contraseña?</a>
+        </div>
+
+        <div class="change-password-form-group">
+          <label for="new-password" class="change-password-form-label">Nueva contraseña</label>
+          <input
+            type="password"
+            id="new-password"
+            class="change-password-form-input"
+            placeholder="Contraseña nueva"
+          />
+        </div>
+
+        <div class="change-password-form-group">
+          <label for="confirm-password" class="change-password-form-label">Confirme la nueva contraseña</label>
+          <input
+            type="password"
+            id="confirm-password"
+            class="change-password-form-input"
+            placeholder="Confirmación"
+          />
+        </div>
+
+        <div class="change-password-button-group">
+          <button type="submit" class="change-password-btn change-password-btn-confirm">Confirmar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

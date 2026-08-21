@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tu información</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Montserrat", -apple-system, Roboto, Helvetica, sans-serif;
+      background-color: #ffffff;
+      color: #222222;
+      line-height: 1.5;
+    }
+
+    .ajustes2-container {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .form-container {
+      width: 100%;
+      max-width: 797px;
+      position: relative;
+    }
+
+    .back-button {
+      width: 30px;
+      height: 30px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease;
+    }
+
+    .back-button:hover {
+      transform: translateX(-4px);
+    }
+
+    .back-button svg {
+      width: 30px;
+      height: 30px;
+    }
+
+    .ajustes2-page-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #222222;
+      margin-bottom: 3rem;
+      text-align: center;
+      letter-spacing: -0.5px;
+    }
+
+    .ajustes2-form-group {
+      margin-bottom: 2.5rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 18px;
+      font-weight: 600;
+      color: #222222;
+      margin-bottom: 0.75rem;
+    }
+
+    .form-input {
+      width: 100%;
+      max-width: 290px;
+      padding: 12px 23px;
+      font-family: "Montserrat", -apple-system, Roboto, Helvetica, sans-serif;
+      font-size: 16px;
+      font-weight: 300;
+      color: #686868;
+      border: 0.5px solid #686868;
+      border-radius: 6px;
+      background: rgba(196, 196, 196, 0.01);
+      outline: none;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .form-input:focus {
+      border-color: #222222;
+      background: #ffffff;
+    }
+
+    .form-input.small {
+      max-width: 192px;
+    }
+
+    .form-input.medium {
+      max-width: 207px;
+    }
+
+    .select-wrapper {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      max-width: 136px;
+    }
+
+    .form-select {
+      width: 100%;
+      padding: 12px 23px 12px 23px;
+      font-family: "Montserrat", -apple-system, Roboto, Helvetica, sans-serif;
+      font-size: 16px;
+      font-weight: 300;
+      color: #686868;
+      border: 0.5px solid #686868;
+      border-radius: 6px;
+      background: rgba(196, 196, 196, 0.01);
+      outline: none;
+      cursor: pointer;
+      appearance: none;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .form-select:focus {
+      border-color: #222222;
+      background: #ffffff;
+    }
+
+    .select-wrapper::after {
+      content: '';
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 8px solid #2C2C2C;
+      pointer-events: none;
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+      margin-top: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: flex;
+      padding: 9px 17px;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      border-radius: 67px;
+      font-family: "Montserrat", -apple-system, Roboto, Helvetica, sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-width: 115px;
+      border: 1px solid;
+    }
+
+    .btn-confirm {
+      color: #222222;
+      background: transparent;
+      border-color: #2F2F2F;
+    }
+
+    .btn-confirm:hover {
+      background: #f5f5f5;
+      transform: translateY(-1px);
+    }
+
+    .btn-cancel {
+      color: #ffffff;
+      background: #FF5050;
+      border-color: #FF5050;
+    }
+
+    .btn-cancel:hover {
+      background: #ff3333;
+      border-color: #ff3333;
+      transform: translateY(-1px);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .ajustes2-container {
+        padding: 1.5rem 1rem;
+      }
+
+      .ajustes2-page-title {
+        font-size: 18px;
+        margin-bottom: 2rem;
+      }
+
+      .form-label {
+        font-size: 16px;
+      }
+
+      .form-input,
+      .form-select {
+        font-size: 15px;
+        max-width: 100%;
+      }
+
+      .select-wrapper {
+        max-width: 100%;
+      }
+
+      .button-group {
+        justify-content: center;
+        margin-top: 3rem;
+      }
+
+      .btn {
+        font-size: 15px;
+        min-width: 100px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .ajustes2-container {
+        padding: 1rem 0.75rem;
+      }
+
+      .ajustes2-page-title {
+        font-size: 16px;
+        margin-bottom: 1.5rem;
+      }
+
+      .ajustes2-form-group {
+        margin-bottom: 2rem;
+      }
+
+      .form-label {
+        font-size: 15px;
+        margin-bottom: 0.5rem;
+      }
+
+      .form-input,
+      .form-select {
+        font-size: 14px;
+        padding: 10px 18px;
+      }
+
+      .button-group {
+        gap: 0.75rem;
+        margin-top: 2.5rem;
+      }
+
+      .btn {
+        font-size: 14px;
+        padding: 8px 14px;
+        min-width: 95px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="ajustes2-container">
+    <div class="form-container">
+      <button class="back-button" aria-label="Volver">
+        <svg width="31" height="30" viewBox="0 0 31 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5.75893 16.5L17.1771 27.8925L15.0337 30L0 15L15.0337 0L17.1771 2.1075L5.75893 13.5H30.0675V16.5H5.75893Z" fill="#222222"/>
+        </svg>
+      </button>
+
+      <h1 class="ajustes2-page-title">Tu información</h1>
+
+      <form>
+        <div class="ajustes2-form-group">
+          <label for="username" class="form-label">Nombre de usuario</label>
+          <input 
+            type="text" 
+            id="username" 
+            class="form-input small" 
+            value="@pedritomartinez"
+            placeholder="@pedritomartinez"
+          />
+        </div>
+
+        <div class="ajustes2-form-group">
+          <label for="alias" class="form-label">Alias</label>
+          <input 
+            type="text" 
+            id="alias" 
+            class="form-input medium" 
+            value="ElDelanteroProdigio"
+            placeholder="ElDelanteroProdigio"
+          />
+        </div>
+
+        <div class="ajustes2-form-group">
+          <label for="email" class="form-label">Correo</label>
+          <input 
+            type="email" 
+            id="email" 
+            class="form-input" 
+            value="correodereserva12@gmail.com"
+            placeholder="correodereserva12@gmail.com"
+          />
+        </div>
+
+        <div class="ajustes2-form-group">
+          <label for="country" class="form-label">País</label>
+          <input 
+            type="text" 
+            id="country" 
+            class="form-input" 
+            value="correodereserva12@gmail.com"
+            placeholder="Selecciona tu país"
+          />
+        </div>
+
+        <div class="ajustes2-form-group">
+          <label for="gender" class="form-label">Género</label>
+          <div class="select-wrapper">
+            <select id="gender" class="form-select">
+              <option value="hombre" selected>Hombre</option>
+              <option value="mujer">Mujer</option>
+              <option value="otro">Otro</option>
+              <option value="prefiero-no-decir">Prefiero no decir</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="button-group">
+          <button type="button" class="btn btn-confirm">Confirmar</button>
+          <button type="button" class="btn btn-cancel">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

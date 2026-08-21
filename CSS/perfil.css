@@ -1,0 +1,254 @@
+@media (max-width: 600px) {
+  .user-right {
+    margin-left: auto;
+    width: auto;
+    margin-right: 10px;
+  }
+}
+@media (max-width: 600px) {
+  .cover {
+    aspect-ratio: 1047/380;
+    min-height: 140px;
+    max-width: 93vw;
+    margin-left:10px;
+  }
+}
+
+.notif-btn.active .block-svg circle {
+        stroke: #222;
+}
+.notif-btn .block-svg circle {
+  stroke: #222;
+}
+.notif-btn .block-svg line {
+  stroke: #222;
+}
+.notif-btn.active .block-svg circle,
+.notif-btn.active .block-svg line {
+  stroke: #FF5050 !important;
+}
+@view-transition {
+  navigation: auto;
+}
+
+/* Animación personalizada para la transición de entrada/salida */
+::view-transition-old(root) {
+  animation: slide-out 0.5s ease-in-out;
+}
+
+::view-transition-new(root) {
+  animation: slide-in 0.5s ease-in-out;
+}
+
+@keyframes slide-out {
+  to {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+}
+
+      :root{
+        --bg: #F5F5F5;
+        --text: #222;
+        --sub: #777;
+        --line: #999;
+        --header: #121212;
+        --btn: #D24242;
+        --white: #fff;
+        --card-bg: #ffffff;
+        --input-bg: #f9f9f9;
+        --border: #686868;
+        --hover: #ddd;
+      }
+
+      /* Dark theme variables */
+      body.dark-theme {
+        --bg: #1a1a1a;
+        --text: #e0e0e0;
+        --sub: #aaa;
+        --line: #444;
+        --header: #000;
+        --btn: #ff6b6b;
+        --white: #2d2d2d;
+        --card-bg: #2d2d2d;
+        --input-bg: #333;
+        --border: #555;
+        --hover: #333333;
+      }
+      *{box-sizing:border-box}
+      html,body{height:100%}
+      body{margin:0;background:var(--bg);color:var(--text);font-family:Montserrat, -apple-system, Roboto, Helvetica, Arial, sans-serif;}
+      a{color:inherit;text-decoration:none}
+      .container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+     
+      /* Page */
+      .page{padding:24px 0 60px}
+      .cover-wrap{max-width:1047px;margin:8px auto 0;position:relative}
+      .cover{width:100%;aspect-ratio:1047/205;border-radius:43px;object-fit:cover;display:block}
+      .avatar{position:absolute;left:38px;bottom:-58px;width:132px;height:132px;border-radius:999px;border:3px solid var(--card-bg)}
+
+      .profile-row{max-width:1047px;margin:75px auto 0;display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;justify-content:space-between;padding:0 8px}
+      .user-left{min-width:260px;margin-left: 40px;}
+      .name{font-weight:700;font-size:30px;margin:0 0 8px; color: var(--text);}
+      .handle{color:var(--sub);font-weight:300;font-size:20px;margin:0 0 8px}
+      .bio{color:var(--sub);font-size:20px;margin:0;max-width:552px;font-weight: 450;}
+      .user-right{display:flex;gap:24px;align-items:center}
+      .meta{color:var(--sub);opacity:.71;text-align:right;font-size:14px;font-weight: lighter;}
+      .edit-btn{border-radius:67px;border:1.5px solid var(--text);background:var(--card-bg);color:var(--text);padding:10px 15px;cursor:pointer;font-weight:500;font-size:18px;position: absolute;right: 30px; bottom: -18px; box-shadow: 0 0 0 8px var(--bg); }
+      .follow-btn {
+        border-radius: 67px;
+        border: 2px solid #FF5050;
+        background: #FF5050;
+        color: #fff;
+        padding: 10px 15px;
+        cursor: pointer;
+        font-weight: 500;
+        font-size: 18px;
+        font-family: 'Montserrat', sans-serif;
+        position: absolute;
+        right: 140px;
+        bottom: -18px;
+        box-shadow: 0 0 0 8px var(--bg);
+        z-index: 2000;
+      }
+
+      .notif-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        box-shadow: 0 2px 8px #0001;
+        border: 2px solid #eee;
+        cursor: pointer;
+        padding: 0;
+        position: absolute;
+        right: 70px;
+        bottom: -18px;
+        z-index: 2000;
+
+      }
+      .following-btn{border-radius:67px;border:1.5px solid #000080;background:#fff;color:#000080;padding:10px 15px;cursor:pointer;font-weight:500;font-size:18px;position: absolute;right: 30px; bottom: -18px; box-shadow: 0 0 0 8px var(--bg); }
+      .divider{height:1px;background:var(--line);max-width:822px;margin:43px auto 53px}
+
+      /* Posts */
+      .feed{max-width:822px;margin:0 auto;padding:0 8px}
+      .post{background:var(--card-bg);border-radius:43px;box-shadow:0 0 6px rgba(0,0,0,.3);padding:18px 18px 22px;margin:0 0 55px}
+      .post-head{display:flex;align-items:center;gap:10px;margin-bottom:33px}
+      .post-avatar{width:45px;height:45px;border-radius:999px; margin-left: 10px; margin-top: 6px;}
+      .post-username{font-weight:700;font-size:20px; color: var(--text);margin-top: 10px;}
+      .post-title{font-weight:500;font-size:18px;margin:0 0 23px;padding:0 25px; color: var(--text);}
+      .post-img{width:100%;max-width:700px;margin:0 auto 14px;display:block;aspect-ratio:700/307;border-radius:43px;object-fit:cover}
+      .post-foot{display:flex;align-items:center;justify-content:space-between;padding:0 25px}
+      .tags{color:var(--sub);opacity:.71;font-size:16px}
+      .stats{display:flex;align-items:center;gap:32px;color:var(--sub)}
+      .stat{display:flex;align-items:center;gap:8px}
+
+      /* Like button específico para perfil - idéntico a .stat */
+      .like-button {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--sub);
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        font-family: inherit;
+        font-size: inherit;
+        transition: all 0.3s ease;
+      }
+
+      .like-button .heart-icon {
+        width: 20px;
+        height: 20px;
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+
+      /* Estilos para botones de comentarios - igual que Main.css */
+      .comment-button {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--sub);
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        font-family: inherit;
+        font-size: inherit;
+        transition: all 0.3s ease;
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+      }
+
+      .comment-button .comment-icon {
+        width: 20px;
+        height: 20px;
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        overflow: visible;
+      }
+
+      .comment-button:hover .comment-icon path {
+        fill: var(--btn);
+      }
+
+      .comment-button:hover .comment-icon {
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 0 1px #4A90E2) drop-shadow(0 0 0 1px #4A90E2);
+      }
+
+      .comment-button:active .comment-icon {
+        transform: scale(0.95);
+      }
+
+      /* Utilities */
+      .row{display:flex;align-items:center;gap:12px}
+      .back{position:absolute;left:20px;top:24px}
+
+      /* Responsive */
+      @media (max-width:640px){
+        .brand-title{font-size:34px}
+        .avatar{left:16px;width:96px;height:96px;bottom:-40px}
+        .name{font-size:22px}
+        .handle,.bio{font-size:16px}
+        .edit-btn{font-size:16px}
+        .post-title{padding:0}
+        .post-foot{padding:0}
+      }
+
+      .profile-actions {
+        position: absolute;
+        z-index: 10;
+        right: 30px;
+        bottom: -18px;
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
+
+      .notif-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        box-shadow: 0 2px 8px #0001;
+        border: 2px solid #eee;
+        cursor: pointer;
+        padding: 0;
+      }

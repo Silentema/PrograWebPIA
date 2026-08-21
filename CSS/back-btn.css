@@ -1,0 +1,91 @@
+@media (max-width: 600px) {
+  body.perfil-mobile .back-btn {
+    display: none !important;
+  }
+}
+@view-transition {
+  navigation: auto;
+}
+
+/* Animación personalizada para la transición de entrada/salida */
+::view-transition-old(root) {
+  animation: slide-out 0.5s ease-in-out;
+}
+
+::view-transition-new(root) {
+  animation: slide-in 0.5s ease-in-out;
+}
+
+@keyframes slide-out {
+  to {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+}
+
+:root {
+    --bg: #F5F5F5;
+    --text: #222;
+    --sub: #777;
+    --line: #999;
+    --header: #121212;
+    --btn: #D24242;
+    --white: #fff;
+    --card-bg: #ffffff;
+    --input-bg: #f9f9f9;
+    --border: #686868;
+    --hover: #ddd;
+}
+
+/* Dark theme variables */
+body.dark-theme {
+    --bg: #1a1a1a;
+    --text: #e0e0e0;
+    --sub: #aaa;
+    --line: #444;
+    --header: #000;
+    --btn: #ff6b6b;
+    --white: #2d2d2d;
+    --card-bg: #2d2d2d;
+    --input-bg: #333;
+    --border: #555;
+    --hover: #333333;
+}
+
+/* Back Button Component - Reutilizable en toda la aplicación */
+.back-btn {
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    background: transparent;
+    border: none;
+    color: var(--text);
+    cursor: pointer;
+    line-height: 1;
+    z-index: 10;
+    font-size: 32px;
+    font-weight: 900;
+    font-family: 'Arial Black', Arial, sans-serif;
+    text-shadow: 1px 0 0 currentColor;
+}
+
+.back-btn:hover {
+    border-radius: 10px;
+    transform: scale(1.15);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .back-btn {
+        top: 80px;
+        left: 20px;
+        font-size: 28px;
+    }
+}

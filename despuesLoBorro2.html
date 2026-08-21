@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comentar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-text: #222;
+            --color-subtext: #777;
+            --color-lines: #999;
+            --color-primary: #FF5050;
+            --color-border: #2F2F2F;
+        }
+
+        body {
+            font-family: 'Montserrat', -apple-system, Roboto, Helvetica, sans-serif;
+            padding: 20px;
+            background: #fff;
+        }
+
+        .temp-comment-widget {
+            max-width: 962px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .temp-comment-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .temp-comment-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .temp-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .temp-comment-input-label {
+            color: var(--color-subtext);
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 1;
+        }
+
+        .temp-divider {
+            width: 100%;
+            height: 1px;
+            background: var(--color-lines);
+            margin: 8px 0;
+        }
+
+        .temp-comment-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .temp-emoji-icon {
+            width: 33px;
+            height: 33px;
+            flex-shrink: 0;
+        }
+
+        .temp-button-group {
+            display: flex;
+            gap: 15px;
+            margin-left: auto;
+        }
+
+        .temp-btn {
+            display: inline-flex;
+            padding: 9px 17px;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            border-radius: 67px;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 1;
+            cursor: pointer;
+            border: 1px solid;
+            background: transparent;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .temp-btn-cancel {
+            color: var(--color-text);
+            border-color: var(--color-border);
+            background: transparent;
+        }
+
+        .temp-btn-cancel:hover {
+            background: rgba(47, 47, 47, 0.05);
+        }
+
+        .temp-btn-submit {
+            color: #fff;
+            border-color: var(--color-primary);
+            background: var(--color-primary);
+        }
+
+        .temp-btn-submit:hover {
+            background: #ff3838;
+            border-color: #ff3838;
+        }
+
+        @media (max-width: 768px) {
+            .comment-input-label {
+                font-size: 18px;
+            }
+
+            .avatar {
+                width: 40px;
+                height: 40px;
+            }
+
+            .emoji-icon {
+                width: 28px;
+                height: 28px;
+            }
+
+            .button-group {
+                flex-shrink: 0;
+            }
+
+            .btn {
+                font-size: 11px;
+                padding: 8px 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .comment-widget {
+                padding: 10px;
+            }
+
+            .comment-input-label {
+                font-size: 16px;
+            }
+
+            .avatar {
+                width: 35px;
+                height: 35px;
+            }
+
+            .emoji-icon {
+                width: 24px;
+                height: 24px;
+            }
+
+            .comment-footer {
+                flex-wrap: wrap;
+            }
+
+            .btn {
+                font-size: 10px;
+                padding: 7px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="temp-comment-widget">
+        <div class="temp-comment-container">
+            <div class="temp-comment-header">
+                <img class="temp-avatar" src="https://api.builder.io/api/v1/image/assets/TEMP/88690893998caa9748d3f1acc44df544d8cd79ed?width=100" alt="Avatar de usuario">
+                <div class="temp-comment-input-label">Comenta algo</div>
+            </div>
+
+            <div class="temp-divider"></div>
+
+            <div class="temp-comment-footer">
+                <img class="temp-emoji-icon" src="https://api.builder.io/api/v1/image/assets/TEMP/130387be2936df04dccccd6eb36c07b7b0cb78ac?width=66" alt="Emoji">
+
+                <div class="temp-button-group">
+                    <button class="temp-btn temp-btn-cancel">Cancelar</button>
+                    <button class="temp-btn temp-btn-submit">Comentar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

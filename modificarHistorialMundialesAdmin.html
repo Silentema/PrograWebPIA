@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+                <style>
+                    #edit-mundial-btn {
+                        background: #D24242 !important;
+                        color: #fff !important;
+                        font-family: 'Montserrat', sans-serif !important;
+                    }
+                    .contrast-theme #edit-mundial-btn,
+                    .contrast-theme #save-mundial-btn {
+                        font-weight: 800 !important;
+                    }
+                </style>
+        <script>
+        function applyContrastFromStorage() {
+            if (localStorage.getItem('contrastMode') === 'true') {
+                document.body.classList.add('contrast-theme');
+            } else {
+                document.body.classList.remove('contrast-theme');
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            applyContrastFromStorage();
+            var btn = document.getElementById('global-contrast-btn');
+            if (btn) {
+                btn.addEventListener('click', function() {
+                    var isActive = document.body.classList.contains('contrast-theme');
+                    if (isActive) {
+                        localStorage.setItem('contrastMode', 'false');
+                    } else {
+                        localStorage.setItem('contrastMode', 'true');
+                    }
+                    applyContrastFromStorage();
+                });
+            }
+            window.addEventListener('storage', function(e) {
+                if (e.key === 'contrastMode') {
+                    applyContrastFromStorage();
+                }
+            });
+        });
+        </script>
+        
+        
+        <style>
+          .contrast-theme h1,
+          .contrast-theme h2,
+          .contrast-theme h3,
+          .contrast-theme h4,
+          .contrast-theme h5,
+          .contrast-theme h6,
+          .contrast-theme .section-title,
+          .contrast-theme .group-title,
+          .contrast-theme .timeline-year,
+          .contrast-theme .info-label,
+          .contrast-theme .info-value,
+          .contrast-theme .list-number,
+          .contrast-theme .list-text,
+          .contrast-theme .team-name,
+          .contrast-theme .final-label,
+          .contrast-theme .score-text,
+          .contrast-theme .score-time,
+          .contrast-theme .section-content {
+            font-weight: 800 !important;
+          }
+        </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MATCHIO - Mundiales</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/historialMundiales.css" />
+    <link rel="stylesheet" href="CSS/back-btn.css" />
+</head>
+<body style="padding-top:70px;">
+      <div id="header-container"></div>
+    <script src="headerLoader.js"></script>
+
+              <button class="back-btn" onclick="history.back()" style="top:90px">←</button>
+
+
+    
+        <div class="timeline-section">
+            <div class="timeline-container" id="timeline-container">
+                <div class="timeline-item" data-year="1998" onclick="selectYear(1998)">
+                    <img src="Image/1998.webp" alt="1998" class="timeline-logo small">
+                    <div class="timeline-year faded">1998</div>
+                </div>
+                <div class="timeline-item" data-year="2002" onclick="selectYear(2002)">
+                    <img src="Image/2002.webp" alt="2002" class="timeline-logo small">
+                    <div class="timeline-year faded">2002</div>
+                </div>
+                <div class="timeline-item" data-year="2006" onclick="selectYear(2006)">
+                    <img src="Image/2006.svg" alt="2006" class="timeline-logo">
+                    <div class="timeline-year inactive">2006</div>
+                </div>
+                <div class="timeline-item" data-year="2010" onclick="selectYear(2010)">
+                    <img src="Image/2010.webp" alt="2010" class="timeline-logo large">
+                    <div class="timeline-year active">2010</div>
+                </div>
+                <div class="timeline-item" data-year="2014" onclick="selectYear(2014)">
+                    <img src="Image/2014.webp" alt="2014" class="timeline-logo">
+                    <div class="timeline-year inactive">2014</div>
+                </div>
+                <div class="timeline-item" data-year="2018" onclick="selectYear(2018)">
+                    <img src="Image/2018.png" alt="2018" class="timeline-logo small">
+                    <div class="timeline-year faded">2018</div>
+                </div>
+                <div class="timeline-item" data-year="2022" onclick="selectYear(2022)">
+                    <img src="Image/2022.png" alt="2022" class="timeline-logo small">
+                    <div class="timeline-year faded">2022</div>
+                </div>
+            </div>
+
+            <div class="timeline-arrows">
+                <svg class="timeline-arrow" id="prev-arrow" onclick="navigateTimeline(-1)" viewBox="0 0 57 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M37.6905 11.6193V44.1531L11.7781 27.8862L37.6905 11.6193Z" fill="#1D1B20"/>
+                </svg>
+                <svg class="timeline-arrow" id="next-arrow" onclick="navigateTimeline(1)" viewBox="0 0 57 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18.8457 44.1529V11.6191L44.7581 27.886L18.8457 44.1529Z" fill="#1D1B20"/>
+                </svg>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+
+
+
+
+
+
+    <main>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h1>Mundiales</h1>
+            <div style="display: flex; gap: 10px;">
+                <button id="edit-mundial-btn" style="background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Editar mundial</button>
+                <button id="save-mundial-btn" style="background: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; display: none;">Guardar</button>
+            </div>
+        </div>
+
+       
+
+        <div class="info-section">
+            <div class="info-left">
+                <div class="info-item">
+                    <span class="info-label">País sede</span>
+                </div>
+                <div class="info-item">
+                    <div style="position: relative; display: inline-block;">
+                        <img src="https://api.builder.io/api/v1/image/assets/TEMP/a677495d05f9750273eba3bf0b4619f83708a51f?width=266" alt="Sudáfrica" class="country-flag" id="country-flag-img">
+                        <div class="img-overlay" id="flag-overlay" style="display:none; border-radius:8px; cursor:pointer; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); display:flex; align-items:center; justify-content:center;"><span class="plus-icon" style="color:white; font-size:24px;">+</span></div>
+                        <input type="file" id="flag-file" accept="image/*" style="display:none" />
+                    </div>
+                    <div style="position: relative; display: inline-block;">
+                        <span class="info-value" id="pais-sede-text">Sudáfrica</span>
+                        <div class="text-overlay" id="pais-sede-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                            <input type="text" id="pais-sede-input" value="Sudáfrica" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <div class="info-right">
+                <div class="info-item">
+                    <span class="info-label">Periodo:</span>
+                    <div style="position: relative; display: inline-block;">
+                        <span class="info-value" id="periodo-text">12 Ago - 28 Oct</span>
+                        <div class="text-overlay" id="periodo-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                            <input type="text" id="periodo-input" value="12 Ago - 28 Oct" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                        </div>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Partidos:</span>
+                    <div style="position: relative; display: inline-block;">
+                        <span class="info-value" id="partidos-text">3 - 2 98' España Países Bajos</span>
+                        <div class="text-overlay" id="partidos-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                            <input type="text" id="partidos-input" value="3 - 2 98' España Países Bajos" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                        </div>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Goles:</span>
+                    <div style="position: relative; display: inline-block;">
+                        <span class="info-value" id="goles-text">87</span>
+                        <div class="text-overlay" id="goles-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                            <input type="text" id="goles-input" value="87" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="champion-section">
+            
+            <div class="champion-display">
+                <div class="team-item">
+                    <div style="position: relative; display: inline-block;">
+                        <img src="https://api.builder.io/api/v1/image/assets/TEMP/eae26b2632d7d843dad39c6a21035037813072d3?width=266" alt="España" class="team-flag" id="champion-flag1">
+                        <div class="img-overlay" id="champion-flag1-overlay" style="display:none; border-radius:8px; cursor:pointer; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); align-items:center; justify-content:center;"><span class="plus-icon" style="color:white; font-size:24px;">+</span></div>
+                        <input type="file" id="champion-flag1-file" accept="image/*" style="display:none" />
+                    </div>
+                    <div style="position: relative; display: inline-block;">
+                        <span class="team-name" id="champion-team1-text">España</span>
+                        <div class="text-overlay" id="champion-team1-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                            <input type="text" id="champion-team1-input" value="España" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                        </div>
+                    </div>
+                </div>
+                <div class="score-display">
+                    <div class="final-label">FINAL</div>
+                    <div class="score-circle">
+                        <div class="score-text">3 - 2</div>
+                        <div class="score-time">98'</div>
+                    </div>
+                </div>
+                <div class="team-item">
+                    <div style="position: relative; display: inline-block;">
+                        <img src="https://api.builder.io/api/v1/image/assets/TEMP/f7c449e82a43d11502752632ec99689cd1e1233f?width=266" alt="Países Bajos" class="team-flag" id="champion-flag2">
+                        <div class="img-overlay" id="champion-flag2-overlay" style="display:none; border-radius:8px; cursor:pointer; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); align-items:center; justify-content:center;"><span class="plus-icon" style="color:white; font-size:24px;">+</span></div>
+                        <input type="file" id="champion-flag2-file" accept="image/*" style="display:none" />
+                    </div>
+                    <div style="position: relative; display: inline-block;">
+                        <span class="team-name" id="champion-team2-text">Países Bajos</span>
+                        <div class="text-overlay" id="champion-team2-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                            <input type="text" id="champion-team2-input" value="Países Bajos" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="champion-display" style="margin-top: 80px;">
+            <img src="Image/copaGanador.png" alt="Copa del Mundo" class="trophy-image">
+            <div class="team-item">
+                <h2 class="champion-title">Campeón</h2>
+
+                <div style="position: relative; display: inline-block;">
+                    <img src="https://api.builder.io/api/v1/image/assets/TEMP/eae26b2632d7d843dad39c6a21035037813072d3?width=266" alt="España" class="team-flag" id="champion-trophy-flag">
+                    <div class="img-overlay" id="champion-trophy-flag-overlay" style="display:none; border-radius:8px; cursor:pointer; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); align-items:center; justify-content:center;"><span class="plus-icon" style="color:white; font-size:24px;">+</span></div>
+                    <input type="file" id="champion-trophy-flag-file" accept="image/*" style="display:none" />
+                </div>
+                
+            </div>
+        </div>
+
+        <section style="margin-top: 60px;">
+            <h2 class="section-title">Curiosidades</h2>
+            <div style="position: relative; display: inline-block; width: 100%;">
+                <p class="section-content" id="curiosidades-text">
+                    El Mundial de Sudáfrica 2010 fue el primero en África y estuvo lleno de curiosidades, como
+                    el uso masivo de las vuvuzelas, que generaron un sonido de fondo constante. También destacó
+                    por la mascota Zakumi,  un leopardo antropomorfo con pelo verde. Además, fue el mundial que vio
+                    coronarse a España por primera vez, convirtiéndose en el campeón con el menor número de goles
+                    anotados (8 goles)
+                </p>
+                <div class="text-overlay" id="curiosidades-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:var(--overlay-bg, rgba(255,255,255,0.95)); display:flex; align-items:flex-start; justify-content:center; border-radius:10px; padding: 0;">
+                    <textarea id="curiosidades-input" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 0; margin-bottom: 10px; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none; min-height: 185px; margin-bottom: 15px;" rows="6">El Mundial de Sudáfrica 2010 fue el primero en África y estuvo lleno de curiosidades, como
+el uso masivo de las vuvuzelas, que generaron un sonido de fondo constante. También destacó
+por la mascota Zakumi,  un leopardo antropomorfo con pelo verde. Además, fue el mundial que vio
+coronarse a España por primera vez, convirtiéndose en el campeón con el menor número de goles
+anotados (8 goles)</textarea>
+                </div>
+            </div>
+        </section>
+
+        <div class="list-container">
+            <div class="list-section">
+                <h2 class="section-title">Selecciones (paises)</h2>
+                <div class="list-item">
+                    <span class="list-number">1.</span>
+                    <div style="position: relative; display: inline-block;">
+                        <img src="https://api.builder.io/api/v1/image/assets/TEMP/79846cc5c4beaae7fe0a2d7f4eb4ff79daf4ac21?width=210" alt="España" class="list-flag" id="seleccion1-flag">
+                        <div class="img-overlay" id="seleccion1-flag-overlay" style="display:none; border-radius:8px; cursor:pointer; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); align-items:center; justify-content:center;"><span class="plus-icon" style="color:white; font-size:24px;">+</span></div>
+                        <input type="file" id="seleccion1-flag-file" accept="image/*" style="display:none" />
+                    </div>
+                        <div style="position: relative; display: inline-block;">
+                        <span class="list-text" id="seleccion1-text" >España</span>
+                        <div class="text-overlay" id="seleccion1-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                            <input type="text" id="seleccion1-input" value="España" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                        </div>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <span class="list-number">2.</span>
+                    <div style="position: relative; display: inline-block;">
+                        <img src="https://api.builder.io/api/v1/image/assets/TEMP/a4efab7207ac85bcf8abe6f95742cdeb564b0ea7?width=210" alt="Países Bajos" class="list-flag" id="seleccion2-flag">
+                        <div class="img-overlay" id="seleccion2-flag-overlay" style="display:none; border-radius:8px; cursor:pointer; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); align-items:center; justify-content:center;"><span class="plus-icon" style="color:white; font-size:24px;">+</span></div>
+                        <input type="file" id="seleccion2-flag-file" accept="image/*" style="display:none" />
+                    </div>
+                    <div style="position: relative; display: inline-block;">
+                        <span class="list-text" id="seleccion2-text" >Países Bajos</span>
+                        <div class="text-overlay" id="seleccion2-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                            <input type="text" id="seleccion2-input" value="Países Bajos" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                        </div>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <span class="list-number">3.</span>
+                    <div style="position: relative; display: inline-block;">
+                        <img src="https://api.builder.io/api/v1/image/assets/TEMP/3da6bf1b220ae8c6f591ac789d2e98bb74b2f9ca?width=210" alt="Alemania" class="list-flag" id="seleccion3-flag">
+                        <div class="img-overlay" id="seleccion3-flag-overlay" style="display:none; border-radius:8px; cursor:pointer; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); align-items:center; justify-content:center;"><span class="plus-icon" style="color:white; font-size:24px;">+</span></div>
+                        <input type="file" id="seleccion3-flag-file" accept="image/*" style="display:none" />
+                    </div>
+                    <div style="position: relative; display: inline-block;">
+                        <span class="list-text" id="seleccion3-text" >Alemania</span>
+                        <div class="text-overlay" id="seleccion3-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                            <input type="text" id="seleccion3-input" value="Alemania" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                        </div>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <span class="list-number">4.</span>
+                    <div style="position: relative; display: inline-block;">
+                        <img src="https://api.builder.io/api/v1/image/assets/TEMP/6fc5987aaf07e2a1c6e569ab5b3e4a984898b073?width=210" alt="Uruguay" class="list-flag" id="seleccion4-flag">
+                        <div class="img-overlay" id="seleccion4-flag-overlay" style="display:none; border-radius:8px; cursor:pointer; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); align-items:center; justify-content:center;"><span class="plus-icon" style="color:white; font-size:24px;">+</span></div>
+                        <input type="file" id="seleccion4-flag-file" accept="image/*" style="display:none" />
+                    </div>
+                    <div style="position: relative; display: inline-block;">
+                        <span class="list-text" id="seleccion4-text" >Uruguay</span>
+                        <div class="text-overlay" id="seleccion4-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                            <input type="text" id="seleccion4-input" value="Uruguay" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                        </div>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <span class="list-number">5.</span>
+                    <div style="position: relative; display: inline-block;">
+                        <img src="https://api.builder.io/api/v1/image/assets/TEMP/518c5dea6c68d828e75bf9c28917950e50475f37?width=210" alt="Argentina" class="list-flag" id="seleccion5-flag">
+                        <div class="img-overlay" id="seleccion5-flag-overlay" style="display:none; border-radius:8px; cursor:pointer; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); align-items:center; justify-content:center;"><span class="plus-icon" style="color:white; font-size:24px;">+</span></div>
+                        <input type="file" id="seleccion5-flag-file" accept="image/*" style="display:none" />
+                    </div>
+                    <div style="position: relative; display: inline-block;">
+                        <span class="list-text" id="seleccion5-text" >Argentina</span>
+                        <div class="text-overlay" id="seleccion5-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                            <input type="text" id="seleccion5-input" value="Argentina" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                        </div>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <span class="list-number">6.</span>
+                    <div style="position: relative; display: inline-block;">
+                        <img src="https://api.builder.io/api/v1/image/assets/TEMP/3d4929b3281b8f888f34ba4f9465b3ee137e2286?width=210" alt="Brasil" class="list-flag" id="seleccion6-flag">
+                        <div class="img-overlay" id="seleccion6-flag-overlay" style="display:none; border-radius:8px; cursor:pointer; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); align-items:center; justify-content:center;"><span class="plus-icon" style="color:white; font-size:24px;">+</span></div>
+                        <input type="file" id="seleccion6-flag-file" accept="image/*" style="display:none" />
+                    </div>
+                    <div style="position: relative; display: inline-block;">
+                        <span class="list-text" id="seleccion6-text" >Brasil</span>
+                        <div class="text-overlay" id="seleccion6-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                            <input type="text" id="seleccion6-input" value="Brasil" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                        </div>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <span class="list-number">7.</span>
+                    <div style="position: relative; display: inline-block;">
+                        <img src="https://api.builder.io/api/v1/image/assets/TEMP/bc7cfc494b52f170f4ce78ce2bb470abbcf551ca?width=210" alt="Ghana" class="list-flag" id="seleccion7-flag">
+                        <div class="img-overlay" id="seleccion7-flag-overlay" style="display:none; border-radius:8px; cursor:pointer; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); align-items:center; justify-content:center;"><span class="plus-icon" style="color:white; font-size:24px;">+</span></div>
+                        <input type="file" id="seleccion7-flag-file" accept="image/*" style="display:none" />
+                    </div>
+                    <div style="position: relative; display: inline-block;">
+                        <span class="list-text" id="seleccion7-text" >Ghana</span>
+                        <div class="text-overlay" id="seleccion7-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                            <input type="text" id="seleccion7-input" value="Ghana" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                        </div>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <span class="list-number">8.</span>
+                    <div style="position: relative; display: inline-block;">
+                        <img src="https://api.builder.io/api/v1/image/assets/TEMP/7d7514fac233c1129995194c4c475124243d8dbb?width=210" alt="Paraguay" class="list-flag" id="seleccion8-flag">
+                        <div class="img-overlay" id="seleccion8-flag-overlay" style="display:none; border-radius:8px; cursor:pointer; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); align-items:center; justify-content:center;"><span class="plus-icon" style="color:white; font-size:24px;">+</span></div>
+                        <input type="file" id="seleccion8-flag-file" accept="image/*" style="display:none" />
+                    </div>
+                    <div style="position: relative; display: inline-block;">
+                        <span class="list-text" id="seleccion8-text" >Paraguay</span>
+                        <div class="text-overlay" id="seleccion8-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                            <input type="text" id="seleccion8-input" value="Paraguay" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                        </div>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <span class="list-number">9.</span>
+                    <div style="position: relative; display: inline-block;">
+                        <img src="https://api.builder.io/api/v1/image/assets/TEMP/485a4d434ce8e969ab764d17585c7f1cc173f62c?width=210" alt="Japón" class="list-flag" id="seleccion9-flag">
+                        <div class="img-overlay" id="seleccion9-flag-overlay" style="display:none; border-radius:8px; cursor:pointer; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); align-items:center; justify-content:center;"><span class="plus-icon" style="color:white; font-size:24px;">+</span></div>
+                        <input type="file" id="seleccion9-flag-file" accept="image/*" style="display:none" />
+                    </div>
+                    <div style="position: relative; display: inline-block;">
+                        <span class="list-text" id="seleccion9-text" >Japon</span>
+                        <div class="text-overlay" id="seleccion9-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                            <input type="text" id="seleccion9-input" value="Japon" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                        </div>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <span class="list-number">10.</span>
+                    <div style="position: relative; display: inline-block;">
+                        <img src="https://api.builder.io/api/v1/image/assets/TEMP/cb668930740294b42808061d7d15f68ac5dec3df?width=210" alt="Chile" class="list-flag" id="seleccion10-flag">
+                        <div class="img-overlay" id="seleccion10-flag-overlay" style="display:none; border-radius:8px; cursor:pointer; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); align-items:center; justify-content:center;"><span class="plus-icon" style="color:white; font-size:24px;">+</span></div>
+                        <input type="file" id="seleccion10-flag-file" accept="image/*" style="display:none" />
+                    </div>
+                    <div style="position: relative; display: inline-block;">
+                        <span class="list-text" id="seleccion10-text" >Chile</span>
+                        <div class="text-overlay" id="seleccion10-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                            <input type="text" id="seleccion10-input" value="Chile" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="list-section">
+
+                <div class="info-right">
+                    <div class="info-item">
+                        <span class="info-label">Mayores goleadores</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="list-number">1.</span>
+                        <div style="position: relative; display: inline-block;">
+                            <span class="list-text" id="goleador1-text">Thomas Müller (Alemania)</span>
+                            <div class="text-overlay" id="goleador1-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                                <input type="text" id="goleador1-input" value="Thomas Müller (Alemania)" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="list-number">2.</span>
+                        <div style="position: relative; display: inline-block;">
+                            <span class="list-text" id="goleador2-text">Wesley Sneijder (Paises Bajos)</span>
+                            <div class="text-overlay" id="goleador2-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                                <input type="text" id="goleador2-input" value="Wesley Sneijder (Paises Bajos)" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="list-number">3.</span>
+                        <div style="position: relative; display: inline-block;">
+                            <span class="list-text" id="goleador3-text">David Villa (España)</span>
+                            <div class="text-overlay" id="goleador3-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                                <input type="text" id="goleador3-input" value="David Villa (España)" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+
+        <div class="list-container">
+             <div class="list-section">
+                 <h2 class="section-title">Nuevos debutantes</h2>
+                 <div class="list-item">
+                     <div style="position: relative; display: inline-block;">
+                         <img src="https://api.builder.io/api/v1/image/assets/TEMP/518c5dea6c68d828e75bf9c28917950e50475f37?width=210" alt="Argentina" class="list-flag" id="debutante1-flag">
+                         <div class="img-overlay" id="debutante1-flag-overlay" style="display:none; border-radius:8px; cursor:pointer; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); align-items:center; justify-content:center;"><span class="plus-icon" style="color:white; font-size:24px;">+</span></div>
+                         <input type="file" id="debutante1-flag-file" accept="image/*" style="display:none" />
+                     </div>
+                     <div style="position: relative; display: inline-block;">
+                         <span class="list-text" id="debutante1-text">Argentina</span>
+                         <div class="text-overlay" id="debutante1-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                             <input type="text" id="debutante1-input" value="Argentina" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                         </div>
+                     </div>
+                 </div>
+                <div class="list-item">
+                    <div style="position: relative; display: inline-block;">
+                        <img src="https://api.builder.io/api/v1/image/assets/TEMP/3d4929b3281b8f888f34ba4f9465b3ee137e2286?width=210" alt="Brasil" class="list-flag" id="debutante2-flag">
+                        <div class="img-overlay" id="debutante2-flag-overlay" style="display:none; border-radius:8px; cursor:pointer; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); align-items:center; justify-content:center;"><span class="plus-icon" style="color:white; font-size:24px;">+</span></div>
+                        <input type="file" id="debutante2-flag-file" accept="image/*" style="display:none" />
+                    </div>
+                    <div style="position: relative; display: inline-block;">
+                        <span class="list-text" id="debutante2-text">Brasil</span>
+                        <div class="text-overlay" id="debutante2-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                            <input type="text" id="debutante2-input" value="Brasil" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                        </div>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <div style="position: relative; display: inline-block;">
+                        <img src="https://api.builder.io/api/v1/image/assets/TEMP/bc7cfc494b52f170f4ce78ce2bb470abbcf551ca?width=210" alt="Ghana" class="list-flag" id="debutante3-flag">
+                        <div class="img-overlay" id="debutante3-flag-overlay" style="display:none; border-radius:8px; cursor:pointer; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); align-items:center; justify-content:center;"><span class="plus-icon" style="color:white; font-size:24px;">+</span></div>
+                        <input type="file" id="debutante3-flag-file" accept="image/*" style="display:none" />
+                    </div>
+                    <div style="position: relative; display: inline-block;">
+                        <span class="list-text" id="debutante3-text">Ghana</span>
+                        <div class="text-overlay" id="debutante3-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                            <input type="text" id="debutante3-input" value="Ghana" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                        </div>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <div style="position: relative; display: inline-block;">
+                        <img src="https://api.builder.io/api/v1/image/assets/TEMP/7d7514fac233c1129995194c4c475124243d8dbb?width=210" alt="Paraguay" class="list-flag" id="debutante4-flag">
+                        <div class="img-overlay" id="debutante4-flag-overlay" style="display:none; border-radius:8px; cursor:pointer; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); align-items:center; justify-content:center;"><span class="plus-icon" style="color:white; font-size:24px;">+</span></div>
+                        <input type="file" id="debutante4-flag-file" accept="image/*" style="display:none" />
+                    </div>
+                    <div style="position: relative; display: inline-block;">
+                        <span class="list-text" id="debutante4-text">Paraguay</span>
+                        <div class="text-overlay" id="debutante4-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                            <input type="text" id="debutante4-input" value="Paraguay" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="list-section">
+
+                <div class="info-right">
+
+                    <div class="info-item">
+                        <span class="section-title">Selecciones ausentes</span>
+                    </div>
+
+                    <div class="info-item">
+                        <div style="position: relative; display: inline-block;">
+                            <span class="list-text" id="ausente1-text">Suecia</span>
+                            <div class="text-overlay" id="ausente1-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                                <input type="text" id="ausente1-input" value="Suecia" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                            </div>
+                        </div>
+                        <div style="position: relative; display: inline-block;">
+                            <img src="https://api.builder.io/api/v1/image/assets/TEMP/b6f17aa37658d754c2c930ee16222a6d9c682e52?width=210" alt="Suecia" class="list-flag" id="ausente1-flag">
+                            <div class="img-overlay" id="ausente1-flag-overlay" style="display:none; border-radius:8px; cursor:pointer; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); align-items:center; justify-content:center;"><span class="plus-icon" style="color:white; font-size:24px;">+</span></div>
+                            <input type="file" id="ausente1-flag-file" accept="image/*" style="display:none" />
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div style="position: relative; display: inline-block;">
+                            <span class="list-text" id="ausente2-text">Rusia</span>
+                            <div class="text-overlay" id="ausente2-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                                <input type="text" id="ausente2-input" value="Rusia" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                            </div>
+                        </div>
+                        <div style="position: relative; display: inline-block;">
+                            <img src="https://api.builder.io/api/v1/image/assets/TEMP/0ad4d4f7e531b18923fabbf1afc9d18b1391f503?width=210" alt="Rusia" class="list-flag" id="ausente2-flag">
+                            <div class="img-overlay" id="ausente2-flag-overlay" style="display:none; border-radius:8px; cursor:pointer; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); align-items:center; justify-content:center;"><span class="plus-icon" style="color:white; font-size:24px;">+</span></div>
+                            <input type="file" id="ausente2-flag-file" accept="image/*" style="display:none" />
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div style="position: relative; display: inline-block;">
+                            <span class="list-text" id="ausente3-text">Ecuador</span>
+                            <div class="text-overlay" id="ausente3-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                                <input type="text" id="ausente3-input" value="Ecuador" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                            </div>
+                        </div>
+                        <div style="position: relative; display: inline-block;">
+                            <img src="https://api.builder.io/api/v1/image/assets/TEMP/22c6376bf130b4194434578b6f70e694343e7420?width=210" alt="Ecuador" class="list-flag" id="ausente3-flag">
+                            <div class="img-overlay" id="ausente3-flag-overlay" style="display:none; border-radius:8px; cursor:pointer; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); align-items:center; justify-content:center;"><span class="plus-icon" style="color:white; font-size:24px;">+</span></div>
+                            <input type="file" id="ausente3-flag-file" accept="image/*" style="display:none" />
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div style="position: relative; display: inline-block;">
+                            <span class="list-text" id="ausente4-text">Egipto</span>
+                            <div class="text-overlay" id="ausente4-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                                <input type="text" id="ausente4-input" value="Egipto" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                            </div>
+                        </div>
+                        <div style="position: relative; display: inline-block;">
+                            <img src="https://api.builder.io/api/v1/image/assets/TEMP/bff8df205d072204a312b4693cfcf2685759430c?width=210" alt="Egipto" class="list-flag" id="ausente4-flag">
+                            <div class="img-overlay" id="ausente4-flag-overlay" style="display:none; border-radius:8px; cursor:pointer; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); align-items:center; justify-content:center;"><span class="plus-icon" style="color:white; font-size:24px;">+</span></div>
+                            <input type="file" id="ausente4-flag-file" accept="image/*" style="display:none" />
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>    
+
+            
+
+        <section style="margin-top: 60px;">
+            <h2 class="section-title">Grupos</h2>
+            <div class="groups-container">
+                <div class="group-section">
+                    <div style="position: relative; display: inline-block;">
+                        <h3 class="group-title" id="grupo1-title-text">Grupo 1</h3>
+                        <div class="text-overlay" id="grupo1-title-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                            <input type="text" id="grupo1-title-input" value="Grupo 1" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div style="position: relative; display: inline-block;">
+                            <img src="https://api.builder.io/api/v1/image/assets/TEMP/5cf244b821de9c0a690de70a2798e94a50af5df7?width=210" alt="Sudáfrica" class="list-flag" id="grupo1-pais1-flag">
+                            <div class="img-overlay" id="grupo1-pais1-flag-overlay" style="display:none; border-radius:8px; cursor:pointer; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); align-items:center; justify-content:center;"><span class="plus-icon" style="color:white; font-size:24px;">+</span></div>
+                            <input type="file" id="grupo1-pais1-flag-file" accept="image/*" style="display:none" />
+                        </div>
+                        <div style="position: relative; display: inline-block;">
+                            <span class="list-text" id="grupo1-pais1-text">Sudáfrica</span>
+                            <div class="text-overlay" id="grupo1-pais1-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                                <input type="text" id="grupo1-pais1-input" value="Sudáfrica" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div style="position: relative; display: inline-block;">
+                            <img src="https://api.builder.io/api/v1/image/assets/TEMP/8a70f3153ff0e754c7a03511142c68d2305d237d?width=210" alt="Mexico" class="list-flag small" id="grupo1-pais2-flag">
+                            <div class="img-overlay" id="grupo1-pais2-flag-overlay" style="display:none; border-radius:8px; cursor:pointer; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); align-items:center; justify-content:center;"><span class="plus-icon" style="color:white; font-size:24px;">+</span></div>
+                            <input type="file" id="grupo1-pais2-flag-file" accept="image/*" style="display:none" />
+                        </div>
+                        <div style="position: relative; display: inline-block;">
+                            <span class="list-text" id="grupo1-pais2-text">Mexico</span>
+                            <div class="text-overlay" id="grupo1-pais2-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                                <input type="text" id="grupo1-pais2-input" value="Mexico" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div style="position: relative; display: inline-block;">
+                            <img src="https://api.builder.io/api/v1/image/assets/TEMP/6fc5987aaf07e2a1c6e569ab5b3e4a984898b073?width=210" alt="Uruguay" class="list-flag" id="grupo1-pais3-flag">
+                            <div class="img-overlay" id="grupo1-pais3-flag-overlay" style="display:none; border-radius:8px; cursor:pointer; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); align-items:center; justify-content:center;"><span class="plus-icon" style="color:white; font-size:24px;">+</span></div>
+                            <input type="file" id="grupo1-pais3-flag-file" accept="image/*" style="display:none" />
+                        </div>
+                        <div style="position: relative; display: inline-block;">
+                            <span class="list-text" id="grupo1-pais3-text">Uruguay</span>
+                            <div class="text-overlay" id="grupo1-pais3-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                                <input type="text" id="grupo1-pais3-input" value="Uruguay" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div style="position: relative; display: inline-block;">
+                            <img src="Image/francia.png" alt="Uruguay" class="list-flag" id="grupo1-pais4-flag">
+                            <div class="img-overlay" id="grupo1-pais4-flag-overlay" style="display:none; border-radius:8px; cursor:pointer; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); align-items:center; justify-content:center;"><span class="plus-icon" style="color:white; font-size:24px;">+</span></div>
+                            <input type="file" id="grupo1-pais4-flag-file" accept="image/*" style="display:none" />
+                        </div>
+                        <div style="position: relative; display: inline-block;">
+                            <span class="list-text" id="grupo1-pais4-text">Francia</span>
+                            <div class="text-overlay" id="grupo1-pais4-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                                <input type="text" id="grupo1-pais4-input" value="Francia" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+               <!--
+                    <div class="info-right">
+
+                        <div class="info-item">
+                            <span class="section-title">Estoy poniendolo a la derecha</span>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="list-text">Argentina</span>
+                            <img src="https://api.builder.io/api/v1/image/assets/TEMP/518c5dea6c68d828e75bf9c28917950e50475f37?width=210" alt="Argentina" class="list-flag">
+    
+                        </div>
+                        
+
+                        <div class="info-item">
+                            <span class="list-text">Corea del sur</span>
+                            <img src="https://api.builder.io/api/v1/image/assets/TEMP/518c5dea6c68d828e75bf9c28917950e50475f37?width=210" alt="Argentina" class="list-flag">
+    
+                            
+                        </div>
+
+                        <div class="info-item">
+                            <span class="list-text">Grecia</span>
+                            <img src="https://api.builder.io/api/v1/image/assets/TEMP/bd3c26e3f5b75c11b2817e296f8ac65cefafe530?width=210" alt="Grecia" class="list-flag">
+                            
+                        </div>
+
+                        <div class="info-item">
+                            <span class="list-text">Nigeria</span>
+                            <img src="https://api.builder.io/api/v1/image/assets/TEMP/d6e2f9b561ab6be9e157e655cb6ddfb0295becdf?width=210" alt="Nigeria" class="list-flag small">
+                            
+                        </div>
+                        
+                    </div>
+                -->
+
+
+
+
+
+
+
+                <div class="group-section">
+                    <div style="position: relative; display: inline-block;">
+                        <h3 class="group-title" id="grupo2-title-text">Grupo 2</h3>
+                        <div class="text-overlay" id="grupo2-title-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                            <input type="text" id="grupo2-title-input" value="Grupo 2" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div style="position: relative; display: inline-block;">
+                            <img src="https://api.builder.io/api/v1/image/assets/TEMP/518c5dea6c68d828e75bf9c28917950e50475f37?width=210" alt="Argentina" class="list-flag" id="grupo2-pais1-flag">
+                            <div class="img-overlay" id="grupo2-pais1-flag-overlay" style="display:none; border-radius:8px; cursor:pointer; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); align-items:center; justify-content:center;"><span class="plus-icon" style="color:white; font-size:24px;">+</span></div>
+                            <input type="file" id="grupo2-pais1-flag-file" accept="image/*" style="display:none" />
+                        </div>
+                        <div style="position: relative; display: inline-block;">
+                            <span class="list-text" id="grupo2-pais1-text">Argentina</span>
+                            <div class="text-overlay" id="grupo2-pais1-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                                <input type="text" id="grupo2-pais1-input" value="Argentina" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div style="position: relative; display: inline-block;">
+                            <img src="Image/corea.png" alt="Corea de Sur" class="list-flag" id="grupo2-pais2-flag">
+                            <div class="img-overlay" id="grupo2-pais2-flag-overlay" style="display:none; border-radius:8px; cursor:pointer; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); align-items:center; justify-content:center;"><span class="plus-icon" style="color:white; font-size:24px;">+</span></div>
+                            <input type="file" id="grupo2-pais2-flag-file" accept="image/*" style="display:none" />
+                        </div>
+                        <div style="position: relative; display: inline-block;">
+                            <span class="list-text" id="grupo2-pais2-text">Corea de Sur</span>
+                            <div class="text-overlay" id="grupo2-pais2-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                                <input type="text" id="grupo2-pais2-input" value="Corea de Sur" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div style="position: relative; display: inline-block;">
+                            <img src="https://api.builder.io/api/v1/image/assets/TEMP/bd3c26e3f5b75c11b2817e296f8ac65cefafe530?width=210" alt="Grecia" class="list-flag" id="grupo2-pais3-flag">
+                            <div class="img-overlay" id="grupo2-pais3-flag-overlay" style="display:none; border-radius:8px; cursor:pointer; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); align-items:center; justify-content:center;"><span class="plus-icon" style="color:white; font-size:24px;">+</span></div>
+                            <input type="file" id="grupo2-pais3-flag-file" accept="image/*" style="display:none" />
+                        </div>
+                        <div style="position: relative; display: inline-block;">
+                            <span class="list-text" id="grupo2-pais3-text">Grecia</span>
+                            <div class="text-overlay" id="grupo2-pais3-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                                <input type="text" id="grupo2-pais3-input" value="Grecia" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div style="position: relative; display: inline-block;">
+                            <img src="https://api.builder.io/api/v1/image/assets/TEMP/d6e2f9b561ab6be9e157e655cb6ddfb0295becdf?width=210" alt="Nigeria" class="list-flag small" id="grupo2-pais4-flag">
+                            <div class="img-overlay" id="grupo2-pais4-flag-overlay" style="display:none; border-radius:8px; cursor:pointer; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); align-items:center; justify-content:center;"><span class="plus-icon" style="color:white; font-size:24px;">+</span></div>
+                            <input type="file" id="grupo2-pais4-flag-file" accept="image/*" style="display:none" />
+                        </div>
+                        <div style="position: relative; display: inline-block;">
+                            <span class="list-text" id="grupo2-pais4-text">Nigeria</span>
+                            <div class="text-overlay" id="grupo2-pais4-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                                <input type="text" id="grupo2-pais4-input" value="Nigeria" style="background: var(--input-bg); border: none; outline: none; width: 100%; color: var(--sub); font: inherit; padding: 12px 0; margin: 0; font-size: 1.1em; resize: none; overflow: hidden; border-radius: 10px; box-shadow: none;" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        let currentIndex = 3; 
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.img-overlay').forEach(overlay => overlay.style.display = 'none');
+            document.querySelectorAll('.text-overlay').forEach(overlay => overlay.style.display = 'none');
+            document.querySelectorAll('.text-overlay input, .text-overlay textarea, textarea[id$="-input"], input[type="text"][id$="-input"]').forEach(input => {
+                input.setAttribute('disabled', 'disabled');
+            });
+        });
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        const timelineContainer = document.getElementById('timeline-container');
+
+        // Función para seleccionar un año específico
+        function selectYear(year) {
+            const years = [1998, 2002, 2006, 2010, 2014, 2018, 2022];
+            const newIndex = years.indexOf(year);
+            if (newIndex !== -1) {
+                currentIndex = newIndex;
+                updateTimeline();
+                centerSelectedItem();
+                
+                showLoadingSkeleton();
+                
+                setTimeout(() => {
+                    restoreOriginalContent();
+                }, 600);;
+            }
+        }
+
+        function navigateTimeline(direction) {
+            const newIndex = currentIndex + direction;
+            if (newIndex >= 0 && newIndex < timelineItems.length) {
+                currentIndex = newIndex;
+                updateTimeline();
+                centerSelectedItem();
+                
+                showLoadingSkeleton();
+                
+                setTimeout(() => {
+                    restoreOriginalContent();
+                }, 600);
+            }
+        }
+
+        let originalContent = null;
+        
+        function showLoadingSkeleton() {
+            const mainElement = document.querySelector('main');
+            const contentSections = document.querySelectorAll('main h1, .info-section, .champion-section, .champion-display, .section-content, .list-container, .groups-container, main section, main .trophy-image');
+            
+            if (!originalContent) {
+                originalContent = Array.from(contentSections).map(section => section.outerHTML);
+            }
+            
+            if (!document.getElementById('skeleton-styles')) {
+                const style = document.createElement('style');
+                style.id = 'skeleton-styles';
+                style.textContent = `
+                    .skeleton-images {
+                        display: flex;
+                        gap: 20px;
+                        margin-bottom: 30px;
+                        justify-content: center;
+                    }
+                    .skeleton-img {
+                        width: 20px;
+                        height: 20px;
+                        background: var(--hover);
+                        border-radius: 50%;
+                    }
+                  
+                `;
+                document.head.appendChild(style);
+            }
+            
+            const divider = document.querySelector('.divider');
+            
+            const skeletonContainer = document.createElement('div');
+            skeletonContainer.id = 'main-skeleton';
+            skeletonContainer.innerHTML = `
+                <div class="skeleton-images">
+                    <div class="skeleton-img"></div>
+                    <div class="skeleton-img"></div>
+                    <div class="skeleton-img"></div>
+                </div>
+            `;
+            skeletonContainer.style.cssText = `
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 200px;
+                margin: 40px 0;
+            `;
+            
+            contentSections.forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            divider.parentNode.insertBefore(skeletonContainer, divider.nextSibling);
+        }
+        
+        function restoreOriginalContent() {
+            const skeletonContainer = document.getElementById('main-skeleton');
+            if (skeletonContainer) {
+                skeletonContainer.remove();
+            }
+            
+            const contentSections = document.querySelectorAll('main h1, .info-section, .champion-section, .champion-display, .section-content, .list-container, .groups-container, main section, main .trophy-image');
+            contentSections.forEach(section => {
+                section.style.display = '';
+            });
+        }
+        
+        function updateTimeline() {
+            timelineItems.forEach((item, index) => {
+                const year = item.querySelector('.timeline-year');
+                const logo = item.querySelector('.timeline-logo');
+                
+                year.classList.remove('active', 'inactive', 'faded');
+                logo.classList.remove('small', 'large');
+                
+                const distance = Math.abs(index - currentIndex);
+                
+                if (index === currentIndex) {
+                    year.classList.add('active');
+                    logo.classList.add('large');
+                } else if (distance === 1) {
+                    year.classList.add('inactive');
+                } else {
+                    year.classList.add('faded');
+                    logo.classList.add('small');
+                }
+            });
+        }
+
+        function centerSelectedItem() {
+            const selectedItem = timelineItems[currentIndex];
+            const containerWidth = timelineContainer.offsetWidth;
+            const itemWidth = selectedItem.offsetWidth;
+            const itemOffsetLeft = selectedItem.offsetLeft;
+            
+            const scrollPosition = itemOffsetLeft - (containerWidth / 2) + (itemWidth / 2);
+            
+            timelineContainer.scrollTo({
+                left: scrollPosition,
+                behavior: 'smooth'
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateTimeline();
+            centerSelectedItem();
+        });
+
+        timelineContainer.addEventListener('scroll', function() {
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var editBtn = document.getElementById('edit-mundial-btn');
+            var saveBtn = document.getElementById('save-mundial-btn');
+            var editMode = false;
+
+            const allImgOverlays = document.querySelectorAll('.img-overlay');
+            const allTextOverlays = document.querySelectorAll('.text-overlay');
+
+            allImgOverlays.forEach(overlay => {
+                let imgId;
+                if (overlay.id === 'flag-overlay') {
+                    imgId = 'country-flag-img';
+                } else {
+                    imgId = overlay.id.replace('-overlay', '');
+                }
+                const img = document.getElementById(imgId);
+                const fileInputId = imgId.replace('country-flag-img', 'flag') + '-file';
+                const fileInput = document.getElementById(fileInputId);
+                if (img && fileInput) {
+                    overlay.addEventListener('click', function() {
+                        if (editMode) fileInput.click();
+                    });
+                    fileInput.addEventListener('change', function(e) {
+                        if (fileInput.files && fileInput.files[0]) {
+                            const reader = new FileReader();
+                            reader.onload = function(ev) {
+                                img.src = ev.target.result;
+                            };
+                            reader.readAsDataURL(fileInput.files[0]);
+                        }
+                    });
+                }
+            });
+
+            allTextOverlays.forEach(overlay => {
+                const textId = overlay.id.replace('-overlay', '');
+                const textSpan = document.getElementById(textId);
+                const input = document.getElementById(textId + '-input');
+                if (textSpan && input) {
+                    input.addEventListener('input', function() {
+                        textSpan.textContent = input.value;
+                    });
+                }
+            });
+
+            if(editBtn && saveBtn) {
+                editBtn.addEventListener('click', function() {
+                    editMode = !editMode;
+                    if (editMode) {
+                        allImgOverlays.forEach(overlay => overlay.style.display = 'flex');
+                        allTextOverlays.forEach(overlay => overlay.style.display = 'flex');
+                        document.querySelectorAll('.text-overlay input, .text-overlay textarea, textarea[id$="-input"], input[type="text"][id$="-input"]').forEach(input => {
+                            input.removeAttribute('disabled');
+                        });
+                        saveBtn.style.display = 'inline-block';
+                    } else {
+                        allImgOverlays.forEach(overlay => overlay.style.display = 'none');
+                        allTextOverlays.forEach(overlay => overlay.style.display = 'none');
+                        document.querySelectorAll('.text-overlay input, .text-overlay textarea, textarea[id$="-input"], input[type="text"][id$="-input"]').forEach(input => {
+                            input.setAttribute('disabled', 'disabled');
+                        });
+                        saveBtn.style.display = 'none';
+                    }
+                });
+
+                saveBtn.addEventListener('click', function() {
+                    editMode = false;
+                    allImgOverlays.forEach(overlay => overlay.style.display = 'none');
+                    allTextOverlays.forEach(overlay => overlay.style.display = 'none');
+                    saveBtn.style.display = 'none';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

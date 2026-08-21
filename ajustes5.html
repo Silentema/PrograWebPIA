@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios que bloqueaste</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', -apple-system, Roboto, Helvetica, sans-serif;
+            background-color: #ffffff;
+            padding: 20px;
+            color: #222;
+        }
+
+        .blocked-users-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #222;
+            margin-bottom: 40px;
+            margin-top: 20px;
+        }
+
+        .blocked-users-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .user-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            transition: background-color 0.2s;
+        }
+
+        .user-card:hover {
+            background-color: #f9f9f9;
+        }
+
+        .user-avatar {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            object-fit: cover;
+        }
+
+        .user-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .user-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: #222;
+        }
+
+        .user-handle {
+            font-size: 20px;
+            font-weight: 300;
+            color: #777;
+        }
+
+        .user-bio {
+            font-size: 20px;
+            font-weight: 400;
+            color: #777;
+        }
+
+        .actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .block-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .block-icon:hover {
+            opacity: 0.7;
+        }
+
+        .block-icon svg {
+            width: 17px;
+            height: 17px;
+            fill: #FF5050;
+        }
+
+        .block-button {
+            padding: 9px 26px;
+            border: none;
+            border-radius: 67px;
+            background-color: #FF5050;
+            color: #FFF;
+            font-family: 'Montserrat', -apple-system, Roboto, Helvetica, sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            white-space: nowrap;
+        }
+
+        .block-button:hover {
+            background-color: #ff3c3c;
+        }
+
+        .block-button:active {
+            transform: scale(0.98);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 18px;
+                margin-bottom: 30px;
+                margin-top: 15px;
+            }
+
+            .user-card {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .user-name,
+            .user-handle,
+            .user-bio {
+                font-size: 16px;
+            }
+
+            .actions {
+                width: 100%;
+                justify-content: flex-end;
+            }
+
+            .user-info {
+                flex-basis: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 15px;
+            }
+
+            .title {
+                font-size: 16px;
+                margin-bottom: 25px;
+            }
+
+            .user-card {
+                gap: 12px;
+            }
+
+            .user-avatar {
+                width: 48px;
+                height: 48px;
+            }
+
+            .user-name,
+            .user-handle,
+            .user-bio {
+                font-size: 14px;
+            }
+
+            .block-button {
+                font-size: 16px;
+                padding: 8px 20px;
+            }
+
+            .block-icon svg {
+                width: 15px;
+                height: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="blocked-users-container">
+        <h1 class="title">Usuarios que bloqueaste</h1>
+
+        <div class="blocked-users-list">
+            <!-- User Card 1 -->
+            <div class="user-card">
+                <img src="https://api.builder.io/api/v1/image/assets/TEMP/d1d40f5f0a574ae7e86b9d78c9c3f116edd0cf67?width=108" alt="Alberto Aguilera Valadez" class="user-avatar">
+                <div class="user-info">
+                    <div class="user-name">Alberto Aguilera Valadez</div>
+                    <div class="user-handle">@albertelguapo</div>
+                    <div class="user-bio">Si soy bien guapo y soy el Albert</div>
+                </div>
+                <div class="actions">
+                    <div class="block-icon">
+                        <svg viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4.9615 17L0 12.0385V4.9615L4.9615 0H12.0385L17 4.9615V12.0385L12.0385 17H4.9615ZM5.65 12.4038L8.5 9.55375L11.35 12.4038L12.4038 11.35L9.55375 8.5L12.4038 5.65L11.35 4.59625L8.5 7.44625L5.65 4.59625L4.59625 5.65L7.44625 8.5L4.59625 11.35L5.65 12.4038ZM5.6 15.5H11.4L15.5 11.4V5.6L11.4 1.5H5.6L1.5 5.6V11.4L5.6 15.5Z" fill="#FF5050"/>
+                        </svg>
+                    </div>
+                    <button class="block-button">Bloqueado</button>
+                </div>
+            </div>
+
+            <!-- User Card 2 -->
+            <div class="user-card">
+                <img src="https://api.builder.io/api/v1/image/assets/TEMP/d1d40f5f0a574ae7e86b9d78c9c3f116edd0cf67?width=108" alt="Alberto Aguilera Valadez" class="user-avatar">
+                <div class="user-info">
+                    <div class="user-name">Alberto Aguilera Valadez</div>
+                    <div class="user-handle">@albertelguapo</div>
+                    <div class="user-bio">Si soy bien guapo y soy el Albert</div>
+                </div>
+                <div class="actions">
+                    <div class="block-icon">
+                        <svg viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4.9615 17L0 12.0385V4.9615L4.9615 0H12.0385L17 4.9615V12.0385L12.0385 17H4.9615ZM5.65 12.4038L8.5 9.55375L11.35 12.4038L12.4038 11.35L9.55375 8.5L12.4038 5.65L11.35 4.59625L8.5 7.44625L5.65 4.59625L4.59625 5.65L7.44625 8.5L4.59625 11.35L5.65 12.4038ZM5.6 15.5H11.4L15.5 11.4V5.6L11.4 1.5H5.6L1.5 5.6V11.4L5.6 15.5Z" fill="#FF5050"/>
+                        </svg>
+                    </div>
+                    <button class="block-button">Bloqueado</button>
+                </div>
+            </div>
+
+            <!-- User Card 3 -->
+            <div class="user-card">
+                <img src="https://api.builder.io/api/v1/image/assets/TEMP/d1d40f5f0a574ae7e86b9d78c9c3f116edd0cf67?width=108" alt="Alberto Aguilera Valadez" class="user-avatar">
+                <div class="user-info">
+                    <div class="user-name">Alberto Aguilera Valadez</div>
+                    <div class="user-handle">@albertelguapo</div>
+                    <div class="user-bio">Si soy bien guapo y soy el Albert</div>
+                </div>
+                <div class="actions">
+                    <div class="block-icon">
+                        <svg viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4.9615 17L0 12.0385V4.9615L4.9615 0H12.0385L17 4.9615V12.0385L12.0385 17H4.9615ZM5.65 12.4038L8.5 9.55375L11.35 12.4038L12.4038 11.35L9.55375 8.5L12.4038 5.65L11.35 4.59625L8.5 7.44625L5.65 4.59625L4.59625 5.65L7.44625 8.5L4.59625 11.35L5.65 12.4038ZM5.6 15.5H11.4L15.5 11.4V5.6L11.4 1.5H5.6L1.5 5.6V11.4L5.6 15.5Z" fill="#FF5050"/>
+                        </svg>
+                    </div>
+                    <button class="block-button">Bloqueado</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

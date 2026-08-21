@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mundial de futbol en Mexico</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+    body.contrast-theme .title-input,
+    body.contrast-theme .description-textarea,
+    body.contrast-theme .publish-btn,
+    body.contrast-theme .user-name,
+    body.contrast-theme .title,
+    body.contrast-theme .description {
+        font-weight: 800 !important;
+    }
+    body.contrast-theme .user-name {
+        font-weight: 800 !important;
+    }
+        :root {
+            --bg: #F5F5F5;
+            --text: #222;
+            --sub: #777;
+            --line: #999;
+            --header: #121212;
+            --btn: #D24242;
+            --white: #fff;
+            --card-bg: #ffffff;
+            --container-bg: #e6e6e6;
+            --input-bg: #f9f9f9;
+            --border: #6b6969;
+            --hover: #ddd;
+            --success: #28a745;
+            --danger: #dc3545;
+            --icon-color: #D24242;
+            --close-icon: #79747E;
+        }
+
+        /* Dark theme variables */
+        body.dark-theme {
+            --bg: #1a1a1a;
+            --text: #e0e0e0;
+            --sub: #aaa;
+            --line: #444;
+            --header: #000;
+            --btn: #ff6b6b;
+            --white: #2d2d2d;
+            --card-bg: #2d2d2d;
+            --container-bg: #2d2d2d;
+            --input-bg: #333;
+            --border: #444;
+            --hover: #333333;
+            --success: #4caf50;
+            --danger: #f44336;
+            --icon-color: #ff6b6b;
+            --close-icon: #aaa;
+        }
+
+        body {
+            background-color: var(--bg);
+            font-family: 'Montserrat', -apple-system, Roboto, Helvetica, sans-serif;          
+          }
+        
+
+        .container-overlay {
+            width: 100%;
+            background-color: var(--container-bg);
+            border-radius: 43px;
+            padding: 32px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-top: 60px;
+        }
+
+        /* Header Section */
+        .header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 32px;
+            gap: 16px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+        }
+
+        .user-avatar {
+            width: 54px;
+            height: 54px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .user-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.2;
+        }
+
+        .close-btn {
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-btn svg {
+            width: 48px;
+            height: 48px;
+        }
+
+        .title {
+            font-size: 18px;
+            font-weight: 400;
+            color: var(--text);
+            opacity: 0.75;
+            margin-bottom: 24px;
+            line-height: 1.3;
+        }
+
+        .image-container {
+            width: 100%;
+            margin-bottom: 24px;
+            border-radius: 72px;
+            overflow: hidden;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            aspect-ratio: 8/3;
+            object-fit: cover;
+        }
+
+        .description {
+            font-size: 15px;
+            font-weight: 400;
+            color: var(--text);
+            opacity: 0.75;
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+
+        .description-textarea {
+            width: 100%;
+            min-height: 60px;
+            font-size: 15px;
+            font-weight: 400;
+            color: var(--text);
+            background: transparent;
+            border: none;
+            outline: none;
+            resize: vertical;
+            font-family: 'Montserrat', -apple-system, Roboto, Helvetica, sans-serif;
+            line-height: 1.6;
+            margin-bottom: 32px;
+            padding: 0;
+        }
+
+        .description-textarea::placeholder {
+            color: var(--text);
+            opacity: 0.5;
+        }
+
+        .title-input {
+            width: 100%;
+            font-size: 18px;
+            font-weight: 400;
+            color: var(--text);
+            background: transparent;
+            border: none;
+            outline: none;
+            font-family: 'Montserrat', -apple-system, Roboto, Helvetica, sans-serif;
+            opacity: 0.75;
+            margin-bottom: 24px;
+            line-height: 1.3;
+            padding: 0;
+        }
+
+        .title-input::placeholder {
+            color: var(--text);
+            opacity: 0.5;
+        }
+
+        .notification-overlay {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--btn);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: 'Montserrat', -apple-system, Roboto, Helvetica, sans-serif;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            z-index: 10000;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            opacity: 0;
+        }
+
+        .notification-overlay.show {
+            bottom: 30px;
+            opacity: 1;
+        }
+
+        .notification-overlay.hide {
+            bottom: -100px;
+            opacity: 0;
+        }
+
+        .notification-overlay {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--btn);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: 'Montserrat', -apple-system, Roboto, Helvetica, sans-serif;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            z-index: 10000;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            opacity: 0;
+        }
+
+        .notification-overlay.show {
+            bottom: 30px;
+            opacity: 1;
+        }
+
+        .notification-overlay.hide {
+            bottom: -100px;
+            opacity: 0;
+        }
+
+        .footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid var(--border);
+            padding-top: 16px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .icon-group {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 26px;
+            height: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            transition: opacity 0.2s;
+        }
+
+        .icon-btn:hover {
+            opacity: 0.8;
+        }
+
+        .icon-btn svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .publish-btn {
+            background-color: var(--btn);
+            color: white;
+            border: none;
+            border-radius: 67px;
+            padding: 10px 24px;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: 'Montserrat', -apple-system, Roboto, Helvetica, sans-serif;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .publish-btn:hover {
+            background-color: #c23434;
+        }
+
+        .icon-btn svg path {
+            fill: var(--icon-color);
+        }
+
+        .close-btn svg path {
+            fill: var(--close-icon);
+        }
+
+        #floating-theme-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: var(--btn);
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #floating-theme-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        #floating-theme-btn:active {
+            transform: scale(0.95);
+        }
+
+        @media (max-width: 768px) {
+            .container-overlay {
+                padding: 24px;
+                border-radius: 32px;
+            }
+
+            .header {
+                margin-bottom: 24px;
+            }
+
+            .user-name {
+                font-size: 20px;
+            }
+
+            .title {
+                font-size: 16px;
+            }
+
+            .title-input {
+                font-size: 16px;
+            }
+
+            .description {
+                font-size: 14px;
+            }
+
+            .footer {
+                border-top: 1px solid var(--border);
+                padding-top: 16px;
+            }
+
+            .icon-group {
+                gap: 20px;
+            }
+
+            .icon-btn {
+                width: 24px;
+                height: 24px;
+            }
+
+            .publish-btn {
+                padding: 8px 20px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 12px;
+            }
+
+            .container-overlay {
+                padding: 16px;
+                border-radius: 24px;
+            }
+
+            .header {
+                flex-direction: column;
+                margin-bottom: 16px;
+            }
+
+            .user-info {
+                width: 100%;
+            }
+
+            .close-btn {
+                align-self: flex-end;
+                width: 32px;
+                height: 32px;
+            }
+
+            .close-btn svg {
+                width: 32px;
+                height: 32px;
+            }
+
+            .user-name {
+                font-size: 18px;
+            }
+
+            .title {
+                font-size: 15px;
+                margin-bottom: 16px;
+            }
+
+            .title-input {
+                font-size: 15px;
+                margin-bottom: 16px;
+            }
+
+            .image-container {
+                margin-bottom: 16px;
+            }
+
+            .description {
+                font-size: 13px;
+                margin-bottom: 24px;
+            }
+
+            .footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .icon-group {
+                gap: 16px;
+            }
+
+            .publish-btn {
+                align-self: flex-end;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-overlay">
+        <div class="header">
+            <div class="user-info">
+                <div class="user-avatar">
+                    <img src="Image/copaImagen.jpeg" alt="Eric Lopez Parra">
+                </div>
+                <div class="user-name">Eric.LopezParra</div>
+            </div>
+            <button class="close-btn" aria-label="Close">
+                <svg width="48" height="48" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M33.6468 36.4506L25.2351 44.8623L22.4312 42.0584L30.8429 33.6467L22.4312 25.235L25.2351 22.4312L33.6468 30.8428L42.0585 22.4312L44.8624 25.235L36.4507 33.6467L44.8624 42.0584L42.0585 44.8623L33.6468 36.4506Z" fill="#79747E"/>
+                </svg>
+            </button>
+        </div>
+
+        <input type="text" class="title-input" placeholder="Título de la publicación..." value="Mundial de futbol en Mexico">
+
+        <div class="image-container">
+            <img src="https://api.builder.io/api/v1/image/assets/TEMP/d287efe56f919c3421b86f3b45322c4d8689078e?width=1286" alt="World Cup Stadium">
+        </div>
+
+        <textarea class="description-textarea" placeholder="Escribe una descripción...">no es cierto</textarea>
+
+        <div class="footer">
+            <div class="icon-group">
+                
+                <button class="icon-btn" aria-label="Image">
+                   <img src="Image/imagen.png" alt="Agregar imagen" style="width: 30px;height: 30px;">
+                </button>
+                <button class="icon-btn" aria-label="File">
+                    <img src="Image/gif.png" alt="Agregar imagen" style="width: 30px;height: 30px;">
+
+                </button>
+                <button class="icon-btn" aria-label="Favorite">
+                    <img src="Image/ubicacion.png" alt="Agregar imagen" style="width: 30px;height: 30px;">
+
+                </button>
+                <button class="icon-btn" aria-label="Share">
+                    <img src="Image/emoji.png" alt="Agregar imagen" style="width: 30px;height: 30px;">
+                </button>
+            </div>
+            <button class="publish-btn">Publicar</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="es">
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matchio - Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/Main.css">
+    <link rel="stylesheet" href="CSS/descubre.css" />
+    <link rel="stylesheet" href="CSS/popup.css" />
+    
+
+</head>
+
+
+
+
+
+<body style="padding-top:70px;">
+
+<div id="header-container"></div>
+    <script src="headerLoader.js"></script>
+    <script>
+    function applyContrastFromStorage() {
+        if (localStorage.getItem('contrastMode') === 'true') {
+            document.body.classList.add('contrast-theme');
+            var btn = document.getElementById('global-contrast-btn');
+            if (btn) btn.classList.add('active');
+        } else {
+            document.body.classList.remove('contrast-theme');
+            var btn = document.getElementById('global-contrast-btn');
+            if (btn) btn.classList.remove('active');
+        }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        applyContrastFromStorage();
+        var btn = document.getElementById('global-contrast-btn');
+        if (btn) {
+            btn.addEventListener('click', function() {
+                var isActive = document.body.classList.contains('contrast-theme');
+                if (isActive) {
+                    localStorage.setItem('contrastMode', 'false');
+                } else {
+                    localStorage.setItem('contrastMode', 'true');
+                }
+                applyContrastFromStorage();
+            });
+        }
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'contrastMode') {
+                applyContrastFromStorage();
+            }
+        });
+    });
+    </script>
+    
+
+    <!-- Main Container -->
+    <main class="main-container" style="padding-top: calc(var(--haeder-height) - 25px);">
+        <!-- Partidos Actuales -->
+         
+        <section class="partidos-section">
+            <h2 class="partidos-title">Partidos Actuales</h2>
+            <div class="partidos-grid">
+                <div class="partido">
+                    <img src="Image/Polonia.png" alt="Polonia" class="escudos">
+                    <div class="score-container">
+                        <div class="score">1 - 2</div>
+                        <div class="time">67'</div>
+                    </div>
+                    <img src="Image/Noruega.png" alt="Noruega" class="escudos">
+                    <div class="team-name left">Pol</div>
+                    <div class="team-name right">Nor</div>
+                </div>
+
+                <div class="lineaVert"></div>
+
+                <div class="partido">
+                    <img src="Image/Polonia.png" alt="Polonia" class="escudos">
+                    <div class="score-container">
+                        <div class="score">1 - 2</div>
+                        <div class="time">67'</div>
+                    </div>
+                    <img src="Image/Noruega.png" alt="Noruega" class="escudos">
+                    <div class="team-name left">Pol</div>
+                    <div class="team-name right">Nor</div>
+                </div>
+                
+                <div class="lineaVert"></div>
+
+                <div class="partido">
+                    <img src="Image/Polonia.png" alt="Polonia" class="escudos">
+                    <div class="score-container">
+                        <div class="score">1 - 2</div>
+                        <div class="time">67'</div>
+                    </div>
+                    <img src="Image/Noruega.png" alt="Noruega" class="escudos">
+                    <div class="team-name left">Pol</div>
+                    <div class="team-name right">Nor</div>
+                </div>
+
+                <div class="lineaVert"></div>
+
+                <div class="partido">
+                    <img src="Image/Polonia.png" alt="Polonia" class="escudos">
+                    <div class="score-container">
+                        <div class="score">1 - 2</div>
+                        <div class="time">67'</div>
+                    </div>
+                    <img src="Image/Noruega.png" alt="Noruega" class="escudos">
+                    <div class="team-name left">Pol</div>
+                    <div class="team-name right">Nor</div>
+                </div>
+
+                <div class="lineaVert"></div>
+                
+            </div>
+        </section>
+
+        <!-- Content Grid -->
+        <div class="content-grid">
+            <!-- Posts Feed -->
+            <div class="posts-feed">
+                <!-- Post 1 -->
+                <article class="post-card">
+                    <a href="6perfil.html" style="text-decoration: none; color: inherit">
+                    <div class="post-header">
+                        <img src="Image/pfp1Pie.jpg" alt="Alberto Aguilera Valadez" class="post-avatar">
+                        <h3 class="post-author">Alberto Aguilera Valadez</h3>
+                    </div>
+                    </a>
+                     <a href="5verPost.html">
+
+                    <div class="post-image-container">
+                        <img src="Image/copaImagen.jpeg" alt="Mundial 2026" class="post-image">
+                        <div class="post-image-gradient">
+                            <div class="post-image-title">Todo lo que tienes que saber para el Mundial de 2026</div>
+                        </div>
+                    </div>
+                    </a>
+                    <div class="post-footer">
+                        <a href ="4busqueda.html" class="post-tags" style="text-decoration: none; color: inherit">
+                            <span class="post-tag">#Canada</span>
+                            <span class="post-tag">#Mexico</span>
+                            <span class="post-tag">#USA</span>
+                        </a>
+                        <span class="post-date">31 / Oct / 2025</span>
+                        <div class="post-stats">
+                            <div class="post-stat like-button" onclick="toggleLike(this)">
+                                <span class="post-stat-number">1k</span>
+                                <svg class="post-icon heart-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 20L8.55 18.5831C6.86667 16.9301 5.475 15.5041 4.375 14.3052C3.275 13.1063 2.4 12.03 1.75 11.0763C1.1 10.1226 0.645833 9.24614 0.3875 8.44687C0.129167 7.64759 0 6.83015 0 5.99455C0 4.28701 0.525 2.86104 1.575 1.71662C2.625 0.572207 3.93333 0 5.5 0C6.36667 0 7.19167 0.199818 7.975 0.599455C8.75833 0.999092 9.43333 1.56222 10 2.28883C10.5667 1.56222 11.2417 0.999092 12.025 0.599455C12.8083 0.199818 13.6333 0 14.5 0C16.0667 0 17.375 0.572207 18.425 1.71662C19.475 2.86104 20 4.28701 20 5.99455C20 6.83015 19.8708 7.64759 19.6125 8.44687C19.3542 9.24614 18.9 10.1226 18.25 11.0763C17.6 12.03 16.725 13.1063 15.625 14.3052C14.525 15.5041 13.1333 16.9301 11.45 18.5831L10 20Z" fill="#777777"/>
+                                </svg>
+                            </div>
+                            <div class="post-stat comment-button">
+                                <span class="post-stat-number">15</span>
+                                <svg class="post-icon comment-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 20L16 16H2C1.45 16 0.979167 15.8042 0.5875 15.4125C0.195833 15.0208 0 14.55 0 14V2C0 1.45 0.979167 0.979167 0.5875 0.5875C0.979167 0.195833 1.45 0 2 0H18C18.55 0 19.0208 0.195833 19.4125 0.5875C19.8042 0.979167 20 1.45 20 2V20ZM2 14H16.85L18 15.125V2H2V14Z" fill="#777777"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                
+            
+
+            <!--
+              <article class="post-card"><a href="6perfil.html" style="text-decoration: none; color: inherit"><div class="post-header"><img src="Image/pfp1Pie.jpg" alt="Alberto Aguilera Valadez" class="post-avatar"><h3 class="post-author">Alberto Aguilera Valadez</h3></div></a><a href="5verPost.html"><div class="post-image-container"><img src="Image/copaImagen.jpeg" alt="Mundial 2026" class="post-image"><div class="post-image-gradient"><div class="post-image-title">Todo lo que tienes que saber para el Mundial de 2026</div></div></div></a><div class="post-footer"><a href ="4busqueda.html" class="post-tags" style="text-decoration: none; color: inherit"><span class="post-tag">#Canada</span><span class="post-tag">#Mexico</span><span class="post-tag">#USA</span></a><span class="post-date">31 / Oct / 2025</span><div class="post-stats"><div class="post-stat"><span class="post-stat-number">1k</span><svg class="post-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 20L8.55 18.5831C6.86667 16.9301 5.475 15.5041 4.375 14.3052C3.275 13.1063 2.4 12.03 1.75 11.0763C1.1 10.1226 0.645833 9.24614 0.3875 8.44687C0.129167 7.64759 0 6.83015 0 5.99455C0 4.28701 0.525 2.86104 1.575 1.71662C2.625 0.572207 3.93333 0 5.5 0C6.36667 0 7.19167 0.199818 7.975 0.599455C8.75833 0.999092 9.43333 1.56222 10 2.28883C10.5667 1.56222 11.2417 0.999092 12.025 0.599455C12.8083 0.199818 13.6333 0 14.5 0C16.0667 0 17.375 0.572207 18.425 1.71662C19.475 2.86104 20 4.28701 20 5.99455C20 6.83015 19.8708 7.64759 19.6125 8.44687C19.3542 9.24614 18.9 10.1226 18.25 11.0763C17.6 12.03 16.725 13.1063 15.625 14.3052C14.525 15.5041 13.1333 16.9301 11.45 18.5831L10 20Z" fill="#777777"/></svg></div><div class="post-stat"><span class="post-stat-number">15</span><svg class="post-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 20L16 16H2C1.45 16 0.979167 15.8042 0.5875 15.4125C0.195833 15.0208 0 14.55 0 14V2C0 1.45 0.195833 0.979167 0.5875 0.5875C0.979167 0.195833 1.45 0 2 0H18C18.55 0 19.0208 0.195833 19.4125 0.5875C19.8042 0.979167 20 1.45 20 2V20ZM2 14H16.85L18 15.125V2H2V14Z" fill="#777777"/></svg></div></div></div></article>
+              <article class="post-card"><a href="6perfil.html" style="text-decoration: none; color: inherit"><div class="post-header"><img src="Image/pfp1Pie.jpg" alt="Alberto Aguilera Valadez" class="post-avatar"><h3 class="post-author">Alberto Aguilera Valadez</h3></div></a><a href="5verPost.html"><div class="post-image-container"><img src="Image/copaImagen.jpeg" alt="Mundial 2026" class="post-image"><div class="post-image-gradient"><div class="post-image-title">Todo lo que tienes que saber para el Mundial de 2026</div></div></div></a><div class="post-footer"><a href ="4busqueda.html" class="post-tags" style="text-decoration: none; color: inherit"><span class="post-tag">#Canada</span><span class="post-tag">#Mexico</span><span class="post-tag">#USA</span></a><span class="post-date">31 / Oct / 2025</span><div class="post-stats"><div class="post-stat"><span class="post-stat-number">1k</span><svg class="post-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 20L8.55 18.5831C6.86667 16.9301 5.475 15.5041 4.375 14.3052C3.275 13.1063 2.4 12.03 1.75 11.0763C1.1 10.1226 0.645833 9.24614 0.3875 8.44687C0.129167 7.64759 0 6.83015 0 5.99455C0 4.28701 0.525 2.86104 1.575 1.71662C2.625 0.572207 3.93333 0 5.5 0C6.36667 0 7.19167 0.199818 7.975 0.599455C8.75833 0.999092 9.43333 1.56222 10 2.28883C10.5667 1.56222 11.2417 0.999092 12.025 0.599455C12.8083 0.199818 13.6333 0 14.5 0C16.0667 0 17.375 0.572207 18.425 1.71662C19.475 2.86104 20 4.28701 20 5.99455C20 6.83015 19.8708 7.64759 19.6125 8.44687C19.3542 9.24614 18.9 10.1226 18.25 11.0763C17.6 12.03 16.725 13.1063 15.625 14.3052C14.525 15.5041 13.1333 16.9301 11.45 18.5831L10 20Z" fill="#777777"/></svg></div><div class="post-stat"><span class="post-stat-number">15</span><svg class="post-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 20L16 16H2C1.45 16 0.979167 15.8042 0.5875 15.4125C0.195833 15.0208 0 14.55 0 14V2C0 1.45 0.195833 0.979167 0.5875 0.5875C0.979167 0.195833 1.45 0 2 0H18C18.55 0 19.0208 0.195833 19.4125 0.5875C19.8042 0.979167 20 1.45 20 2V20ZM2 14H16.85L18 15.125V2H2V14Z" fill="#777777"/></svg></div></div></div></article>
+              <article class="post-card"><a href="6perfil.html" style="text-decoration: none; color: inherit"><div class="post-header"><img src="Image/pfp1Pie.jpg" alt="Alberto Aguilera Valadez" class="post-avatar"><h3 class="post-author">Alberto Aguilera Valadez</h3></div></a><a href="5verPost.html"><div class="post-image-container"><img src="Image/copaImagen.jpeg" alt="Mundial 2026" class="post-image"><div class="post-image-gradient"><div class="post-image-title">Todo lo que tienes que saber para el Mundial de 2026</div></div></div></a><div class="post-footer"><a href ="4busqueda.html" class="post-tags" style="text-decoration: none; color: inherit"><span class="post-tag">#Canada</span><span class="post-tag">#Mexico</span><span class="post-tag">#USA</span></a><span class="post-date">31 / Oct / 2025</span><div class="post-stats"><div class="post-stat"><span class="post-stat-number">1k</span><svg class="post-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 20L8.55 18.5831C6.86667 16.9301 5.475 15.5041 4.375 14.3052C3.275 13.1063 2.4 12.03 1.75 11.0763C1.1 10.1226 0.645833 9.24614 0.3875 8.44687C0.129167 7.64759 0 6.83015 0 5.99455C0 4.28701 0.525 2.86104 1.575 1.71662C2.625 0.572207 3.93333 0 5.5 0C6.36667 0 7.19167 0.199818 7.975 0.599455C8.75833 0.999092 9.43333 1.56222 10 2.28883C10.5667 1.56222 11.2417 0.999092 12.025 0.599455C12.8083 0.199818 13.6333 0 14.5 0C16.0667 0 17.375 0.572207 18.425 1.71662C19.475 2.86104 20 4.28701 20 5.99455C20 6.83015 19.8708 7.64759 19.6125 8.44687C19.3542 9.24614 18.9 10.1226 18.25 11.0763C17.6 12.03 16.725 13.1063 15.625 14.3052C14.525 15.5041 13.1333 16.9301 11.45 18.5831L10 20Z" fill="#777777"/></svg></div><div class="post-stat"><span class="post-stat-number">15</span><svg class="post-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 20L16 16H2C1.45 16 0.979167 15.8042 0.5875 15.4125C0.195833 15.0208 0 14.55 0 14V2C0 1.45 0.195833 0.979167 0.5875 0.5875C0.979167 0.195833 1.45 0 2 0H18C18.55 0 19.0208 0.195833 19.4125 0.5875C19.8042 0.979167 20 1.45 20 2V20ZM2 14H16.85L18 15.125V2H2V14Z" fill="#777777"/></svg></div></div></div></article>
+              <article class="post-card"><a href="6perfil.html" style="text-decoration: none; color: inherit"><div class="post-header"><img src="Image/pfp1Pie.jpg" alt="Alberto Aguilera Valadez" class="post-avatar"><h3 class="post-author">Alberto Aguilera Valadez</h3></div></a><a href="5verPost.html"><div class="post-image-container"><img src="Image/copaImagen.jpeg" alt="Mundial 2026" class="post-image"><div class="post-image-gradient"><div class="post-image-title">Todo lo que tienes que saber para el Mundial de 2026</div></div></div></a><div class="post-footer"><a href ="4busqueda.html" class="post-tags" style="text-decoration: none; color: inherit"><span class="post-tag">#Canada</span><span class="post-tag">#Mexico</span><span class="post-tag">#USA</span></a><span class="post-date">31 / Oct / 2025</span><div class="post-stats"><div class="post-stat"><span class="post-stat-number">1k</span><svg class="post-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 20L8.55 18.5831C6.86667 16.9301 5.475 15.5041 4.375 14.3052C3.275 13.1063 2.4 12.03 1.75 11.0763C1.1 10.1226 0.645833 9.24614 0.3875 8.44687C0.129167 7.64759 0 6.83015 0 5.99455C0 4.28701 0.525 2.86104 1.575 1.71662C2.625 0.572207 3.93333 0 5.5 0C6.36667 0 7.19167 0.199818 7.975 0.599455C8.75833 0.999092 9.43333 1.56222 10 2.28883C10.5667 1.56222 11.2417 0.999092 12.025 0.599455C12.8083 0.199818 13.6333 0 14.5 0C16.0667 0 17.375 0.572207 18.425 1.71662C19.475 2.86104 20 4.28701 20 5.99455C20 6.83015 19.8708 7.64759 19.6125 8.44687C19.3542 9.24614 18.9 10.1226 18.25 11.0763C17.6 12.03 16.725 13.1063 15.625 14.3052C14.525 15.5041 13.1333 16.9301 11.45 18.5831L10 20Z" fill="#777777"/></svg></div><div class="post-stat"><span class="post-stat-number">15</span><svg class="post-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 20L16 16H2C1.45 16 0.979167 15.8042 0.5875 15.4125C0.195833 15.0208 0 14.55 0 14V2C0 1.45 0.195833 0.979167 0.5875 0.5875C0.979167 0.195833 1.45 0 2 0H18C18.55 0 19.0208 0.195833 19.4125 0.5875C19.8042 0.979167 20 1.45 20 2V20ZM2 14H16.85L18 15.125V2H2V14Z" fill="#777777"/></svg></div></div></div></article>
+              <article class="post-card"><a href="6perfil.html" style="text-decoration: none; color: inherit"><div class="post-header"><img src="Image/pfp1Pie.jpg" alt="Alberto Aguilera Valadez" class="post-avatar"><h3 class="post-author">Alberto Aguilera Valadez</h3></div></a><a href="5verPost.html"><div class="post-image-container"><img src="Image/copaImagen.jpeg" alt="Mundial 2026" class="post-image"><div class="post-image-gradient"><div class="post-image-title">Todo lo que tienes que saber para el Mundial de 2026</div></div></div></a><div class="post-footer"><a href ="4busqueda.html" class="post-tags" style="text-decoration: none; color: inherit"><span class="post-tag">#Canada</span><span class="post-tag">#Mexico</span><span class="post-tag">#USA</span></a><span class="post-date">31 / Oct / 2025</span><div class="post-stats"><div class="post-stat"><span class="post-stat-number">1k</span><svg class="post-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 20L8.55 18.5831C6.86667 16.9301 5.475 15.5041 4.375 14.3052C3.275 13.1063 2.4 12.03 1.75 11.0763C1.1 10.1226 0.645833 9.24614 0.3875 8.44687C0.129167 7.64759 0 6.83015 0 5.99455C0 4.28701 0.525 2.86104 1.575 1.71662C2.625 0.572207 3.93333 0 5.5 0C6.36667 0 7.19167 0.199818 7.975 0.599455C8.75833 0.999092 9.43333 1.56222 10 2.28883C10.5667 1.56222 11.2417 0.999092 12.025 0.599455C12.8083 0.199818 13.6333 0 14.5 0C16.0667 0 17.375 0.572207 18.425 1.71662C19.475 2.86104 20 4.28701 20 5.99455C20 6.83015 19.8708 7.64759 19.6125 8.44687C19.3542 9.24614 18.9 10.1226 18.25 11.0763C17.6 12.03 16.725 13.1063 15.625 14.3052C14.525 15.5041 13.1333 16.9301 11.45 18.5831L10 20Z" fill="#777777"/></svg></div><div class="post-stat"><span class="post-stat-number">15</span><svg class="post-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 20L16 16H2C1.45 16 0.979167 15.8042 0.5875 15.4125C0.195833 15.0208 0 14.55 0 14V2C0 1.45 0.195833 0.979167 0.5875 0.5875C0.979167 0.195833 1.45 0 2 0H18C18.55 0 19.0208 0.195833 19.4125 0.5875C19.8042 0.979167 20 1.45 20 2V20ZM2 14H16.85L18 15.125V2H2V14Z" fill="#777777"/></svg></div></div></div></article>
+              <article class="post-card"><a href="6perfil.html" style="text-decoration: none; color: inherit"><div class="post-header"><img src="Image/pfp1Pie.jpg" alt="Alberto Aguilera Valadez" class="post-avatar"><h3 class="post-author">Alberto Aguilera Valadez</h3></div></a><a href="5verPost.html"><div class="post-image-container"><img src="Image/copaImagen.jpeg" alt="Mundial 2026" class="post-image"><div class="post-image-gradient"><div class="post-image-title">Todo lo que tienes que saber para el Mundial de 2026</div></div></div></a><div class="post-footer"><a href ="4busqueda.html" class="post-tags" style="text-decoration: none; color: inherit"><span class="post-tag">#Canada</span><span class="post-tag">#Mexico</span><span class="post-tag">#USA</span></a><span class="post-date">31 / Oct / 2025</span><div class="post-stats"><div class="post-stat"><span class="post-stat-number">1k</span><svg class="post-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 20L8.55 18.5831C6.86667 16.9301 5.475 15.5041 4.375 14.3052C3.275 13.1063 2.4 12.03 1.75 11.0763C1.1 10.1226 0.645833 9.24614 0.3875 8.44687C0.129167 7.64759 0 6.83015 0 5.99455C0 4.28701 0.525 2.86104 1.575 1.71662C2.625 0.572207 3.93333 0 5.5 0C6.36667 0 7.19167 0.199818 7.975 0.599455C8.75833 0.999092 9.43333 1.56222 10 2.28883C10.5667 1.56222 11.2417 0.999092 12.025 0.599455C12.8083 0.199818 13.6333 0 14.5 0C16.0667 0 17.375 0.572207 18.425 1.71662C19.475 2.86104 20 4.28701 20 5.99455C20 6.83015 19.8708 7.64759 19.6125 8.44687C19.3542 9.24614 18.9 10.1226 18.25 11.0763C17.6 12.03 16.725 13.1063 15.625 14.3052C14.525 15.5041 13.1333 16.9301 11.45 18.5831L10 20Z" fill="#777777"/></svg></div><div class="post-stat"><span class="post-stat-number">15</span><svg class="post-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 20L16 16H2C1.45 16 0.979167 15.8042 0.5875 15.4125C0.195833 15.0208 0 14.55 0 14V2C0 1.45 0.195833 0.979167 0.5875 0.5875C0.979167 0.195833 1.45 0 2 0H18C18.55 0 19.0208 0.195833 19.4125 0.5875C19.8042 0.979167 20 1.45 20 2V20ZM2 14H16.85L18 15.125V2H2V14Z" fill="#777777"/></svg></div></div></div></article>
+              <article class="post-card"><a href="6perfil.html" style="text-decoration: none; color: inherit"><div class="post-header"><img src="Image/pfp1Pie.jpg" alt="Alberto Aguilera Valadez" class="post-avatar"><h3 class="post-author">Alberto Aguilera Valadez</h3></div></a><a href="5verPost.html"><div class="post-image-container"><img src="Image/copaImagen.jpeg" alt="Mundial 2026" class="post-image"><div class="post-image-gradient"><div class="post-image-title">Todo lo que tienes que saber para el Mundial de 2026</div></div></div></a><div class="post-footer"><a href ="4busqueda.html" class="post-tags" style="text-decoration: none; color: inherit"><span class="post-tag">#Canada</span><span class="post-tag">#Mexico</span><span class="post-tag">#USA</span></a><span class="post-date">31 / Oct / 2025</span><div class="post-stats"><div class="post-stat"><span class="post-stat-number">1k</span><svg class="post-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 20L8.55 18.5831C6.86667 16.9301 5.475 15.5041 4.375 14.3052C3.275 13.1063 2.4 12.03 1.75 11.0763C1.1 10.1226 0.645833 9.24614 0.3875 8.44687C0.129167 7.64759 0 6.83015 0 5.99455C0 4.28701 0.525 2.86104 1.575 1.71662C2.625 0.572207 3.93333 0 5.5 0C6.36667 0 7.19167 0.199818 7.975 0.599455C8.75833 0.999092 9.43333 1.56222 10 2.28883C10.5667 1.56222 11.2417 0.999092 12.025 0.599455C12.8083 0.199818 13.6333 0 14.5 0C16.0667 0 17.375 0.572207 18.425 1.71662C19.475 2.86104 20 4.28701 20 5.99455C20 6.83015 19.8708 7.64759 19.6125 8.44687C19.3542 9.24614 18.9 10.1226 18.25 11.0763C17.6 12.03 16.725 13.1063 15.625 14.3052C14.525 15.5041 13.1333 16.9301 11.45 18.5831L10 20Z" fill="#777777"/></svg></div><div class="post-stat"><span class="post-stat-number">15</span><svg class="post-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 20L16 16H2C1.45 16 0.979167 15.8042 0.5875 15.4125C0.195833 15.0208 0 14.55 0 14V2C0 1.45 0.195833 0.979167 0.5875 0.5875C0.979167 0.195833 1.45 0 2 0H18C18.55 0 19.0208 0.195833 19.4125 0.5875C19.8042 0.979167 20 1.45 20 2V20ZM2 14H16.85L18 15.125V2H2V14Z" fill="#777777"/></svg></div></div></div></article>
+            -->
+                
+                <post-card 
+                    avatar="Image/mujerGris.jpg" 
+                    author="María González" 
+                    image="Image/copaImagen.jpeg" 
+                    title="El futuro del fútbol femenino en 2026" 
+                    tag1="#FútbolFemenino" 
+                    tag2="#Mundial2026" 
+                    tag3="#Igualdad" 
+                    date="13 / Nov / 2025" 
+                    likes="2.3k" 
+                    comments="47">
+                </post-card>
+
+                <post-card 
+                    avatar="Image/curly.jpg" 
+                    author="Carlos Rodríguez" 
+                    image="Image/copaImagen.jpeg" 
+                    title="Análisis: Los mejores estadios del Mundial 2026" 
+                    tag1="#Estadios" 
+                    tag2="#Arquitectura" 
+                    tag3="#Mundial" 
+                    date="12 / Nov / 2025" 
+                    likes="1.8k" 
+                    comments="32">
+                </post-card>
+
+                <post-card 
+                    avatar="Image/pfp1Pie.jpg" 
+                    author="Alberto Aguilera Valadez" 
+                    image="Image/copaImagen.jpeg"   
+                    title="Mundial 2026" 
+                    tag1="#Canada" 
+                    tag2="#Mexico" 
+                    tag3="#USA" 
+                    date="31 / Oct / 2025" 
+                    likes="1k" 
+                    comments="15">
+                </post-card>
+
+
+                 <post-card 
+                    avatar="Image/mujerGris.jpg" 
+                    author="María González" 
+                    image="Image/copaImagen.jpeg" 
+                    title="El futuro del fútbol femenino en 2026" 
+                    tag1="#FútbolFemenino" 
+                    tag2="#Mundial2026" 
+                    tag3="#Igualdad" 
+                    date="13 / Nov / 2025" 
+                    likes="2.3k" 
+                    comments="47">
+                </post-card>
+
+                <post-card 
+                    avatar="Image/curly.jpg" 
+                    author="Carlos Rodríguez" 
+                    image="Image/copaImagen.jpeg" 
+                    title="Análisis: Los mejores estadios del Mundial 2026" 
+                    tag1="#Estadios" 
+                    tag2="#Arquitectura" 
+                    tag3="#Mundial" 
+                    date="12 / Nov / 2025" 
+                    likes="1.8k" 
+                    comments="32">
+                </post-card>
+
+                <post-card 
+                    avatar="Image/pfp1Pie.jpg" 
+                    author="Alberto Aguilera Valadez" 
+                    image="Image/copaImagen.jpeg"   
+                    title="Mundial 2026" 
+                    tag1="#Canada" 
+                    tag2="#Mexico" 
+                    tag3="#USA" 
+                    date="31 / Oct / 2025" 
+                    likes="1k" 
+                    comments="15">
+                </post-card>
+
+                 <post-card 
+                    avatar="Image/mujerGris.jpg" 
+                    author="María González" 
+                    image="Image/copaImagen.jpeg" 
+                    title="El futuro del fútbol femenino en 2026" 
+                    tag1="#FútbolFemenino" 
+                    tag2="#Mundial2026" 
+                    tag3="#Igualdad" 
+                    date="13 / Nov / 2025" 
+                    likes="2.3k" 
+                    comments="47">
+                </post-card>
+
+                <post-card 
+                    avatar="Image/curly.jpg" 
+                    author="Carlos Rodríguez" 
+                    image="Image/copaImagen.jpeg" 
+                    title="Análisis: Los mejores estadios del Mundial 2026" 
+                    tag1="#Estadios" 
+                    tag2="#Arquitectura" 
+                    tag3="#Mundial" 
+                    date="12 / Nov / 2025" 
+                    likes="1.8k" 
+                    comments="32">
+                </post-card>
+
+              
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <!-- Descubre Section -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Descubre</h3>
+                    <div class="sidebar-card">
+                        <a href="6perfil.html" style="text-decoration: none; color: inherit">
+                        <div class="discover-item">
+                            <img src="Image/mujerGris.jpg" alt="MiguelJoaquin" class="discover-avatar">
+                            <span class="discover-name">MiguelJoaquin</span>
+                        </div>
+                        <div class="discover-item">
+                            <img src="Image/curly.jpg" alt="LuisEduardoRosas" class="discover-avatar">
+                            <span class="discover-name">LuisEduardoRosas</span>
+                        </div>
+                        <div class="discover-item">
+                            <img src="Image/ajoloEric.jpg" alt="Silentema" class="discover-avatar">
+                            <span class="discover-name">Silentema</span>
+                        </div>
+                        <div class="discover-item">
+                            <img src="Image/garage.jpg" alt="Monti_AngelDNF" class="discover-avatar">
+                            <span class="discover-name">Monti_AngelDNF</span>
+                        </div>
+                        <div class="discover-item">
+                            <img src="Image/aimep3.jpg" alt="Aimep3" class="discover-avatar">
+                            <span class="discover-name">Aimep3</span>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Temas Actuales Section -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Temas Actuales</h3>
+                    <div class="sidebar-card">
+                        <a href="4busqueda.html">
+                        <div class="hashtag-item">#Mundial2026</div>
+                        <div class="hashtag-item">#WorldCup2026</div>
+                        <div class="hashtag-item">#FIFAWorldCup</div>
+                        <div class="hashtag-item">#México2026</div>
+                        <div class="hashtag-item">#Copa2026</div>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- FAB Button -->
+    <button id="abrir-popup" class="fab-button" aria-label="Create Post">
+        <svg class="fab-icon" viewBox="0 0 84 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M38.5385 57.6462H44.5384V45.6462H56.5384V39.6462H44.5384V27.6462H38.5385V39.6462H26.5385V45.6462H38.5385V57.6462ZM41.5385 72.6462C37.3885 72.6462 33.4885 71.8587 29.8385 70.2837C26.1885 68.7087 23.0135 66.5712 20.3135 63.8712C17.6135 61.1712 15.476 57.9962 13.901 54.3462C12.326 50.6962 11.5385 46.7962 11.5385 42.6462C11.5385 38.4962 12.326 34.5962 13.901 30.9462C15.476 27.2962 17.6135 24.1212 20.3135 21.4212C23.0135 18.7212 26.1885 16.5837 29.8385 15.0087C33.4885 13.4337 37.3885 12.6462 41.5385 12.6462C45.6884 12.6462 49.5885 13.4337 53.2384 15.0087C56.8885 16.5837 60.0634 18.7212 62.7635 21.4212C65.4634 24.1212 67.6009 27.2962 69.1759 30.9462C70.7509 34.5962 71.5384 38.4962 71.5384 42.6462C71.5384 46.7962 70.7509 50.6962 69.1759 54.3462C67.6009 57.9962 65.4634 61.1712 62.7635 63.8712C60.0634 66.5712 56.8885 68.7087 53.2384 70.2837C49.5885 71.8587 45.6884 72.6462 41.5385 72.6462Z"/>
+        </svg>
+    </button>
+
+    <!-- Tutorial FAB Button -->
+    <button id="show-tutorial-btn" class="tutorial-fab-button" aria-label="Show Tutorial">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm0-4h-2V7h2v8z"/>
+        </svg>
+    </button>
+
+
+
+    <!-- Popup Overlay -->
+    <div id="popup-overlay">
+        <div id="popup-container"></div>
+    </div>
+
+    <!-- Menu Popup Overlay -->
+    <div id="menu-popup-overlay">
+        <div id="menu-popup-container"></div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast-notification" class="toast-notification">
+        <svg class="toast-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="toast-text">Publicación enviada</span>
+    </div>
+
+    <!-- Tutorial Popup Overlay -->
+    <div id="tutorial-overlay">
+        <div class="tutorial-container">
+            <svg class="arrow-svg" width="81" height="139" viewBox="0 0 81 139" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M33.5868 1.3081C32.1001 -0.325922 29.5703 -0.445357 27.9363 1.04134L1.30831 25.2684C-0.32571 26.7551 -0.445144 29.285 1.04155 30.919C2.52824 32.553 5.05809 32.6724 6.69211 31.1857L30.3614 9.65056L51.8966 33.3199C53.3833 34.9539 55.9131 35.0733 57.5472 33.5866C59.1812 32.0999 59.3006 29.5701 57.8139 27.9361L33.5868 1.3081ZM79.6283 135L80.0112 131.018C56.8538 128.792 44.7705 108.343 38.8479 81.3308C32.992 54.622 33.7079 23.5877 34.6237 4.18863L30.6282 4L26.6326 3.81137C25.7151 23.2456 24.9311 55.2113 31.0336 83.0442C37.0694 110.573 50.4028 136.208 79.2455 138.982L79.6283 135Z" fill="black"/>
+            </svg>
+
+            <div class="card">
+                <div class="card-content">
+                    <p class="card-description">
+                        En este recuadro podrás acceder a
+                    </p>
+                    <div class="card-title">
+                        <span class="card-title-item">Historial</span>
+                        <span class="card-title-item">Calendario</span>
+                        <span class="card-title-item">Ajustes</span>
+                    </div>
+                </div>
+
+                <button class="button" onclick="showCreatePostTooltip()">Siguiente</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Create Post Tooltip Overlay -->
+    <div id="create-post-overlay">
+        <div class="create-post-container">
+            <div class="card">
+                <div class="card-content">
+                    <p class="card-description">
+                        Este botón sirve para crear nuevas publicaciones
+                    </p>
+                    <div style="display: flex; justify-content: center;">
+                        <button class="button" onclick="showPartidosTooltip()">Siguiente</button>
+                    </div>
+                </div>
+            </div>
+            <svg class="arrow-svg-right" width="81" height="139" viewBox="0 0 81 139" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M47.4132 1.3081C48.8999 -0.325922 51.4297 -0.445357 53.0637 1.04134L79.6917 25.2684C81.3257 26.7551 81.4451 29.285 79.9585 30.919C78.4718 32.553 75.9419 32.6724 74.3079 31.1857L50.6386 9.65056L29.1034 33.3199C27.6167 34.9539 25.0869 35.0733 23.4528 33.5866C21.8188 32.0999 21.6994 29.5701 23.1861 27.9361L47.4132 1.3081ZM1.3717 135L0.9888 131.018C24.1462 128.792 36.2295 108.343 42.1521 81.3308C48.008 54.622 47.2921 23.5877 46.3763 4.18863L50.3718 4L54.3674 3.81137C55.2849 23.2456 56.0689 55.2113 49.9664 83.0442C43.9306 110.573 30.5972 136.208 1.7545 138.982L1.3717 135Z" fill="black"/>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Partidos Tooltip Overlay -->
+    <div id="partidos-overlay">
+        <div class="partidos-container">
+            <div class="card">
+                <div class="card-content">
+                    <p class="card-description">
+                        Estos son los partidos en tiempo real.<br><br>
+                        ¡No te los pierdas!
+                    </p>
+                    <div style="display: flex; justify-content: center;">
+                        <button class="button" onclick="showDescubreTooltip()">Siguiente</button>
+                    </div>
+                </div>
+            </div>
+            <svg class="arrow-svg-down" width="81" height="139" viewBox="0 0 81 139" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M40.5 0L81 139H0L40.5 0Z" fill="black"/>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Descubre Tooltip Overlay -->
+    <div id="descubre-overlay">
+        <div class="descubre-container">
+            <div class="card">
+                <div class="card-content">
+                    <p class="card-description">
+                        Explora a los demás aficionados del fútbol :D
+                    </p>
+                    <div style="display: flex; justify-content: center;">
+                        <button class="button" onclick="showCategoriasTooltip()">Siguiente</button>
+                    </div>
+                </div>
+            </div>
+            <svg class="arrow-svg-left" width="81" height="139" viewBox="0 0 81 139" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M81 69.5L0 139V0L81 69.5Z" fill="black" transform="rotate(180 40.5 69.5)"/>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Categorias Tooltip Overlay -->
+    <div id="categorias-overlay">
+        <div class="categorias-container">
+            <div class="card">
+                <div class="card-content">
+                    <p class="card-description">
+                        Las categorías te ayudarán a encontrar exactamente lo que estás buscando
+                    </p>
+                    <div style="display: flex; justify-content: center;">
+                        <button class="button" onclick="closeCategoriasTooltip()">Siguiente</button>
+                    </div>
+                </div>
+            </div>
+            <svg class="arrow-svg-down" width="81" height="139" viewBox="0 0 81 139" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M40.5 0L81 139H0L40.5 0Z" fill="black" transform="rotate(180 40.5 69.5)"/>
+            </svg>
+        </div>
+    </div>
+
+    <script>
+        function toggleLike(button) {
+            event.stopPropagation();
+            
+            button.classList.toggle('liked');
+            
+            button.classList.add('clicked');
+            setTimeout(() => {
+                button.classList.remove('clicked');
+            }, 600);
+            
+            const likeCountElement = button.querySelector('.post-stat-number');
+            let currentLikes = likeCountElement.textContent;
+            
+            let numericLikes;
+            if (currentLikes.includes('k')) {
+                numericLikes = parseFloat(currentLikes) * 1000;
+            } else {
+                numericLikes = parseInt(currentLikes);
+            }
+            
+            if (button.classList.contains('liked')) {
+                numericLikes++;
+            } else {
+                numericLikes--;
+            }
+            
+            let displayLikes;
+            if (numericLikes >= 1000) {
+                displayLikes = (numericLikes / 1000).toFixed(1).replace('.0', '') + 'k';
+            } else if (numericLikes >= 999 && currentLikes.includes('k')) {
+                displayLikes = '1k';
+            } else {
+                displayLikes = numericLikes.toString();
+            }
+            
+            likeCountElement.textContent = displayLikes;
+            
+            if ('vibrate' in navigator) {
+                navigator.vibrate(50);
+            }
+        }
+
+
+        
+        const postCardTemplate = `
+        <article class="post-card">
+            <a href="6perfil.html" style="text-decoration: none; color: inherit">
+                <div class="post-header">
+                    <img src="{{avatar}}" alt="{{author}}" class="post-avatar">
+                    <h3 class="post-author">{{author}}</h3>
+                </div>
+            </a>
+            <a href="5verPost.html">
+                <div class="post-image-container">
+                    <img src="{{image}}" alt="{{title}}" class="post-image">
+                    <div class="post-image-gradient">
+                        <div class="post-image-title">{{title}}</div>
+                    </div>
+                </div>
+            </a>
+            <div class="post-footer">
+                <a href="4busqueda.html" class="post-tags" style="text-decoration: none; color: inherit">
+                    <span class="post-tag">{{tag1}}</span>
+                    <span class="post-tag">{{tag2}}</span>
+                    <span class="post-tag">{{tag3}}</span>
+                </a>
+                <span class="post-date">{{date}}</span>
+                <div class="post-stats">
+                    <div class="post-stat like-button" onclick="toggleLike(this)">
+                        <span class="post-stat-number">{{likes}}</span>
+                        <svg class="post-icon heart-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 20L8.55 18.5831C6.86667 16.9301 5.475 15.5041 4.375 14.3052C3.275 13.1063 2.4 12.03 1.75 11.0763C1.1 10.1226 0.645833 9.24614 0.3875 8.44687C0.129167 7.64759 0 6.83015 0 5.99455C0 4.28701 0.525 2.86104 1.575 1.71662C2.625 0.572207 3.93333 0 5.5 0C6.36667 0 7.19167 0.199818 7.975 0.599455C8.75833 0.999092 9.43333 1.56222 10 2.28883C10.5667 1.56222 11.2417 0.999092 12.025 0.599455C12.8083 0.199818 13.6333 0 14.5 0C16.0667 0 17.375 0.572207 18.425 1.71662C19.475 2.86104 20 4.28701 20 5.99455C20 6.83015 19.8708 7.64759 19.6125 8.44687C19.3542 9.24614 18.9 10.1226 18.25 11.0763C17.6 12.03 16.725 13.1063 15.625 14.3052C14.525 15.5041 13.1333 16.9301 11.45 18.5831L10 20Z" fill="#777777"/>
+                        </svg>
+                    </div>
+                    <div class="post-stat comment-button">
+                        <span class="post-stat-number">{{comments}}</span>
+                        <svg class="post-icon comment-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 20L16 16H2C1.45 16 0.979167 15.8042 0.5875 15.4125C0.195833 15.0208 0 14.55 0 14V2C0 1.45 0.979167 0.979167 0.5875 0.5875C0.979167 0.195833 1.45 0 2 0H18C18.55 0 19.0208 0.195833 19.4125 0.5875C19.8042 0.979167 20 1.45 20 2V20ZM2 14H16.85L18 15.125V2H2V14Z" fill="#777777"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </article>`;
+
+        function expandirPostCards() {
+            const postCardElements = document.querySelectorAll('post-card');
+            
+            postCardElements.forEach(element => {
+                const avatar = element.getAttribute('avatar') || 'Image/pfp1Pie.jpg';
+                const author = element.getAttribute('author') || 'Usuario';
+                const image = element.getAttribute('image') || 'Image/copaImagen.jpeg';
+                const title = element.getAttribute('title') || 'Título del post';
+                const tag1 = element.getAttribute('tag1') || '#Tag1';
+                const tag2 = element.getAttribute('tag2') || '#Tag2';
+                const tag3 = element.getAttribute('tag3') || '#Tag3';
+                const date = element.getAttribute('date') || '14 / Nov / 2025';
+                const likes = element.getAttribute('likes') || '1k';
+                const comments = element.getAttribute('comments') || '15';
+
+                // Crear HTML usando la plantilla
+                let html = postCardTemplate;
+                html = html.replace(/\{\{avatar\}\}/g, avatar);
+                html = html.replace(/\{\{author\}\}/g, author);
+                html = html.replace(/\{\{image\}\}/g, image);
+                html = html.replace(/\{\{title\}\}/g, title);
+                html = html.replace(/\{\{tag1\}\}/g, tag1);
+                html = html.replace(/\{\{tag2\}\}/g, tag2);
+                html = html.replace(/\{\{tag3\}\}/g, tag3);
+                html = html.replace(/\{\{date\}\}/g, date);
+                html = html.replace(/\{\{likes\}\}/g, likes);
+                html = html.replace(/\{\{comments\}\}/g, comments);
+
+                element.outerHTML = html;
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            expandirPostCards();
+            
+            const likeButtons = document.querySelectorAll('.like-button');
+            likeButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+            });
+        });
+
+        function showToast() {
+            const toast = document.getElementById('toast-notification');
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        function closeModal() {
+            const popupContainer = document.getElementById('popup-container');
+            const popupOverlay = document.getElementById('popup-overlay');
+            popupContainer.classList.add('closing');
+
+            setTimeout(() => {
+                popupOverlay.style.display = 'none';
+                popupContainer.classList.remove('closing');
+                popupContainer.innerHTML = '';
+                const styleElement = document.querySelector('style[data-popup]');
+                if (styleElement && document.head.contains(styleElement)) {
+                    document.head.removeChild(styleElement);
+                }
+            }, 200);
+        }
+
+        function showTutorial() {
+            const overlay = document.getElementById('tutorial-overlay');
+            overlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeTutorial() {
+            const overlay = document.getElementById('tutorial-overlay');
+            overlay.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+
+
+        function showCreatePostTooltip() {
+            closeTutorial();
+            const overlay = document.getElementById('create-post-overlay');
+            overlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function showPartidosTooltip() {
+            closeCreatePostTooltip();
+            const overlay = document.getElementById('partidos-overlay');
+            overlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCreatePostTooltip() {
+            const overlay = document.getElementById('create-post-overlay');
+            overlay.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        function showDescubreTooltip() {
+            closePartidosTooltip();
+            const overlay = document.getElementById('descubre-overlay');
+            overlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePartidosTooltip() {
+            const overlay = document.getElementById('partidos-overlay');
+            overlay.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        function showCategoriasTooltip() {
+            closeDescubreTooltip();
+            const overlay = document.getElementById('categorias-overlay');
+            overlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDescubreTooltip() {
+            const overlay = document.getElementById('descubre-overlay');
+            overlay.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        function closeCategoriasTooltip() {
+            const overlay = document.getElementById('categorias-overlay');
+            overlay.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+
+
+        const fabButton = document.getElementById('abrir-popup');
+        const createPostOverlay = document.getElementById('create-post-overlay');
+
+        const partidosOverlay = document.getElementById('partidos-overlay');
+
+        const descubreOverlay = document.getElementById('descubre-overlay');
+
+        const categoriasOverlay = document.getElementById('categorias-overlay');
+
+
+
+        document.getElementById('show-tutorial-btn').addEventListener('click', showTutorial);
+
+        document.getElementById('tutorial-overlay').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('tutorial-overlay')) {
+                closeTutorial();
+            }
+        });
+
+        createPostOverlay.addEventListener('click', (e) => {
+            if (e.target === createPostOverlay) {
+                closeCreatePostTooltip();
+            }
+        });
+
+        partidosOverlay.addEventListener('click', (e) => {
+            if (e.target === partidosOverlay) {
+                closePartidosTooltip();
+            }
+        });
+
+        descubreOverlay.addEventListener('click', (e) => {
+            if (e.target === descubreOverlay) {
+                closeDescubreTooltip();
+            }
+        });
+
+        categoriasOverlay.addEventListener('click', (e) => {
+            if (e.target === categoriasOverlay) {
+                closeCategoriasTooltip();
+            }
+        });
+
+        document.getElementById('abrir-popup').addEventListener('click', () => {
+            fetch('crearPublicacion.html')
+            .then(res => res.text())
+            .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const bodyContent = doc.body.innerHTML;
+                const styleContent = doc.head.querySelector('style').innerHTML;
+                const popupContainer = document.getElementById('popup-container');
+                const popupOverlay = document.getElementById('popup-overlay');
+                
+                // Add styles to the document head
+                const styleElement = document.createElement('style');
+                styleElement.setAttribute('data-popup', 'true');
+                styleElement.textContent = styleContent;
+                document.head.appendChild(styleElement);
+                popupContainer.innerHTML = bodyContent;
+                popupOverlay.style.display = 'flex';
+
+                const closeBtn = popupContainer.querySelector('.close-btn');
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', closeModal);
+                }
+
+                const publishBtn = popupContainer.querySelector('.publish-btn');
+                if (publishBtn) {
+                    publishBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        closeModal();
+                        showToast();
+                    });
+                }
+
+                let mouseDownOnOverlay = false;
+
+                popupOverlay.addEventListener('mousedown', (e) => {
+                    mouseDownOnOverlay = (e.target === popupOverlay);
+                });
+
+                popupOverlay.addEventListener('mouseup', (e) => {
+                    if (mouseDownOnOverlay && e.target === popupOverlay) {
+                        closeModal();
+                    }
+                    mouseDownOnOverlay = false;
+                });
+
+                popupOverlay.addEventListener('mouseleave', () => {
+                    mouseDownOnOverlay = false;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

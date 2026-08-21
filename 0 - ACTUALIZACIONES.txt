@@ -1,0 +1,20 @@
+POR HACER---
+
+BORRA LAS QUE YA SE HICIERON---- 
+
+YA QUEDO (tal vez modificaciones minimas en ajustes)1. Terminar de arreglar caldendario(Calendario ya) y ajustes
+YA QUEDO 2. Menu de hamburguesa
+YA QUEDO 3. Crear post
+YA QUEDO 4. Animacion likes
+YA QUEDO 5. Mensajes de error en login
+6. Poder buscar
+7. Editar perfil
+YA QUEDO 8. Animaciones y microinteracciones
+9. Modo oscuro (y que se mantenga asi al salir)
+10. Modo contraste 
+11. Modo sin Animaciones
+12. Modo agrandar tamaño de texto o leer texto (si se puede)
+YA QUEDO 13. Las demas ventanas de configuracion
+14. Modo admin
+YA QUEDO? 15. Conectar todo
+YA QUEDO 16. Arreglar header

@@ -1,0 +1,74 @@
+/* Popup Overlay Styles */
+#popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#popup-container {
+ 
+    overflow-y: auto;
+    transition: transform 0.2s ease-out;
+    transform: scale(1);
+}
+
+#popup-container.closing {
+    transform: scale(0.8);
+}
+
+/* Toast Notification Styles */
+.toast-notification {
+    position: fixed;
+    bottom: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg);
+    color: var(--text);
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+    z-index: 1500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.toast-notification.show {
+    bottom: 20px;
+}
+
+.toast-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.toast-text {
+    white-space: nowrap;
+}
+
+/* Responsive para móvil */
+@media (max-width: 480px) {
+    .toast-notification {
+        bottom: -80px;
+        left: 20px;
+        right: 20px;
+        transform: none;
+        max-width: calc(100% - 40px);
+    }
+
+    .toast-notification.show {
+        bottom: 20px;
+    }
+}

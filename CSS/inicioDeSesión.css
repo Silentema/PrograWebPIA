@@ -1,0 +1,26 @@
+@view-transition {
+  navigation: auto;
+}
+
+/* Animación personalizada para la transición de entrada/salida */
+::view-transition-old(root) {
+  animation: slide-out 0.5s ease-in-out;
+}
+
+::view-transition-new(root) {
+  animation: slide-in 0.5s ease-in-out;
+}
+
+@keyframes slide-out {
+  to {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+}

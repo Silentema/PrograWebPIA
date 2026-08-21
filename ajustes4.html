@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacidad</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', -apple-system, Roboto, Helvetica, sans-serif;
+            background-color: #fff;
+            padding: 20px;
+            color: #222;
+        }
+
+        .privacidad-container {
+            max-width: 891px;
+            margin: 0 auto;
+        }
+
+        .privacidad-header {
+            margin-bottom: 70px;
+        }
+
+        .privacidad-header h1 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #222;
+            padding-left: 51px;
+        }
+
+        .privacidad-menu-item {
+            width: 100%;
+            height: 80px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.01) 0.16%, rgba(217, 217, 217, 0.01) 8.06%);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 49px 0 85px;
+            margin-bottom: 8px;
+            position: relative;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .privacidad-menu-item:hover {
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0.16%, rgba(217, 217, 217, 0.05) 8.06%);
+        }
+
+        .privacidad-menu-item span {
+            font-size: 18px;
+            font-weight: 400;
+            color: #222;
+        }
+
+        .privacidad-menu-item svg {
+            width: 16px;
+            height: 8px;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            .privacidad-header h1 {
+                font-size: 18px;
+                padding-left: 20px;
+            }
+
+            .privacidad-menu-item {
+                padding: 0 20px;
+                height: 70px;
+            }
+
+            .privacidad-menu-item span {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .privacidad-header h1 {
+                font-size: 16px;
+                padding-left: 15px;
+            }
+
+            .privacidad-menu-item {
+                padding: 0 15px;
+                height: 60px;
+            }
+
+            .privacidad-menu-item span {
+                font-size: 14px;
+            }
+
+            .privacidad-menu-item svg {
+                width: 12px;
+                height: 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="privacidad-container">
+        <div class="privacidad-header">
+            <h1>Privacidad</h1>
+        </div>
+
+        <div class="privacidad-menu-item">
+            <span>Usuarios bloqueados</span>
+            <svg width="8" height="16" viewBox="0 0 8 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 8L0 16L0 0L8 8Z" fill="#2C2C2C"/>
+            </svg>
+        </div>
+
+        <div class="privacidad-menu-item">
+            <span>Usuarios silenciados</span>
+            <svg width="8" height="16" viewBox="0 0 8 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 8L0 16L0 0L8 8Z" fill="#2C2C2C"/>
+            </svg>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,643 @@
+/* Contraste: solo texto en negritas, sin cambiar fondo */
+.contrast-theme h1,
+.contrast-theme h2,
+.contrast-theme h3,
+.contrast-theme h4,
+.contrast-theme h5,
+.contrast-theme h6,
+.contrast-theme .section-title,
+.contrast-theme .group-title,
+.contrast-theme .timeline-year,
+.contrast-theme .info-label,
+.contrast-theme .info-value,
+.contrast-theme .list-number,
+.contrast-theme .list-text,
+.contrast-theme .team-name,
+.contrast-theme .final-label,
+.contrast-theme .score-text,
+.contrast-theme .score-time,
+.contrast-theme .section-content {
+    font-weight: 800 !important;
+}
+/* No cambiar fondo de tarjetas ni overlays en contraste */
+@view-transition {
+  navigation: auto;
+}
+
+/* Animación personalizada para la transición de entrada/salida */
+::view-transition-old(root) {
+  animation: slide-out 0.5s ease-in-out;
+}
+
+::view-transition-new(root) {
+  animation: slide-in 0.5s ease-in-out;
+}
+
+@keyframes slide-out {
+  to {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+}
+
+:root {
+    --bg: #F5F5F5;
+    --text: #222;
+    --sub: #777;
+    --line: #999;
+    --header: #121212;
+    --btn: #D24242;
+    --white: #fff;
+    --card-bg: #ffffff;
+    --input-bg: #545353;
+    --border: #686868;
+    --hover: #ddd;
+    --overlay-bg: rgba(255,255,255,0.95);
+}
+
+/* Dark theme variables */
+body.dark-theme {
+    --bg: #1a1a1a;
+    --text: #e0e0e0;
+    --sub: #aaa;
+    --line: #444;
+    --header: #000;
+    --btn: #ff6b6b;
+    --white: #2d2d2d;
+    --card-bg: #2d2d2d;
+    --input-bg: #333;
+    --border: #555;
+    --hover: #333333;
+    --overlay-bg: rgba(30,30,30,0.95);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+/* Header styles removed - using header1.css */
+
+/* Back Button styles moved to CSS/back-btn.css component */
+
+/* Main Container */
+main {
+    padding: 40px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--text);
+}
+
+/* Timeline Section */
+.timeline-section {
+    position: relative;
+    height: 300px;
+    margin: 40px 0;
+    overflow: hidden;
+}
+
+.timeline-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.timeline-container::-webkit-scrollbar {
+    display: none;
+}
+
+.timeline-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    min-width: 120px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    flex-shrink: 0;
+}
+
+.timeline-spacer {
+    flex-shrink: 0;
+    transition: width 0.4s ease;
+}
+
+.timeline-logo {
+    width: 135px;
+    height: 135px;
+    border-radius: 50%;
+    background-color: var(--bg);
+    border: 3px solid var(--text);
+    object-fit: cover;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.timeline-logo.small {
+    width: 80px;
+    height: 80px;
+}
+
+.timeline-logo.large {
+    width: 188px;
+    height: 188px;
+}
+
+.timeline-item:hover .timeline-logo {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.timeline-item:active .timeline-logo {
+    transform: scale(0.95);
+}
+
+.timeline-year {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.timeline-year.active {
+    opacity: 1;
+}
+
+.timeline-year.inactive {
+    opacity: 0.51;
+}
+
+.timeline-year.faded {
+    opacity: 0.18;
+}
+
+.timeline-arrows {
+    position: absolute;
+    top: 45%;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+}
+
+.timeline-arrow {
+    width: 57px;
+    height: 56px;
+    cursor: pointer;
+    pointer-events: all;
+    transition: all 0.3s ease;
+    border-radius: 50%;
+    padding: 8px;
+}
+
+.timeline-arrow:hover {
+    transform: scale(1.1);
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.timeline-arrow:active {
+    transform: scale(0.9);
+}
+
+.divider {
+    width: 100%;
+    height: 1px;
+    background-color: var(--line);
+    margin: 40px 0;
+}
+
+/* Info Section */
+.info-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.info-left,
+.info-right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info-left {
+    align-items: flex-start;
+    text-align: left;
+}
+
+.info-right {
+    align-items: flex-end;
+    text-align: right;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.info-label {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.info-value {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text);
+}
+
+.country-flag {
+    width: 105px;
+    height: 70px;
+    border-radius: 16px;
+    object-fit: cover;
+}
+
+/* Champion Section */
+.champion-section {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.champion-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 0px;
+    color: var(--text);
+}
+
+.trophy-image {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 0px;
+}
+
+.champion-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin: 30px 0;
+}
+
+.team-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+    
+}
+
+.team-flag {
+    width: 133px;
+    height: 89px;
+    border-radius: 16px;
+    object-fit: cover;
+}
+
+.team-name {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text);
+}
+
+.score-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.final-label {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 10px;
+}
+
+.score-circle {
+    width: 92px;
+    height: 92px;
+    border-radius: 40%;
+    background-color: rgba(166, 166, 166, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 80px;
+}
+
+.score-text {
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+    color: var(--text);
+}
+
+.score-time {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--text);
+}
+
+/* Section Title */
+.section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 20px;
+}
+
+.section-content {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 40px;
+}
+
+/* List Sections */
+.list-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.list-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.list-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.list-number {
+    font-size: 18px;
+    font-weight: 400;
+    min-width: 30px;
+    text-align: right;
+    color: var(--text);
+}
+
+.list-flag {
+    width: 105px;
+    height: 70px;
+    border-radius: 16px;
+    object-fit: cover;
+}
+
+.list-flag.small {
+    height: 60px;
+}
+
+.list-text {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text);
+}
+
+/* Groups Section */
+.groups-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.group-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.group-title {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .info-section {
+        grid-template-columns: 1fr;
+    }
+
+    .list-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    main {
+        padding: 30px 15px;
+    }
+
+    h1 {
+        font-size: 20px;
+        margin-bottom: 25px;
+    }
+
+    header {
+        padding: 10px 15px;
+    }
+
+    .logo {
+        gap: 8px;
+    }
+
+    .logo-text {
+        font-size: 20px;
+    }
+
+    .logo-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .timeline-container {
+        padding: 20px 40px;
+        gap: 15px;
+    }
+
+    .timeline-logo {
+        width: 80px;
+        height: 80px;
+    }
+
+    .timeline-logo.large {
+        width: 120px;
+        height: 120px;
+    }
+
+    .timeline-logo.small {
+        width: 60px;
+        height: 60px;
+    }
+
+    .timeline-year {
+        font-size: 16px;
+    }
+
+    .champion-display {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .team-flag {
+        width: 100px;
+        height: 67px;
+    }
+
+    .section-title,
+    .info-label,
+    .info-value,
+    .list-text {
+        font-size: 16px;
+    }
+
+    .section-content {
+        font-size: 16px;
+    }
+
+    .groups-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    main {
+        padding: 20px 10px;
+    }
+
+    h1 {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    header {
+        padding: 8px 12px;
+        height: 60px;
+    }
+
+    .logo-text {
+        font-size: 18px;
+    }
+
+    .logo-icon {
+        width: 35px;
+        height: 35px;
+    }
+
+    .timeline-container {
+        padding: 20px;
+        gap: 10px;
+    }
+
+    .timeline-logo {
+        width: 60px;
+        height: 60px;
+    }
+
+    .timeline-logo.large {
+        width: 100px;
+        height: 100px;
+    }
+
+    .timeline-logo.small {
+        width: 50px;
+        height: 50px;
+    }
+
+    .timeline-year {
+        font-size: 14px;
+    }
+
+    /* Back button responsive styles moved to CSS/back-btn.css component */
+
+    .country-flag,
+    .list-flag {
+        width: 80px;
+        height: 53px;
+    }
+
+    .team-flag {
+        width: 80px;
+        height: 53px;
+    }
+}
+
+/* Dark mode specific styles */
+body.dark-theme .timeline-arrow path {
+    fill: var(--text);
+}
+
+/* Floating Theme Toggle Button */
+#floating-theme-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background: var(--btn);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#floating-theme-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+#floating-theme-btn:active {
+    transform: scale(0.95);
+}
+
+.text-overlay {
+    background-color: rgba(220,220,220,0.95) !important;
+}

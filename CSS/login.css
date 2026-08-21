@@ -1,0 +1,533 @@
+/* Solo letra roja para el enlace de registro */
+.registro-link {
+  color: var(--btn) !important;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1rem;
+  margin-left: 0.5em;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  transition: color 0.2s;
+}
+.registro-link:hover, .registro-link:focus {
+  text-decoration: underline;
+  color: #a82a2a !important;
+}
+.date-select-year .form-select.is-valid,
+.date-select-year .form-select.is-invalid {
+  background-image: none !important;
+}
+/* Evitar que el select personalizado cambie de tamaño por el ícono de validación de Bootstrap */
+.date-select-wrapper .form-select.is-valid,
+.date-select-wrapper .form-select.is-invalid {
+  background-image: none !important;
+}
+
+@view-transition {
+  navigation: auto;
+}
+
+/* Animación personalizada para la transición de entrada/salida */
+::view-transition-old(root) {
+  animation: slide-out 0.5s ease-in-out;
+}
+
+::view-transition-new(root) {
+  animation: slide-in 0.5s ease-in-out;
+}
+
+@keyframes slide-out {
+  to {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+.login-container {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, #ffffff, #e6e6e6);
+}
+
+.login-image {
+  position: relative;
+  width: 48%;
+  display: none;
+}
+
+.login-image img {
+    position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(100,36,36,0.21), rgba(34,34,34,0.56));
+}
+
+.login-panel {
+  flex: 1;
+  min-width: 0;
+  background: #fffefb;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 30px 100px 30px;
+  box-sizing: border-box;
+  /* Quitar restricciones de altura para permitir scroll */
+  min-height: unset;
+  height: auto;
+}
+
+.logo {
+  width: 250px;
+  align-self: flex-start;
+  position:relative;
+  top: 20px;
+  left: -40px;
+}
+
+.row{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0;
+  max-width:100%;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+
+}
+
+.close-btn {
+  position: relative;
+  top: 0px;
+  left: -30px;
+  font-size: 25px;
+  width: 45px;
+  height: 45px;
+  font-weight: bold;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text);
+  transition: color 0.2s;
+  border-radius: 100%;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #2e2e2e;
+  margin-bottom: 30px;
+  align-self: flex-start;
+  color: var(--text);
+}
+
+
+form {
+  width: 100%;
+  max-width: 600px; 
+  margin: 10px;   
+  padding-bottom: 10px;
+ padding-left: 45px;;
+  position: relative;
+}
+
+form input {
+  width: 100%;
+  height: 50px;
+  border: 2px solid #aaa;
+    border-color: #aaa;
+  border-radius: 6px;
+  padding: 0 16px;
+  font-size: 17px;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  background: transparent;
+}
+
+form input:hover {
+  border-color: #d24242;
+  outline: none;
+}
+
+
+.olvidoContra {
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 120px;
+  cursor: pointer;
+}
+
+.footer-login{  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+}
+
+
+.submit-btn {
+        position: absolute;
+    right: 0px;
+    bottom: -80px;
+  padding: 10px 18px;
+
+  border: 2px solid #d24242;
+  background: transparent;
+  color: #d24242;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.submit-btn:hover {
+  background: #d24242;
+  color: white;
+}
+
+
+.login-panel input[type="text"],
+.login-panel input[type="password"] {
+    width: 100%;
+    height: 50px;
+    padding: 0 16px;
+    border: 2px solid #aaa;
+    border-radius: 6px;
+    background: transparent;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+    color: #333;
+    box-sizing: border-box;
+}
+
+.date-select-wrapper .form-select,
+.form-select {
+  width: 100%;
+  height: 50px;
+  padding: 0 20px 0 16px; /* padding-right mayor para el ícono de validación */
+  border: 2px solid #aaa;
+  border-radius: 6px;
+  background: transparent;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 17px;
+  color: #333;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: block;
+  line-height: 50px;
+  appearance: auto; /* Permitir ícono nativo de validación */
+}
+
+.login-panel input[type="text"]:hover,
+.login-panel input[type="password"]:hover,
+.date-select-wrapper .form-select:hover {
+    border-color: #d24242;
+}
+
+.login-panel input[type="text"]:focus,
+.login-panel input[type="password"]:focus,
+.date-select-wrapper .form-select:focus {
+    outline: none;
+    border-color: #d24242;
+    box-shadow: none;
+}
+
+/* Bootstrap validation styles */
+.was-validated .form-control:invalid,
+.was-validated .form-select:invalid {
+    border-color: #dc3545;
+}
+
+.was-validated .form-control:valid,
+.was-validated .form-select:valid {
+    border-color: #28a745;
+}
+
+
+.date-select-wrapper .dropdown-arrow {
+    display: none;
+}
+
+.date-select-wrapper .form-select {
+    width: 100%;
+}
+
+.date-select-wrapper .dropdown-arrow {
+    right: 2.2rem; /* Dejar espacio para el ícono de validación */
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    fill: #777777;
+}
+
+.date-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+    align-items: center;
+}
+
+/* El wrapper controla el comportamiento flex; el select sigue ocupando 100% del wrapper */
+.date-select-wrapper {
+    position: relative;
+    flex: 0 1 auto;
+}
+
+/* Proporciones: día y año fijos/ajustables, mes puede crecer para contenido más largo */
+.date-select-day  {
+  flex: 0 0 72px;
+  min-width: 72px !important;
+  max-width: 72px !important;
+  width: 72px !important;
+  box-sizing: border-box !important;
+}
+
+/* Forzar tamaño fijo en todos los estados de validación */
+.date-select-day .form-select,
+.date-select-day .form-select.is-valid,
+.date-select-day .form-select.is-invalid {
+  min-width: 72px !important;
+  max-width: 72px !important;
+  width: 72px !important;
+  box-sizing: border-box !important;
+  padding-right: 8px !important;
+}
+
+/* Eliminar cualquier background extra de validación */
+.date-select-day .form-select.is-valid,
+.date-select-day .form-select.is-invalid {
+  background-image: none !important;
+}
+.date-select-month{ flex: 1 1 0;    min-width: 120px;                 } /* crece */
+.date-select-year {
+  flex: 0 0 100px;
+  min-width: 80px;
+  max-width: 140px;
+  position: relative;
+}
+
+/* Forzar padding y overflow para que el año no se tape */
+.date-select-year .form-select,
+.date-select-year .form-select.is-valid,
+.date-select-year .form-select.is-invalid {
+  padding-right: 16px !important;
+  overflow: visible !important;
+  background-image: none !important;
+}
+.genero{flex: 0 0 100px; min-width: 80px;  max-width: 140px;
+margin-top: 20px;
+  margin-bottom: 5px;}
+
+.form-control {
+    width: 100%;
+    height: 50px;
+    border: 2px solid #aaa;
+    border-radius: 6px;
+    padding: 0 16px;
+    font-size: 17px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    background: transparent;
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+    box-sizing: border-box;
+}
+
+/* Asegurar que el select rellene su wrapper */
+.date-select-wrapper .form-select {
+    width: 100%;
+}
+
+/* Modo claro/oscuro automático */
+:root {
+  --bg: #fffefb;
+  --text: #222;
+  --input-bg: transparent;
+  --input-border: #aaa;
+  --input-color: #333;
+  --btn: #d24242;
+  --btn-text: #fff;
+  --card-bg: #fff;
+}
+
+
+body.dark-theme {
+  --bg: #18191a;
+  --text: #f1f1f1;
+  --input-bg: #232526;
+  --input-border: #444;
+  --input-color: #f1f1f1;
+  --btn: #d24242;
+  --btn-text: #fff;
+  --card-bg: #232526;
+}
+body.dark-theme, body.dark-theme .login-panel {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+}
+body.dark-theme .form-control, body.dark-theme .form-select {
+  background: var(--input-bg) !important;
+  border-color: var(--input-border) !important;
+  color: var(--input-color) !important;
+}
+body.dark-theme .submit-btn, body.dark-theme .btn, body.dark-theme a {
+  background: var(--btn) !important;
+  color: var(--btn-text) !important;
+  border-color: var(--btn) !important;
+}
+
+/* Placeholders modo claro/oscuro */
+.form-control::placeholder,
+.form-select::placeholder,
+input::placeholder,
+textarea::placeholder {
+  color: #888;
+  opacity: 1;
+  transition: color 0.2s;
+}
+body.dark-theme .form-control::placeholder,
+body.dark-theme .form-select::placeholder,
+body.dark-theme input::placeholder,
+body.dark-theme textarea::placeholder {
+  color: #bbb;
+  opacity: 1;
+}
+
+body, .login-panel {
+  background: var(--bg);
+  color: var(--text);
+}
+.form-control, .form-select {
+  background: var(--input-bg);
+  border-color: var(--input-border);
+  color: var(--input-color);
+}
+.submit-btn, .btn, a {
+  background: var(--btn);
+  color: var(--btn-text);
+  border-color: var(--btn);
+}
+
+/* Responsivo */
+@media (min-width: 900px) {
+  body.login-page .login-container {
+    position: relative;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+  }
+  body.login-page .login-image {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 48vw;
+    height: 100vh;
+    min-height: 100vh;
+    max-height: 100vh;
+    z-index: 1;
+    box-sizing: border-box;
+  }
+  body.login-page .login-image img,
+  body.login-page .login-image .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    max-height: 100vh;
+    object-fit: cover;
+    box-sizing: border-box;
+  }
+  body.login-page .login-panel {
+    max-width: 52vw;
+    width: auto;
+    margin-left: 48vw;
+    z-index: 2;
+    position: relative;
+    background: var(--bg);
+    min-height: unset;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding-top: 0px;
+    padding-bottom: 120px;
+  }
+  /* Registro: imagen relativa y desplazable */
+  body.registro-page .login-image {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 48vw;
+    height: 100vh;
+    min-height: 100vh;
+    max-height: 100vh;
+    z-index: 1;
+    box-sizing: border-box;
+  }
+  body.registro-page .login-image img,
+  body.registro-page .login-image .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    max-height: 100vh;
+    object-fit: cover;
+    box-sizing: border-box;
+  }
+  body.registro-page .login-panel {
+    max-width: 52vw;
+    width: auto;
+    margin-left: 48vw;
+    z-index: 2;
+    position: relative;
+    background: var(--bg);
+    min-height: unset;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding-top: 0px;
+    padding-bottom: 120px;
+  }
+}

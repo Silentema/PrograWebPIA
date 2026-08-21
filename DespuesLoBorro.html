@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseño Figma</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: #f9fafb;
+            font-family: 'Montserrat', -apple-system, Roboto, Helvetica, sans-serif;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            min-height: 100vh;
+        }
+
+        .tutorial-container {
+            position: relative;
+            max-width: 230px;
+            width: 100%;
+        }
+
+        .arrow-svg {
+            position: absolute;
+            width: 50px;
+            height: 131px;
+            left: -40px;
+            top: -20px;
+            flex-shrink: 0;
+        }
+
+        .card {
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.30);
+            padding: 2rem 1.125rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .card-content {
+            margin-bottom: 1.5rem;
+        }
+
+        .card-description {
+            font-size: 12px;
+            font-weight: 400;
+            color: #000000;
+            line-height: 1.5;
+            margin-bottom: 0.75rem;
+        }
+
+        .card-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #000000;
+            line-height: 1.5;
+        }
+
+        .card-title-item {
+            display: block;
+        }
+
+        .button {
+            background-color: #D24242;
+            color: #ffffff;
+            border: none;
+            border-radius: 67px;
+            padding: 0.625rem 1.5rem;
+            min-width: 98px;
+            min-height: 35px;
+            font-family: 'Montserrat', -apple-system, Roboto, Helvetica, sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button:hover {
+            background-color: #C23838;
+        }
+
+        .button:active {
+            background-color: #B22E2E;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .arrow-svg {
+                width: 40px;
+                height: 105px;
+                left: -32px;
+                top: -16px;
+            }
+
+            .card {
+                padding: 1.5rem 1rem;
+            }
+
+            .card-description {
+                font-size: 11px;
+            }
+
+            .card-title {
+                font-size: 11px;
+            }
+
+            .button {
+                min-width: 90px;
+                min-height: 32px;
+                padding: 0.5rem 1.25rem;
+                font-size: 11px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .arrow-svg {
+                width: 35px;
+                height: 90px;
+                left: -28px;
+                top: -12px;
+            }
+
+            .card {
+                padding: 1.25rem 0.875rem;
+                border-radius: 24px;
+            }
+
+            .card-description {
+                font-size: 10px;
+            }
+
+            .card-title {
+                font-size: 10px;
+            }
+
+            .button {
+                min-width: 85px;
+                min-height: 30px;
+                padding: 0.5rem 1rem;
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="tutorial-container">
+        <svg class="arrow-svg" width="81" height="139" viewBox="0 0 81 139" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M33.5868 1.3081C32.1001 -0.325922 29.5703 -0.445357 27.9363 1.04134L1.30831 25.2684C-0.32571 26.7551 -0.445144 29.285 1.04155 30.919C2.52824 32.553 5.05809 32.6724 6.69211 31.1857L30.3614 9.65056L51.8966 33.3199C53.3833 34.9539 55.9131 35.0733 57.5472 33.5866C59.1812 32.0999 59.3006 29.5701 57.8139 27.9361L33.5868 1.3081ZM79.6283 135L80.0112 131.018C56.8538 128.792 44.7705 108.343 38.8479 81.3308C32.992 54.622 33.7079 23.5877 34.6237 4.18863L30.6282 4L26.6326 3.81137C25.7151 23.2456 24.9311 55.2113 31.0336 83.0442C37.0694 110.573 50.4028 136.208 79.2455 138.982L79.6283 135Z" fill="black"/>
+        </svg>
+
+        <div class="card">
+            <div class="card-content">
+                <p class="card-description">
+                    En este recuadro podrás acceder a
+                </p>
+                <div class="card-title">
+                    <span class="card-title-item">Historial</span>
+                    <span class="card-title-item">Calendario</span>
+                    <span class="card-title-item">Ajustes</span>
+                </div>
+            </div>
+
+            <button class="button">Siguiente</button>
+        </div>
+    </div>
+</body>
+</html>

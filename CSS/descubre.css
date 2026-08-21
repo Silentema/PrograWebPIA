@@ -1,0 +1,130 @@
+
+@view-transition {
+  navigation: auto;
+}
+
+/* Animación personalizada para la transición de entrada/salida */
+::view-transition-old(root) {
+  animation: slide-out 0.5s ease-in-out;
+}
+
+::view-transition-new(root) {
+  animation: slide-in 0.5s ease-in-out;
+}
+
+@keyframes slide-out {
+  to {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+}
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 34px;
+            margin-right: 30px;
+
+
+        }
+
+        .sidebar-section {
+            position: relative;
+        }
+
+        .sidebar-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 10px;
+            margin-left: 40px;
+        }
+
+        .sidebar-card {
+            background: var(--card-bg);
+            border-radius: 43px;
+            box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.30);
+            padding: 28px 20px;
+            margin-left: 40px;
+            margin-right: -20px;
+        }
+
+        .discover-item {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            margin-bottom: 15px;
+        }
+
+        .discover-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .discover-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .discover-name {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .hashtag-item {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--text);
+            margin-bottom: 16px;
+            text-decoration: underline;
+        }
+
+        .hashtag-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .filtros-item {
+            font-size: 16px;
+            font-weight: normal;
+            color: var(--text);
+            margin-bottom: 16px;
+            
+        }
+
+        .filtros-item:last-child {
+            margin-bottom: 0;
+        }
+
+/* Popup styles */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    position: relative;
+}
+

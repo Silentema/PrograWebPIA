@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MATCHIO — Publicación</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="CSS/descubre.css" />
+  <link rel="stylesheet" href="CSS/Main.css" />
+  <link rel="stylesheet" href="CSS/verPost.css" />
+  <link rel="stylesheet" href="CSS/back-btn.css" />
+ 
+</head>
+    <style>
+        #global-contrast-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 99999;
+            background: #fff;
+            color: #FF5050;
+            border: 2.5px solid #FF5050;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 32px;
+            font-weight: bold;
+            box-shadow: 0 2px 12px #0003;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, color 0.2s;
+        }
+        #global-contrast-btn.active {
+            background: #FF5050;
+            color: #fff;
+            border-color: #fff;
+        }
+        /* Más redondeado para el video */
+        video.post-img {
+            border-radius: 24px !important;
+            overflow: hidden;
+        }
+    </style>
+<body style="padding-top:70px;">
+  
+   <div id="header-container"></div>
+    <script src="headerLoader.js"></script>
+    <script>
+    function applyContrastFromStorage() {
+        if (localStorage.getItem('contrastMode') === 'true') {
+            document.body.classList.add('contrast-theme');
+            var btn = document.getElementById('global-contrast-btn');
+            if (btn) btn.classList.add('active');
+        } else {
+            document.body.classList.remove('contrast-theme');
+            var btn = document.getElementById('global-contrast-btn');
+            if (btn) btn.classList.remove('active');
+        }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        applyContrastFromStorage();
+        var btn = document.getElementById('global-contrast-btn');
+        if (btn) {
+            btn.addEventListener('click', function() {
+                var isActive = document.body.classList.contains('contrast-theme');
+                if (isActive) {
+                    localStorage.setItem('contrastMode', 'false');
+                } else {
+                    localStorage.setItem('contrastMode', 'true');
+                }
+                applyContrastFromStorage();
+            });
+        }
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'contrastMode') {
+                applyContrastFromStorage();
+            }
+        });
+    });
+    </script>
+
+  
+
+  <main class="container">
+
+          <button class="back-btn" onclick="history.back()" style="top: 90px;">←</button>
+
+
+    <div class="page-header">
+      <h2 class="page-title">Publicación</h2>
+    </div>
+
+    <div class="layout">
+      <!-- Post content -->
+      <section>
+        <article class="post-card ver-publicacion-card">
+            <a href="6perfil.html" class="post-header" style="text-decoration: none; color: inherit;">
+            <img class="post-avatar" src="Image/ajoloEric.jpg" alt="BigshowmodeladoOrg23" />
+            <h3 class="post-author">BigshowmodeladoOrg23</h3>
+            </a>
+          
+          <h4 class="post-title">Los Goles del siglo de estos años</h4>
+          
+                    <div class="video-post-container">
+                        <video class="post-img" controls poster="Image/copaImagen.jpeg" style="width:100%;height:100%;object-fit:cover;display:block;background:#000;border-radius:0;">
+                            <source src="Image/videoPost.mp4" type="video/mp4">
+                            Tu navegador no soporta el video.
+                        </video>
+                    </div>
+          
+          <p class="post-text">
+            Johannesburgo, 11 de julio de 2010 – En una final cargada de tensión, emoción y dramatismo, la Selección Española de fútbol derrotó 1-0 a Países Bajos en el estadio Soccer City, conquistando su primer título mundial en la historia. El héroe fue Andrés Iniesta, quien marcó el gol decisivo al minuto 116 del tiempo extra, desatando la euforia de millones de aficionados.
+            <br><br>
+            El partido estuvo marcado por la intensidad y el juego físico, con numerosas tarjetas. Sin embargo, España mantuvo su estilo de toque y posesión, logrando romper el cerrojo neerlandés con una jugada que quedó para la eternidad. Tambien habia 2 años de libertad para los siguientes futbolistas que participaron en los hechos de queretaro 2022.
+          </p>
+          
+          <div class="post-footer" style="margin: 15px;">
+                        <a href ="4busqueda.html" class="post-tags" style="text-decoration: none; color: inherit">
+                            <span class="post-tag">#Canada</span>
+                            <span class="post-tag">#Mexico</span>
+                            <span class="post-tag">#USA</span>
+                        </a>
+                        <span class="post-date">31 / Oct / 2025</span>
+                        <div class="post-stats">
+                            <div class="post-stat like-button" onclick="toggleLike(this)">
+                                <span class="post-stat-number">1k</span>
+                                <svg class="post-icon heart-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 20L8.55 18.5831C6.86667 16.9301 5.475 15.5041 4.375 14.3052C3.275 13.1063 2.4 12.03 1.75 11.0763C1.1 10.1226 0.645833 9.24614 0.3875 8.44687C0.129167 7.64759 0 6.83015 0 5.99455C0 4.28701 0.525 2.86104 1.575 1.71662C2.625 0.572207 3.93333 0 5.5 0C6.36667 0 7.19167 0.199818 7.975 0.599455C8.75833 0.999092 9.43333 1.56222 10 2.28883C10.5667 1.56222 11.2417 0.999092 12.025 0.599455C12.8083 0.199818 13.6333 0 14.5 0C16.0667 0 17.375 0.572207 18.425 1.71662C19.475 2.86104 20 4.28701 20 5.99455C20 6.83015 19.8708 7.64759 19.6125 8.44687C19.3542 9.24614 18.9 10.1226 18.25 11.0763C17.6 12.03 16.725 13.1063 15.625 14.3052C14.525 15.5041 13.1333 16.9301 11.45 18.5831L10 20Z" fill="#777777"/>
+                                </svg>
+                            </div>
+                            <div class="post-stat comment-button">
+                                <span class="post-stat-number">15</span>
+                                <svg class="post-icon comment-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 20L16 16H2C1.45 16 0.979167 15.8042 0.5875 15.4125C0.195833 15.0208 0 14.55 0 14V2C0 1.45 0.979167 0.979167 0.5875 0.5875C0.979167 0.195833 1.45 0 2 0H18C18.55 0 19.0208 0.195833 19.4125 0.5875C19.8042 0.979167 20 1.45 20 2V20ZM2 14H16.85L18 15.125V2H2V14Z" fill="#777777"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+        </article>
+
+        <div class="tabs-divider" style="width:auto ;"></div>
+
+        <!-- Comments section -->
+        
+
+          
+
+          
+
+
+
+
+
+
+
+           <div class="temp-comment-container">
+            <div class="temp-comment-header">
+                <img class="temp-avatar" src="https://api.builder.io/api/v1/image/assets/TEMP/88690893998caa9748d3f1acc44df544d8cd79ed?width=100" alt="Avatar de usuario">
+                <textarea class="temp-comment-input-label" placeholder="Comenta algo" rows="2" style="resize:vertical; min-height:32px; width:100%; font-size:20px; border:none; background:transparent; outline:none; color:var(--color-subtext); font-family:inherit; font-weight:500;"></textarea>
+            </div>
+
+
+            <div class="temp-comment-footer">
+                                <button type="button" class="temp-emoji-btn" aria-label="Agregar emoji" style="background:none;border:none;padding:0;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+                                    <img class="temp-emoji-icon" src="https://api.builder.io/api/v1/image/assets/TEMP/130387be2936df04dccccd6eb36c07b7b0cb78ac?width=66" alt="Emoji">
+                                </button>
+
+                <div class="temp-button-group">
+                    <button class="temp-btn temp-btn-submit">Comentar</button>
+                </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+          <div class="tabs-divider" style="width:auto ;"></div>
+
+          
+          <comment-card 
+              avatar="Image/pfp1Pie.jpg" 
+              author="EsparzaRiveraLol.23" 
+              text="Fue uno de mis mundiales favoritos, ojalá algún día pueda ir a Monterrey." 
+              likes="1k" 
+              replies="12">
+          </comment-card>
+
+          <comment-card 
+              avatar="Image/mujerGris.jpg" 
+              author="MaríaFutbolera" 
+              text="¡Qué nostalgia! Recuerdo haber visto ese partido con mi familia. Iniesta fue increíble." 
+              likes="847" 
+              replies="8">
+          </comment-card>
+
+          <comment-card 
+              avatar="Image/curly.jpg" 
+              author="FutbolAnalista" 
+              text="El tiki-taka español en su máximo esplendor. Una jugada que quedó para la historia del fútbol." 
+              likes="623" 
+              replies="5">
+          </comment-card>
+
+          <comment-card 
+              avatar="Image/garage.jpg" 
+              author="MemoriasMundialistas" 
+              text="Y pensar que Holanda llegó tan cerca... Pero España se merecía ese título tras años de decepciones." 
+              likes="489" 
+              replies="3">
+          </comment-card>
+
+          <comment-card 
+              avatar="Image/aimep3.jpg" 
+              author="AficionadoClásico" 
+              text="Paul el Pulpo había predicho que España ganaría. ¡Qué tiempos aquellos!" 
+              likes="312" 
+              replies="7">
+          </comment-card>
+
+
+         
+      </section>
+
+            <aside class="sidebar">
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Descubre</h3>
+                    <div class="sidebar-card">
+                        <a href="6perfil.html" style="text-decoration: none; color: inherit">
+                        <div class="discover-item">
+                            <img src="Image/mujerGris.jpg" alt="MiguelJoaquin" class="discover-avatar">
+                            <span class="discover-name">MiguelJoaquin</span>
+                        </div>
+                        <div class="discover-item">
+                            <img src="Image/curly.jpg" alt="LuisEduardoRosas" class="discover-avatar">
+                            <span class="discover-name">LuisEduardoRosas</span>
+                        </div>
+                        <div class="discover-item">
+                            <img src="Image/ajoloEric.jpg" alt="Silentema" class="discover-avatar">
+                            <span class="discover-name">Silentema</span>
+                        </div>
+                        <div class="discover-item">
+                            <img src="Image/garage.jpg" alt="Monti_AngelDNF" class="discover-avatar">
+                            <span class="discover-name">Monti_AngelDNF</span>
+                        </div>
+                        <div class="discover-item">
+                            <img src="Image/aimep3.jpg" alt="Aimep3" class="discover-avatar">
+                            <span class="discover-name">Aimep3</span>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section" style="margin-top:25px;">
+                    <h3 class="sidebar-title">Temas Actuales</h3>
+                    <div class="sidebar-card">
+                        <a href="4busqueda.html">
+                        <div class="hashtag-item">#Mundial2026</div>
+                        <div class="hashtag-item">#WorldCup2026</div>
+                        <div class="hashtag-item">#FIFAWorldCup</div>
+                        <div class="hashtag-item">#México2026</div>
+                        <div class="hashtag-item">#Copa2026</div>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+    </div>
+  </main>
+
+    <!-- Toast Notification para comentario enviado -->
+    <div id="comment-toast" class="toast-notification">
+        <svg class="toast-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="toast-text">Comentario enviado</span>
+    </div>
+    <style>
+        .toast-notification {
+            position: fixed;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%) translateY(100px);
+            background: #222;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: 'Montserrat', -apple-system, Roboto, Helvetica, sans-serif;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            z-index: 10000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94), transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+        }
+        .toast-notification.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+            pointer-events: auto;
+        }
+        .toast-icon {
+            width: 28px;
+            height: 28px;
+            color: #fff;
+        }
+        .toast-text {
+            font-size: 16px;
+            font-weight: 600;
+        }
+    </style>
+    <script>
+
+    function showCommentNotification() {
+        const toast = document.getElementById('comment-toast');
+        toast.classList.add('show');
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 2500);
+    }
+  
+  function toggleLike(button) {
+      event.stopPropagation();
+      
+      button.classList.toggle('liked');
+      
+      button.classList.add('clicked');
+      setTimeout(() => {
+          button.classList.remove('clicked');
+      }, 600);
+      
+      const likeCountElement = button.querySelector('.post-stat-number');
+      let currentLikes = likeCountElement.textContent;
+      
+      let numericLikes;
+      if (currentLikes.includes('k')) {
+          numericLikes = parseFloat(currentLikes) * 1000;
+      } else {
+          numericLikes = parseInt(currentLikes);
+      }
+      
+      if (button.classList.contains('liked')) {
+          numericLikes++;
+      } else {
+          numericLikes--;
+      }
+      
+      let displayLikes;
+      if (numericLikes >= 1000) {
+          displayLikes = (numericLikes / 1000).toFixed(1).replace('.0', '') + 'k';
+      } else if (numericLikes >= 999 && currentLikes.includes('k')) {
+          displayLikes = '1k';
+      } else {
+          displayLikes = numericLikes.toString();
+      }
+      
+      likeCountElement.textContent = displayLikes;
+      
+      if ('vibrate' in navigator) {
+          navigator.vibrate(50);
+      }
+  }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        expandirCommentCards();
+
+        const commentActions = document.querySelectorAll('.comment-actions');
+        commentActions.forEach(actions => {
+            const likeButtons = actions.querySelectorAll('.post-stat');
+            likeButtons.forEach((button, index) => {
+                if (index === 0) { // Primer botón = like
+                    button.classList.add('like-button');
+                    button.setAttribute('onclick', 'toggleLike(this)');
+                    const icon = button.querySelector('.post-icon');
+                    if (icon) icon.classList.add('heart-icon');
+                } else if (index === 1) { // Segundo botón = comentario
+                    button.classList.add('comment-button');
+                    const icon = button.querySelector('.post-icon');
+                    if (icon) icon.classList.add('comment-icon');
+                }
+            });
+        });
+
+        const likeButtons = document.querySelectorAll('.like-button');
+        likeButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            });
+        });
+
+        const commentBtn = document.querySelector('.temp-btn-submit');
+        const commentTextarea = document.querySelector('.temp-comment-input-label');
+        if (commentBtn && commentTextarea) {
+            commentBtn.addEventListener('click', function(e) {
+                showCommentNotification();
+                commentTextarea.value = '';
+            });
+        }
+    });
+
+  
+  function zoomImage(imgSrc) {
+      document.body.style.overflow = 'hidden';
+
+    const overlay = document.createElement('div');
+    overlay.style.position = 'fixed';
+    overlay.style.top = '0';
+    overlay.style.left = '0';
+    overlay.style.width = '100vw';
+    overlay.style.height = '100vh';
+    overlay.style.backgroundColor = 'rgba(0,0,0,0)';
+    overlay.style.display = 'flex';
+    overlay.style.alignItems = 'center';
+    overlay.style.justifyContent = 'center';
+    overlay.style.zIndex = '1000';
+    overlay.style.transition = 'background-color 0.3s ease';
+
+    const img = document.createElement('img');
+    img.src = imgSrc;
+    img.style.maxWidth = '85%';
+    img.style.maxHeight = '85%';
+    img.style.borderRadius = '10px';
+    img.style.transform = 'scale(0.8)';
+    img.style.opacity = '0';
+    img.style.transition = 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)'; // transición suave y elegante
+
+    overlay.appendChild(img);
+    document.body.appendChild(overlay);
+
+    setTimeout(() => {
+      overlay.style.backgroundColor = 'rgba(0,0,0,0.8)';
+      img.style.transform = 'scale(1)';
+      img.style.opacity = '1';
+    }, 10);
+
+    overlay.onclick = () => {
+      img.style.transform = 'scale(0.9)';
+      img.style.opacity = '0';
+      overlay.style.backgroundColor = 'rgba(0,0,0,0)';
+      
+      setTimeout(() => {
+        overlay.remove();
+        document.body.style.overflow = '';
+      }, 300); 
+    };
+    }
+
+
+  const commentCardTemplate = `
+  <div class="comment">
+    <a href="6perfil.html" style="text-decoration: none; color: inherit;">
+    <img src="{{avatar}}" alt="{{author}}" />
+    </a>
+    <div class="comment-content">
+      <a href="6perfil.html" style="text-decoration: none; color: inherit;">
+      <div class="comment-author">{{author}}</div>
+      </a>
+      <div class="comment-text">{{text}}</div>
+      <div class="comment-actions">
+        <div class="post-stat like-button" onclick="toggleLike(this)">
+          <span class="post-stat-number">{{likes}}</span>
+          <svg class="post-icon heart-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 20L8.55 18.5831C6.86667 16.9301 5.475 15.5041 4.375 14.3052C3.275 13.1063 2.4 12.03 1.75 11.0763C1.1 10.1226 0.645833 9.24614 0.3875 8.44687C0.129167 7.64759 0 6.83015 0 5.99455C0 4.28701 0.525 2.86104 1.575 1.71662C2.625 0.572207 3.93333 0 5.5 0C6.36667 0 7.19167 0.199818 7.975 0.599455C8.75833 0.999092 9.43333 1.56222 10 2.28883C10.5667 1.56222 11.2417 0.999092 12.025 0.599455C12.8083 0.199818 13.6333 0 14.5 0C16.0667 0 17.375 0.572207 18.425 1.71662C19.475 2.86104 20 4.28701 20 5.99455C20 6.83015 19.8708 7.64759 19.6125 8.44687C19.3542 9.24614 18.9 10.1226 18.25 11.0763C17.6 12.03 16.725 13.1063 15.625 14.3052C14.525 15.5041 13.1333 16.9301 11.45 18.5831L10 20Z" fill="#777777"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tabs-divider" style="width:auto ;"></div>`;
+  
+
+
+  function expandirCommentCards() {
+    const commentCardElements = document.querySelectorAll('comment-card');
+    
+    commentCardElements.forEach(element => {
+      const avatar = element.getAttribute('avatar') || 'Image/pfp1Pie.jpg';
+      const author = element.getAttribute('author') || 'Usuario';
+      const text = element.getAttribute('text') || 'Texto del comentario';
+      const likes = element.getAttribute('likes') || '0';
+      const replies = element.getAttribute('replies') || '0';
+
+      let html = commentCardTemplate;
+      html = html.replace(/\{\{avatar\}\}/g, avatar);
+      html = html.replace(/\{\{author\}\}/g, author);
+      html = html.replace(/\{\{text\}\}/g, text);
+      html = html.replace(/\{\{likes\}\}/g, likes);
+      html = html.replace(/\{\{replies\}\}/g, replies);
+
+      element.outerHTML = html;
+    });
+  }
+</script>
+
+</body>
+</html>

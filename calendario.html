@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MATCHIO • Partidos Próximos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="CSS/calendario.css" />
+    <link rel="stylesheet" href="CSS/back-btn.css" />
+  </head>
+  <body style="padding-top:70px;">
+   <div id="header-container"></div>
+        <script src="headerLoader.js"></script>
+        <script>
+        function applyContrastFromStorage() {
+          if (localStorage.getItem('contrastMode') === 'true') {
+            document.body.classList.add('contrast-theme');
+            var btn = document.getElementById('global-contrast-btn');
+            if (btn) btn.classList.add('active');
+          } else {
+            document.body.classList.remove('contrast-theme');
+            var btn = document.getElementById('global-contrast-btn');
+            if (btn) btn.classList.remove('active');
+          }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+          applyContrastFromStorage();
+          var btn = document.getElementById('global-contrast-btn');
+          if (btn) {
+            btn.addEventListener('click', function() {
+              var isActive = document.body.classList.contains('contrast-theme');
+              if (isActive) {
+                localStorage.setItem('contrastMode', 'false');
+              } else {
+                localStorage.setItem('contrastMode', 'true');
+              }
+              applyContrastFromStorage();
+            });
+          }
+          window.addEventListener('storage', function(e) {
+            if (e.key === 'contrastMode') {
+              applyContrastFromStorage();
+            }
+          });
+        });
+        </script>
+        
+    <main class="page">
+
+      <button class="back-btn" style="margin-top: 70px;" onclick="history.back()">←</button>
+
+      <div class="container" style="margin-top: 40px;">
+        <div class="page-header">
+         
+          <h1 class="page-title">Partidos Próximos</h1>
+        </div>
+
+        <div class="cal-dates" id="cal-dates">
+          <div class="date-item" onclick="selectDate(0)"><span class="date-day">Martes</span><span class="date-num">17<br>Jun</span></div>
+          <div class="date-item" onclick="selectDate(1)"><span class="date-day">Miércoles</span><span class="date-num">18<br>Jun</span></div>
+          <div class="date-item" onclick="selectDate(2)"><span class="date-day">Jueves</span><span class="date-num">19<br>Jun</span></div>
+          <div class="date-item" onclick="selectDate(3)"><span class="date-day">Viernes</span><span class="date-num">20<br>Jun</span></div>
+          <div class="date-item active" onclick="selectDate(4)"><span class="date-day">Sábado</span><span class="date-num">21<br>Jun</span></div>
+          <div class="date-item" onclick="selectDate(5)"><span class="date-day">Domingo</span><span class="date-num">22<br>Jun</span></div>
+          <div class="date-item" onclick="selectDate(6)"><span class="date-day">Lunes</span><span class="date-num">23<br>Jun</span></div>
+          <div class="date-item" onclick="selectDate(7)"><span class="date-day">Martes</span><span class="date-num">24<br>Jun</span></div>
+          <div class="date-item" onclick="selectDate(8)"><span class="date-day">Miércoles</span><span class="date-num">25<br>Jun</span></div>
+        </div>
+
+        <div class="filter-row">
+          <button class="filter-btn">
+            <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.09863 8.63281V9.96875H4.7334V8.63281H7.09863ZM9.79785 4.32227V5.65918H2.03516V4.32227H9.79785ZM11.8262 0.0126953V1.34863H0.0126953V0.0126953H11.8262Z" fill="#D24242" stroke="#D24242" stroke-width="0.025"/></svg>
+            Filtrar
+          </button>
+        </div>
+
+        <div class="matches">
+          <article class="match">
+            <div class="team">
+              <img class="team-logo" src="https://api.builder.io/api/v1/image/assets/TEMP/81962496379bc28fc473ab338eb1a2c4cbb09819?width=128" alt="Noruega" />
+              <span class="team-name">Nor</span>
+            </div>
+            <div class="match-info">
+              <div class="match-phase">Fase de grupos<br>Grupo A</div>
+              <div class="match-divider"></div>
+              <div class="match-venue">Estadio Azteca<br>13:00</div>
+            </div>
+            <div class="team">
+              <img class="team-logo" src="https://api.builder.io/api/v1/image/assets/TEMP/e8eacc678f33ab8cd9cbc51928d5ff6ac799bf61?width=128" alt="Polonia" />
+              <span class="team-name">Pol</span>
+            </div>
+          </article>
+
+          <article class="match">
+            <div class="team">
+              <img class="team-logo" src="https://api.builder.io/api/v1/image/assets/TEMP/81962496379bc28fc473ab338eb1a2c4cbb09819?width=128" alt="Noruega" />
+              <span class="team-name">Nor</span>
+            </div>
+            <div class="match-info">
+              <div class="match-phase">Fase de grupos<br>Grupo A</div>
+              <div class="match-divider"></div>
+              <div class="match-venue">Estadio Azteca<br>13:00</div>
+            </div>
+            <div class="team">
+              <img class="team-logo" src="https://api.builder.io/api/v1/image/assets/TEMP/e8eacc678f33ab8cd9cbc51928d5ff6ac799bf61?width=128" alt="Polonia" />
+              <span class="team-name">Pol</span>
+            </div>
+          </article>
+
+          <article class="match">
+            <div class="team">
+              <img class="team-logo" src="https://api.builder.io/api/v1/image/assets/TEMP/81962496379bc28fc473ab338eb1a2c4cbb09819?width=128" alt="Noruega" />
+              <span class="team-name">Nor</span>
+            </div>
+            <div class="match-info">
+              <div class="match-phase">Fase de grupos<br>Grupo A</div>
+              <div class="match-divider"></div>
+              <div class="match-venue">Estadio Azteca<br>13:00</div>
+            </div>
+            <div class="team">
+              <img class="team-logo" src="https://api.builder.io/api/v1/image/assets/TEMP/e8eacc678f33ab8cd9cbc51928d5ff6ac799bf61?width=128" alt="Polonia" />
+              <span class="team-name">Pol</span>
+            </div>
+          </article>
+
+          <article class="match">
+            <div class="team">
+              <img class="team-logo" src="https://api.builder.io/api/v1/image/assets/TEMP/81962496379bc28fc473ab338eb1a2c4cbb09819?width=128" alt="Noruega" />
+              <span class="team-name">Nor</span>
+            </div>
+            <div class="match-info">
+              <div class="match-phase">Fase de grupos<br>Grupo A</div>
+              <div class="match-divider"></div>
+              <div class="match-venue">Estadio Azteca<br>13:00</div>
+            </div>
+            <div class="team">
+              <img class="team-logo" src="https://api.builder.io/api/v1/image/assets/TEMP/e8eacc678f33ab8cd9cbc51928d5ff6ac799bf61?width=128" alt="Polonia" />
+              <span class="team-name">Pol</span>
+            </div>
+          </article>
+
+          <article class="match">
+            <div class="team">
+              <img class="team-logo" src="https://api.builder.io/api/v1/image/assets/TEMP/81962496379bc28fc473ab338eb1a2c4cbb09819?width=128" alt="Noruega" />
+              <span class="team-name">Nor</span>
+            </div>
+            <div class="match-info">
+              <div class="match-phase">Fase de grupos<br>Grupo A</div>
+              <div class="match-divider"></div>
+              <div class="match-venue">Estadio Azteca<br>13:00</div>
+            </div>
+            <div class="team">
+              <img class="team-logo" src="https://api.builder.io/api/v1/image/assets/TEMP/e8eacc678f33ab8cd9cbc51928d5ff6ac799bf61?width=128" alt="Polonia" />
+              <span class="team-name">Pol</span>
+            </div>
+          </article>
+
+          <article class="match">
+            <div class="team">
+              <img class="team-logo" src="https://api.builder.io/api/v1/image/assets/TEMP/81962496379bc28fc473ab338eb1a2c4cbb09819?width=128" alt="Noruega" />
+              <span class="team-name">Nor</span>
+            </div>
+            <div class="match-info">
+              <div class="match-phase">Fase de grupos<br>Grupo A</div>
+              <div class="match-divider"></div>
+              <div class="match-venue">Estadio Azteca<br>13:00</div>
+            </div>
+            <div class="team">
+              <img class="team-logo" src="https://api.builder.io/api/v1/image/assets/TEMP/e8eacc678f33ab8cd9cbc51928d5ff6ac799bf61?width=128" alt="Polonia" />
+              <span class="team-name">Pol</span>
+            </div>
+          </article>
+
+          <article class="match">
+            <div class="team">
+              <img class="team-logo" src="https://api.builder.io/api/v1/image/assets/TEMP/81962496379bc28fc473ab338eb1a2c4cbb09819?width=128" alt="Noruega" />
+              <span class="team-name">Nor</span>
+            </div>
+            <div class="match-info">
+              <div class="match-phase">Fase de grupos<br>Grupo A</div>
+              <div class="match-divider"></div>
+              <div class="match-venue">Estadio Azteca<br>13:00</div>
+            </div>
+            <div class="team">
+              <img class="team-logo" src="https://api.builder.io/api/v1/image/assets/TEMP/e8eacc678f33ab8cd9cbc51928d5ff6ac799bf61?width=128" alt="Polonia" />
+              <span class="team-name">Pol</span>
+            </div>
+          </article>
+
+          <article class="match">
+            <div class="team">
+              <img class="team-logo" src="https://api.builder.io/api/v1/image/assets/TEMP/81962496379bc28fc473ab338eb1a2c4cbb09819?width=128" alt="Noruega" />
+              <span class="team-name">Nor</span>
+            </div>
+            <div class="match-info">
+              <div class="match-phase">Fase de grupos<br>Grupo A</div>
+              <div class="match-divider"></div>
+              <div class="match-venue">Estadio Azteca<br>13:00</div>
+            </div>
+            <div class="team">
+              <img class="team-logo" src="https://api.builder.io/api/v1/image/assets/TEMP/e8eacc678f33ab8cd9cbc51928d5ff6ac799bf61?width=128" alt="Polonia" />
+              <span class="team-name">Pol</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </main>
+    
+    <script>
+        let currentDateIndex = 4; // Sábado está seleccionado inicialmente
+        const dateItems = document.querySelectorAll('.date-item');
+        
+        function selectDate(index) {
+            if (index !== currentDateIndex) {
+                currentDateIndex = index;
+                updateDateSelection();
+                showLoadingSkeleton();
+                
+                setTimeout(() => {
+                    restoreOriginalContent();
+                }, 600);
+            }
+        }
+        
+        function updateDateSelection() {
+            dateItems.forEach((item, index) => {
+                item.classList.remove('active');
+                if (index === currentDateIndex) {
+                    item.classList.add('active');
+                }
+            });
+        }
+        
+        let originalMatchesContent = null;
+        
+        function showLoadingSkeleton() {
+            const matchesContainer = document.querySelector('.matches');
+            
+            if (!originalMatchesContent) {
+                originalMatchesContent = matchesContainer.innerHTML;
+            }
+            
+            matchesContainer.innerHTML = `
+                <div class="skeleton-container">
+                    <div class="skeleton-dots">
+                        <div class="skeleton-dot"></div>
+                        <div class="skeleton-dot"></div>
+                        <div class="skeleton-dot"></div>
+                    </div>
+                </div>
+            `;
+            
+            if (!document.getElementById('skeleton-styles')) {
+                const style = document.createElement('style');
+                style.id = 'skeleton-styles';
+                style.textContent = `
+                    .skeleton-container {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        min-height: 200px;
+                        margin: 20px 0;
+                    }
+                    .skeleton-dots {
+                        display: flex;
+                        gap: 15px;
+                    }
+                    .skeleton-dot {
+                        width: 20px;
+                        height: 20px;
+                        background: var(--hover);
+                        border-radius: 50%;
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        }
+        
+        function restoreOriginalContent() {
+            if (originalMatchesContent) {
+                document.querySelector('.matches').innerHTML = originalMatchesContent;
+            }
+        }
+    </script>
+  </body>
+</html>

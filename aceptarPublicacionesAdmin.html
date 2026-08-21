@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+        <script>
+        function applyContrastFromStorage() {
+            if (localStorage.getItem('contrastMode') === 'true') {
+                document.body.classList.add('contrast-theme');
+            } else {
+                document.body.classList.remove('contrast-theme');
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            applyContrastFromStorage();
+            var btn = document.getElementById('global-contrast-btn');
+            if (btn) {
+                btn.addEventListener('click', function() {
+                    var isActive = document.body.classList.contains('contrast-theme');
+                    if (isActive) {
+                        localStorage.setItem('contrastMode', 'false');
+                    } else {
+                        localStorage.setItem('contrastMode', 'true');
+                    }
+                    applyContrastFromStorage();
+                });
+            }
+            window.addEventListener('storage', function(e) {
+                if (e.key === 'contrastMode') {
+                    applyContrastFromStorage();
+                }
+            });
+        });
+        </script>
+        <style>
+          .contrast-theme h1,
+          .contrast-theme h2,
+          .contrast-theme h3,
+          .contrast-theme h4,
+          .contrast-theme h5,
+          .contrast-theme h6,
+          .contrast-theme .card-title,
+          .contrast-theme .user-name,
+          .contrast-theme .card-footer {
+            font-weight: 800 !important;
+          }
+        </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MATCHIO - Administrar Publicaciones</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/aceptarPublicacionesAdmin.css" />
+    <link rel="stylesheet" href="CSS/back-btn.css" />
+</head>
+<body style="padding-top:70px;">
+    <div id="header-container"></div>
+    <script src="headerLoader.js"></script>
+
+    <main>
+        <h1>Administrar Publicaciones</h1>
+
+        <button class="back-btn" style="margin-top: 70px;" onclick="history.back()">←</button>
+
+
+        <div class="cards-container">
+                        <div id="no-cards-message" style="display:none;text-align:center;font-size:1.4rem;font-weight:600;color:#888;padding:60px 0; justify-content: center;">No hay publicaciones nuevas </div>
+            <div class="card">
+                <div class="card-header">
+                    <img src="Image/ajoloEric.jpg" alt="Eric.LopezParra" class="user-avatar">
+                    <div class="user-info">
+                        <div class="user-name">Eric.LopezParra</div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="action-btn" aria-label="Approve publication">
+                            <svg class="check-icon" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M34.8327 17.5434V19.0001C34.8307 22.4144 33.7251 25.7367 31.6808 28.4713C29.6364 31.206 26.7629 33.2065 23.4887 34.1746C20.2144 35.1427 16.715 35.0265 13.5123 33.8432C10.3095 32.66 7.57505 30.4731 5.7167 27.6088C3.85835 24.7445 2.97568 21.3562 3.20034 17.9493C3.42499 14.5423 4.74493 11.2993 6.96329 8.70381C9.18166 6.10832 12.1796 4.29947 15.51 3.54701C18.8404 2.79455 22.3248 3.13881 25.4435 4.52844M34.8327 6.33344L18.9994 22.1826L14.2494 17.4326" stroke="#1E1E1E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button class="action-btn" aria-label="Decline publication">
+                            <img src="https://api.builder.io/api/v1/image/assets/TEMP/ad3731278b7812b506123058996e2b58d013f82a?width=68" alt="Decline" style="width: 34px; height: 34px;">
+                        </button>
+                    </div>
+                </div>
+                <div class="card-image-wrapper">
+                    <img src="Image/copaImagen.jpeg" alt="Las mejores jugadas de Mexico" class="card-image">
+                    <div class="image-gradient"></div>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">Las mejores jugadas de Mexico</div>
+                </div>
+                <div class="card-footer">#USA #Mexico #Final - 10 / Sep / 2026</div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <img src="https://api.builder.io/api/v1/image/assets/TEMP/37b23774f8589fe5336fad3ce57df85fe36b9b83?width=92" alt="Eric.LopezParra" class="user-avatar">
+                    <div class="user-info">
+                        <div class="user-name">Eric.LopezParra</div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="action-btn" aria-label="Approve publication">
+                            <svg class="check-icon" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M34.8327 17.5434V19.0001C34.8307 22.4144 33.7251 25.7367 31.6808 28.4713C29.6364 31.206 26.7629 33.2065 23.4887 34.1746C20.2144 35.1427 16.715 35.0265 13.5123 33.8432C10.3095 32.66 7.57505 30.4731 5.7167 27.6088C3.85835 24.7445 2.97568 21.3562 3.20034 17.9493C3.42499 14.5423 4.74493 11.2993 6.96329 8.70381C9.18166 6.10832 12.1796 4.29947 15.51 3.54701C18.8404 2.79455 22.3248 3.13881 25.4435 4.52844M34.8327 6.33344L18.9994 22.1826L14.2494 17.4326" stroke="#1E1E1E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button class="action-btn" aria-label="Decline publication">
+                            <img src="https://api.builder.io/api/v1/image/assets/TEMP/ad3731278b7812b506123058996e2b58d013f82a?width=68" alt="Decline" style="width: 34px; height: 34px;">
+                        </button>
+                    </div>
+                </div>
+                <div class="card-image-wrapper">
+                    <img src="https://api.builder.io/api/v1/image/assets/TEMP/ffc8a560df537425799ff89ee1956a2a98086bc5?width=552" alt="El bicho vs Messi" class="card-image">
+                    <div class="image-gradient"></div>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">El bicho vs Messi</div>
+                </div>
+                <div class="card-footer">#Portugal #Argentina #Final - 10 / Sep / 2026</div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <img src="https://api.builder.io/api/v1/image/assets/TEMP/37b23774f8589fe5336fad3ce57df85fe36b9b83?width=92" alt="Silentema" class="user-avatar">
+                    <div class="user-info">
+                        <div class="user-name muted">Silentema</div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="action-btn" aria-label="Approve publication">
+                            <svg class="check-icon" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M34.8327 17.5434V19.0001C34.8307 22.4144 33.7251 25.7367 31.6808 28.4713C29.6364 31.206 26.7629 33.2065 23.4887 34.1746C20.2144 35.1427 16.715 35.0265 13.5123 33.8432C10.3095 32.66 7.57505 30.4731 5.7167 27.6088C3.85835 24.7445 2.97568 21.3562 3.20034 17.9493C3.42499 14.5423 4.74493 11.2993 6.96329 8.70381C9.18166 6.10832 12.1796 4.29947 15.51 3.54701C18.8404 2.79455 22.3248 3.13881 25.4435 4.52844M34.8327 6.33344L18.9994 22.1826L14.2494 17.4326" stroke="#1E1E1E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button class="action-btn" aria-label="Decline publication">
+                            <img src="https://api.builder.io/api/v1/image/assets/TEMP/ad3731278b7812b506123058996e2b58d013f82a?width=68" alt="Decline" style="width: 34px; height: 34px;">
+                        </button>
+                    </div>
+                </div>
+                <div class="card-image-wrapper">
+                    <img src="https://api.builder.io/api/v1/image/assets/TEMP/ffc8a560df537425799ff89ee1956a2a98086bc5?width=552" alt="Mundiales en Latinoamerica" class="card-image">
+                    <div class="image-gradient"></div>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">Mundiales en Latinoamerica</div>
+                </div>
+                <div class="card-footer">#Pais1 #Mexico #Surinam - 10 / Sep / 2026</div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <img src="https://api.builder.io/api/v1/image/assets/TEMP/37b23774f8589fe5336fad3ce57df85fe36b9b83?width=92" alt="Silentema" class="user-avatar">
+                    <div class="user-info">
+                        <div class="user-name muted">Silentema</div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="action-btn" aria-label="Approve publication">
+                            <svg class="check-icon" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M34.8327 17.5434V19.0001C34.8307 22.4144 33.7251 25.7367 31.6808 28.4713C29.6364 31.206 26.7629 33.2065 23.4887 34.1746C20.2144 35.1427 16.715 35.0265 13.5123 33.8432C10.3095 32.66 7.57505 30.4731 5.7167 27.6088C3.85835 24.7445 2.97568 21.3562 3.20034 17.9493C3.42499 14.5423 4.74493 11.2993 6.96329 8.70381C9.18166 6.10832 12.1796 4.29947 15.51 3.54701C18.8404 2.79455 22.3248 3.13881 25.4435 4.52844M34.8327 6.33344L18.9994 22.1826L14.2494 17.4326" stroke="#1E1E1E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button class="action-btn" aria-label="Decline publication">
+                            <img src="https://api.builder.io/api/v1/image/assets/TEMP/ad3731278b7812b506123058996e2b58d013f82a?width=68" alt="Decline" style="width: 34px; height: 34px;">
+                        </button>
+                    </div>
+                </div>
+                <div class="card-image-wrapper">
+                    <img src="https://api.builder.io/api/v1/image/assets/TEMP/ffc8a560df537425799ff89ee1956a2a98086bc5?width=552" alt="Mundiales en Latinoamerica" class="card-image">
+                    <div class="image-gradient"></div>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">Mundiales en Latinoamerica</div>
+                </div>
+                <div class="card-footer">#Pais1 #Mexico #Surinam - 10 / Sep / 2026</div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <img src="https://api.builder.io/api/v1/image/assets/TEMP/37b23774f8589fe5336fad3ce57df85fe36b9b83?width=92" alt="Silentema" class="user-avatar">
+                    <div class="user-info">
+                        <div class="user-name muted">Silentema</div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="action-btn" aria-label="Approve publication">
+                            <svg class="check-icon" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M34.8327 17.5434V19.0001C34.8307 22.4144 33.7251 25.7367 31.6808 28.4713C29.6364 31.206 26.7629 33.2065 23.4887 34.1746C20.2144 35.1427 16.715 35.0265 13.5123 33.8432C10.3095 32.66 7.57505 30.4731 5.7167 27.6088C3.85835 24.7445 2.97568 21.3562 3.20034 17.9493C3.42499 14.5423 4.74493 11.2993 6.96329 8.70381C9.18166 6.10832 12.1796 4.29947 15.51 3.54701C18.8404 2.79455 22.3248 3.13881 25.4435 4.52844M34.8327 6.33344L18.9994 22.1826L14.2494 17.4326" stroke="#1E1E1E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button class="action-btn" aria-label="Decline publication">
+                            <img src="https://api.builder.io/api/v1/image/assets/TEMP/ad3731278b7812b506123058996e2b58d013f82a?width=68" alt="Decline" style="width: 34px; height: 34px;">
+                        </button>
+                    </div>
+                </div>
+                <div class="card-image-wrapper">
+                    <img src="https://api.builder.io/api/v1/image/assets/TEMP/ffc8a560df537425799ff89ee1956a2a98086bc5?width=552" alt="Mundiales en Latinoamerica" class="card-image">
+                    <div class="image-gradient"></div>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">Mundiales en Latinoamerica</div>
+                </div>
+                <div class="card-footer">#Pais1 #Mexico #Surinam - 10 / Sep / 2026</div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <img src="https://api.builder.io/api/v1/image/assets/TEMP/37b23774f8589fe5336fad3ce57df85fe36b9b83?width=92" alt="Silentema" class="user-avatar">
+                    <div class="user-info">
+                        <div class="user-name muted">Silentema</div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="action-btn" aria-label="Approve publication">
+                            <svg class="check-icon" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M34.8327 17.5434V19.0001C34.8307 22.4144 33.7251 25.7367 31.6808 28.4713C29.6364 31.206 26.7629 33.2065 23.4887 34.1746C20.2144 35.1427 16.715 35.0265 13.5123 33.8432C10.3095 32.66 7.57505 30.4731 5.7167 27.6088C3.85835 24.7445 2.97568 21.3562 3.20034 17.9493C3.42499 14.5423 4.74493 11.2993 6.96329 8.70381C9.18166 6.10832 12.1796 4.29947 15.51 3.54701C18.8404 2.79455 22.3248 3.13881 25.4435 4.52844M34.8327 6.33344L18.9994 22.1826L14.2494 17.4326" stroke="#1E1E1E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button class="action-btn" aria-label="Decline publication">
+                            <img src="https://api.builder.io/api/v1/image/assets/TEMP/ad3731278b7812b506123058996e2b58d013f82a?width=68" alt="Decline" style="width: 34px; height: 34px;">
+                        </button>
+                    </div>
+                </div>
+                <div class="card-image-wrapper">
+                    <img src="https://api.builder.io/api/v1/image/assets/TEMP/ffc8a560df537425799ff89ee1956a2a98086bc5?width=552" alt="Mundiales en Latinoamerica" class="card-image">
+                    <div class="image-gradient"></div>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">Mundiales en Latinoamerica</div>
+                </div>
+                <div class="card-footer">#Pais1 #Mexico #Surinam - 10 / Sep / 2026</div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <img src="https://api.builder.io/api/v1/image/assets/TEMP/37b23774f8589fe5336fad3ce57df85fe36b9b83?width=92" alt="Silentema" class="user-avatar">
+                    <div class="user-info">
+                        <div class="user-name muted">Silentema</div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="action-btn" aria-label="Approve publication">
+                            <svg class="check-icon" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M34.8327 17.5434V19.0001C34.8307 22.4144 33.7251 25.7367 31.6808 28.4713C29.6364 31.206 26.7629 33.2065 23.4887 34.1746C20.2144 35.1427 16.715 35.0265 13.5123 33.8432C10.3095 32.66 7.57505 30.4731 5.7167 27.6088C3.85835 24.7445 2.97568 21.3562 3.20034 17.9493C3.42499 14.5423 4.74493 11.2993 6.96329 8.70381C9.18166 6.10832 12.1796 4.29947 15.51 3.54701C18.8404 2.79455 22.3248 3.13881 25.4435 4.52844M34.8327 6.33344L18.9994 22.1826L14.2494 17.4326" stroke="#1E1E1E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button class="action-btn" aria-label="Decline publication">
+                            <img src="https://api.builder.io/api/v1/image/assets/TEMP/ad3731278b7812b506123058996e2b58d013f82a?width=68" alt="Decline" style="width: 34px; height: 34px;">
+                        </button>
+                    </div>
+                </div>
+                <div class="card-image-wrapper">
+                    <img src="https://api.builder.io/api/v1/image/assets/TEMP/ffc8a560df537425799ff89ee1956a2a98086bc5?width=552" alt="Mundiales en Latinoamerica" class="card-image">
+                    <div class="image-gradient"></div>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">Mundiales en Latinoamerica</div>
+                </div>
+                <div class="card-footer">#Pais1 #Mexico #Surinam - 10 / Sep / 2026</div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <img src="https://api.builder.io/api/v1/image/assets/TEMP/37b23774f8589fe5336fad3ce57df85fe36b9b83?width=92" alt="Silentema" class="user-avatar">
+                    <div class="user-info">
+                        <div class="user-name muted">Silentema</div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="action-btn" aria-label="Approve publication">
+                            <svg class="check-icon" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M34.8327 17.5434V19.0001C34.8307 22.4144 33.7251 25.7367 31.6808 28.4713C29.6364 31.206 26.7629 33.2065 23.4887 34.1746C20.2144 35.1427 16.715 35.0265 13.5123 33.8432C10.3095 32.66 7.57505 30.4731 5.7167 27.6088C3.85835 24.7445 2.97568 21.3562 3.20034 17.9493C3.42499 14.5423 4.74493 11.2993 6.96329 8.70381C9.18166 6.10832 12.1796 4.29947 15.51 3.54701C18.8404 2.79455 22.3248 3.13881 25.4435 4.52844M34.8327 6.33344L18.9994 22.1826L14.2494 17.4326" stroke="#1E1E1E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button class="action-btn" aria-label="Decline publication">
+                            <img src="https://api.builder.io/api/v1/image/assets/TEMP/ad3731278b7812b506123058996e2b58d013f82a?width=68" alt="Decline" style="width: 34px; height: 34px;">
+                        </button>
+                    </div>
+                </div>
+                <div class="card-image-wrapper">
+                    <img src="https://api.builder.io/api/v1/image/assets/TEMP/ffc8a560df537425799ff89ee1956a2a98086bc5?width=552" alt="Mundiales en Latinoamerica" class="card-image">
+                    <div class="image-gradient"></div>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">Mundiales en Latinoamerica</div>
+                </div>
+                <div class="card-footer">#Pais1 #Mexico #Surinam - 10 / Sep / 2026</div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <img src="https://api.builder.io/api/v1/image/assets/TEMP/37b23774f8589fe5336fad3ce57df85fe36b9b83?width=92" alt="Silentema" class="user-avatar">
+                    <div class="user-info">
+                        <div class="user-name muted">Silentema</div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="action-btn" aria-label="Approve publication">
+                            <svg class="check-icon" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M34.8327 17.5434V19.0001C34.8307 22.4144 33.7251 25.7367 31.6808 28.4713C29.6364 31.206 26.7629 33.2065 23.4887 34.1746C20.2144 35.1427 16.715 35.0265 13.5123 33.8432C10.3095 32.66 7.57505 30.4731 5.7167 27.6088C3.85835 24.7445 2.97568 21.3562 3.20034 17.9493C3.42499 14.5423 4.74493 11.2993 6.96329 8.70381C9.18166 6.10832 12.1796 4.29947 15.51 3.54701C18.8404 2.79455 22.3248 3.13881 25.4435 4.52844M34.8327 6.33344L18.9994 22.1826L14.2494 17.4326" stroke="#1E1E1E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button class="action-btn" aria-label="Decline publication">
+                            <img src="https://api.builder.io/api/v1/image/assets/TEMP/ad3731278b7812b506123058996e2b58d013f82a?width=68" alt="Decline" style="width: 34px; height: 34px;">
+                        </button>
+                    </div>
+                </div>
+                <div class="card-image-wrapper">
+                    <img src="https://api.builder.io/api/v1/image/assets/TEMP/ffc8a560df537425799ff89ee1956a2a98086bc5?width=552" alt="Mundiales en Latinoamerica" class="card-image">
+                    <div class="image-gradient"></div>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">Mundiales en Latinoamerica</div>
+                </div>
+                <div class="card-footer">#Pais1 #Mexico #Surinam - 10 / Sep / 2026</div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <img src="https://api.builder.io/api/v1/image/assets/TEMP/37b23774f8589fe5336fad3ce57df85fe36b9b83?width=92" alt="Silentema" class="user-avatar">
+                    <div class="user-info">
+                        <div class="user-name muted">Silentema</div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="action-btn" aria-label="Approve publication">
+                            <svg class="check-icon" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M34.8327 17.5434V19.0001C34.8307 22.4144 33.7251 25.7367 31.6808 28.4713C29.6364 31.206 26.7629 33.2065 23.4887 34.1746C20.2144 35.1427 16.715 35.0265 13.5123 33.8432C10.3095 32.66 7.57505 30.4731 5.7167 27.6088C3.85835 24.7445 2.97568 21.3562 3.20034 17.9493C3.42499 14.5423 4.74493 11.2993 6.96329 8.70381C9.18166 6.10832 12.1796 4.29947 15.51 3.54701C18.8404 2.79455 22.3248 3.13881 25.4435 4.52844M34.8327 6.33344L18.9994 22.1826L14.2494 17.4326" stroke="#1E1E1E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button class="action-btn" aria-label="Decline publication">
+                            <img src="https://api.builder.io/api/v1/image/assets/TEMP/ad3731278b7812b506123058996e2b58d013f82a?width=68" alt="Decline" style="width: 34px; height: 34px;">
+                        </button>
+                    </div>
+                </div>
+                <div class="card-image-wrapper">
+                    <img src="https://api.builder.io/api/v1/image/assets/TEMP/ffc8a560df537425799ff89ee1956a2a98086bc5?width=552" alt="Mundiales en Latinoamerica" class="card-image">
+                    <div class="image-gradient"></div>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">Mundiales en Latinoamerica</div>
+                </div>
+                <div class="card-footer">#Pais1 #Mexico #Surinam - 10 / Sep / 2026</div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <img src="https://api.builder.io/api/v1/image/assets/TEMP/37b23774f8589fe5336fad3ce57df85fe36b9b83?width=92" alt="Silentema" class="user-avatar">
+                    <div class="user-info">
+                        <div class="user-name muted">Silentema</div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="action-btn" aria-label="Approve publication">
+                            <svg class="check-icon" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M34.8327 17.5434V19.0001C34.8307 22.4144 33.7251 25.7367 31.6808 28.4713C29.6364 31.206 26.7629 33.2065 23.4887 34.1746C20.2144 35.1427 16.715 35.0265 13.5123 33.8432C10.3095 32.66 7.57505 30.4731 5.7167 27.6088C3.85835 24.7445 2.97568 21.3562 3.20034 17.9493C3.42499 14.5423 4.74493 11.2993 6.96329 8.70381C9.18166 6.10832 12.1796 4.29947 15.51 3.54701C18.8404 2.79455 22.3248 3.13881 25.4435 4.52844M34.8327 6.33344L18.9994 22.1826L14.2494 17.4326" stroke="#1E1E1E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button class="action-btn" aria-label="Decline publication">
+                            <img src="https://api.builder.io/api/v1/image/assets/TEMP/ad3731278b7812b506123058996e2b58d013f82a?width=68" alt="Decline" style="width: 34px; height: 34px;">
+                        </button>
+                    </div>
+                </div>
+                <div class="card-image-wrapper">
+                    <img src="https://api.builder.io/api/v1/image/assets/TEMP/ffc8a560df537425799ff89ee1956a2a98086bc5?width=552" alt="Mundiales en Latinoamerica" class="card-image">
+                    <div class="image-gradient"></div>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">Mundiales en Latinoamerica</div>
+                </div>
+                <div class="card-footer">#Pais1 #Mexico #Surinam - 10 / Sep / 2026</div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <img src="https://api.builder.io/api/v1/image/assets/TEMP/37b23774f8589fe5336fad3ce57df85fe36b9b83?width=92" alt="Silentema" class="user-avatar">
+                    <div class="user-info">
+                        <div class="user-name muted">Silentema</div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="action-btn" aria-label="Approve publication">
+                            <svg class="check-icon" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M34.8327 17.5434V19.0001C34.8307 22.4144 33.7251 25.7367 31.6808 28.4713C29.6364 31.206 26.7629 33.2065 23.4887 34.1746C20.2144 35.1427 16.715 35.0265 13.5123 33.8432C10.3095 32.66 7.57505 30.4731 5.7167 27.6088C3.85835 24.7445 2.97568 21.3562 3.20034 17.9493C3.42499 14.5423 4.74493 11.2993 6.96329 8.70381C9.18166 6.10832 12.1796 4.29947 15.51 3.54701C18.8404 2.79455 22.3248 3.13881 25.4435 4.52844M34.8327 6.33344L18.9994 22.1826L14.2494 17.4326" stroke="#1E1E1E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button class="action-btn" aria-label="Decline publication">
+                            <img src="https://api.builder.io/api/v1/image/assets/TEMP/ad3731278b7812b506123058996e2b58d013f82a?width=68" alt="Decline" style="width: 34px; height: 34px;">
+                        </button>
+                    </div>
+                </div>
+                <div class="card-image-wrapper">
+                    <img src="https://api.builder.io/api/v1/image/assets/TEMP/ffc8a560df537425799ff89ee1956a2a98086bc5?width=552" alt="Mundiales en Latinoamerica" class="card-image">
+                    <div class="image-gradient"></div>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">Mundiales en Latinoamerica</div>
+                </div>
+                <div class="card-footer">#Pais1 #Mexico #Surinam - 10 / Sep / 2026</div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+
+        function handleCardAction(button, actionType) {
+            const card = button.closest('.card');
+            card.classList.add('processing');
+            setTimeout(() => {
+                card.remove();
+                if (actionType === 'approve') {
+                    console.log('Card approved');
+                } else if (actionType === 'reject') {
+                    console.log('Card rejected');
+                }
+                const cardsContainer = document.querySelector('.cards-container');
+                if (cardsContainer && cardsContainer.querySelectorAll('.card').length === 0) {
+                    const msg = document.getElementById('no-cards-message');
+                    if (msg) msg.style.display = 'block';
+                }
+            }, 800);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const actionButtons = document.querySelectorAll('.action-btn');
+            
+            actionButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const isApproveButton = button.querySelector('.check-icon');
+                    const actionType = isApproveButton ? 'approve' : 'reject';
+                    
+                    handleCardAction(button, actionType);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

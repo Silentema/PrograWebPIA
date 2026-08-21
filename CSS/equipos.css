@@ -1,0 +1,462 @@
+@view-transition {
+  navigation: auto;
+}
+
+/* Animación personalizada para la transición de entrada/salida */
+::view-transition-old(root) {
+  animation: slide-out 0.5s ease-in-out;
+}
+
+::view-transition-new(root) {
+  animation: slide-in 0.5s ease-in-out;
+}
+
+@keyframes slide-out {
+  to {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #F5F5F5;
+    --text: #222;
+    --sub: #777;
+    --line: #999;
+    --header: #121212;
+    --btn: #D24242;
+    --white: #fff;
+    --card-bg: #ffffff;
+    --input-bg: #f9f9f9;
+    --border: #686868;
+    --hover: #ddd;
+}
+
+/* Dark theme variables */
+body.dark-theme {
+    --bg: #1a1a1a;
+    --text: #e0e0e0;
+    --sub: #aaa;
+    --line: #444;
+    --header: #000;
+    --btn: #ff6b6b;
+    --white: #2d2d2d;
+    --card-bg: #2d2d2d;
+    --input-bg: #333;
+    --border: #555;
+    --hover: #333333;
+}
+
+/* Variación específica del hero para modo oscuro */
+body.dark-theme .hero {
+    background: linear-gradient(90deg, var(--bg) 0%, rgba(56, 133, 197, 0.15) 50%);
+}
+
+body {
+    font-family: 'Montserrat', -apple-system, Roboto, Helvetica, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Header styles removed - using header1.css */
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(90deg, var(--bg) 0%, rgba(56, 133, 197, 0.3) 100%);
+    padding: 2rem;
+}
+
+.hero-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 0 50px;
+}
+
+.hero-badge {
+    width: 100px;
+    height: 120px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.30));
+}
+
+.hero-content h1 {
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--text);
+    margin-bottom: 1rem;
+}
+
+/* Main Container */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Section Heading */
+.section-heading {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 2rem 0 1.5rem 0;
+    color: var(--text);
+}
+
+/* General Information */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.info-item {
+    display: flex;
+    gap: 1rem;
+}
+
+.info-label {
+    font-weight: 500;
+    min-width: 140px;
+    color: var(--text);
+}
+
+.info-value {
+    font-weight: 500;
+    color: var(--text);
+}
+
+/* Statistics */
+.stats-section {
+    margin: 2rem 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 16px;
+    color: var(--text);
+    font-weight: 400;
+}
+
+/* MVP Cards */
+.mvp-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mvp-card {
+    background: var(--card-bg);
+    border: 2px solid var(--line);
+    border-radius: 30px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+    height: 420px;
+    text-align: center;
+}
+
+.mvp-card-badge {
+    width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.mvp-player-image {
+    width: 200px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+}
+
+.mvp-player-name {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+}
+
+.mvp-player-position {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text);
+}
+
+.mvp-stats {
+    margin-top: 1rem;
+}
+
+.mvp-number {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+}
+
+.mvp-label {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text);
+}
+
+/* Recent Matches */
+.matches-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.match-card {
+    background: var(--card-bg);
+    border: 2px solid var(--line);
+    padding: 1.5rem;
+    border-radius: 30px;
+    text-align: center;
+}
+
+.match-date {
+    font-size: 14px;
+    color: var(--sub);
+    margin-bottom: 1rem;
+    font-weight: 300;
+}
+
+.match-phase {
+    font-size: 14px;
+    color: var(--sub);
+    margin-bottom: 1rem;
+}
+
+.match-teams {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.match-container{
+
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+
+}
+
+.team-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.match-score {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text);
+    padding: 0 1rem;
+    margin-top: 20px;
+}
+
+.team-name {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text);
+    text-align: center;
+}
+
+.match-line {
+    border-top: 1px solid var(--Lineas-555555);
+    margin: 1rem 0;
+}
+
+/* Player Cards */
+.players-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.player-card {
+    background: var(--card-bg);
+    border: 2px solid var(--line);
+    border-radius: 20px;
+    overflow: hidden;
+    text-align: center;
+    padding: 1rem;
+}
+
+.player-card-badge {
+    width: 90%;
+    height: 10px;
+    margin-bottom: 1rem;
+}
+
+.player-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin: 0 auto 0.5rem;
+    display: block;
+}
+
+.player-name {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+}
+
+.player-position {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .header-icons {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+
+    .hero-container {
+        flex-direction: column;
+    }
+
+    .mvp-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        max-width: 400px;
+    }
+    
+    .matches-grid,
+    .players-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-title {
+        font-size: 20px;
+    }
+
+    .section-heading {
+        font-size: 18px;
+    }
+
+    .mvp-grid {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+    }
+    
+    .matches-grid,
+    .players-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .match-teams {
+        gap: 0.5rem;
+    }
+}
+
+/* Floating Theme Toggle Button */
+#floating-theme-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background: var(--btn);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#floating-theme-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+#floating-theme-btn:active {
+    transform: scale(0.95);
+}

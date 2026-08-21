@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="CSS/login.css" />
+  
+</head>
+
+<body class="login-page">
+
+<div class="login-container">
+
+  <div class="login-image">
+    <img src="Image/loginImage.webp" alt="">
+    <div class="image-overlay"></div>
+  </div>
+
+  <div class="login-panel">
+
+    <div class ="row">
+    <img class="logo" src="Image/Matchio.png" alt="Logo">
+
+    <button class="close-btn" onclick="window.location.href='3main.html'">x</button>
+
+    </div>
+
+    <h1 class="title">Inicio de sesión</h1>
+
+    <form class="needs-validation" novalidate>
+
+      <label for="tipoDeCuenta" class="form-label">Tipo de Cuenta</label>
+      <select name="tipoDeCuenta" id="tipoDeCuenta" class="form-select" required>
+        <option value="">Tipo</option>
+        <option value="user">Usuario</option>
+        <option value="admin">Administrador</option>
+      </select>
+
+      <input type="text" placeholder="Nombre" class="form-control" required>
+      <div class="invalid-feedback">Ingresa tu nombre.</div>
+      <input type="password" placeholder="Contraseña" class="form-control" required>
+      <div class="invalid-feedback">Ingresa tu contraseña.</div>
+
+      <p class="olvidoContra">¿Olvidaste la contraseña?</p>
+
+      <div class="footer-login">
+        <div>
+          <span style="color:var(--text); font-size:1rem;">¿No tienes cuenta? </span>
+          <a href="1registro.html" style="color:red; font-weight:600; text-decoration:none; font-size:1rem; margin-left:0.5em; background:none; border:none; padding:0;">Regístrate</a>
+        </div>
+        <button type="submit" class="submit-btn" style="position:relative; bottom: 0px;">Aceptar</button>
+    </div>
+
+    </form>
+  </div>
+
+</div>
+
+
+<script src="headerLoader.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    inicializarModoOscuro();
+  });
+</script>
+</body>
+<script>
+  //bootstrap
+  (() => {
+    'use strict'
+
+    const forms = document.querySelectorAll('.needs-validation')
+
+    Array.from(forms).forEach(form => {
+      form.addEventListener('submit', event => {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+
+        } else {
+          localStorage.setItem('isLoggedIn', 'true');
+          var tipo = document.getElementById('tipoDeCuenta').value;
+          if (tipo === 'admin') {
+            localStorage.setItem('rol', 'admin');
+          } else if (tipo === 'user') {
+            localStorage.setItem('rol', 'user');
+          } else {
+            localStorage.removeItem('rol'); // Si no se selecciona nada, limpia el rol
+          }
+          window.location.href = '3main.html';
+          event.preventDefault(); 
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+  })()
+</script>
+</html>

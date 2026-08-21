@@ -1,0 +1,178 @@
+<header class = "header1">
+    <div class="content">   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel = "stylesheet" href="CSS/header1.css">
+    <div class="headLeft">  
+    <svg class="menu-icon" viewBox="0 0 25 20" onclick="abrirMenu()" style="cursor: pointer;">
+    <rect y="2" width="25" height="3"></rect>
+    <rect y="9" width="25" height="3"></rect>
+    <rect y="16" width="25" height="3"></rect>
+    </svg>
+    <a href="3main.html" style="align-items: center; display: flex; flex-direction: row; gap: 10px; text-decoration: none; color: inherit; padding-bottom: 3px; ">
+     
+    <h1>MATCHIO</h1>
+
+    <img class = "logo" src = "Image/Matchio.png" alt = "Logo"> 
+    </a>
+
+    </div>
+    <div class="headRight">
+        <input type="text" id="searchInput" placeholder="Buscar..." onkeydown="handleSearchKeydown(event)" style="display: none; width: 280px; height: 35px; padding: 5px 10px; border: none; border-radius: 15px; background: rgba(255,255,255,0.9); color: #222; font-size: 14px; font-family: 'Montserrat', sans-serif; outline: none; box-shadow: none; margin-right: 10px;">
+        
+        <button onclick="toggleSearch()" style="background: none; border: none; cursor: pointer; display: flex; align-items: center; padding: 0;">
+        <img class = "lupa" src = "Image/lupa.png" alt = "Lupa">
+        </button>
+        <a id="user-link" href="2inicioSesion.html" style="display: flex; align-items: center;">
+        <img id="user-icon" class="lupa" src = "Image/cuenta.png"  alt="Cuenta">
+        </a>
+    </div>
+
+    </div>
+
+
+</header>
+
+<div id="menuOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999;"></div>
+
+<script>
+function toggleSearch() {
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        if (searchInput.style.display === 'none' || searchInput.style.display === '') {
+            searchInput.style.display = 'block';
+        } else {
+            if (searchInput.value.trim() !== '') {
+                window.location.href = '4busqueda.html?q=' + encodeURIComponent(searchInput.value.trim());
+            } else {
+                searchInput.style.display = 'none';
+            }
+        }
+    }
+}
+
+function handleSearchKeydown(event) {
+    if (event.key === 'Enter') {
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput && searchInput.value.trim() !== '') {
+            window.location.href = '4busqueda.html?q=' + encodeURIComponent(searchInput.value.trim());
+        }
+    } else if (event.key === 'Escape') {
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+            searchInput.style.display = 'none';
+        }
+    }
+}
+
+window.abrirMenu = function() {
+    let overlay = document.getElementById('menuOverlay');
+    
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'menuOverlay';
+        overlay.style.cssText = 'display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; opacity: 0; transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);';
+        document.body.appendChild(overlay);
+    }
+    
+    overlay.style.display = 'block';
+    
+    fetch('menu.html')
+        .then(response => response.text())
+        .then(html => {
+            overlay.innerHTML = html;
+            
+            const closeBtn = overlay.querySelector('.menu-close-menu');
+            if (closeBtn) {
+                closeBtn.onclick = window.cerrarMenu;
+            }
+            
+            const mainArea = overlay.querySelector('.menu-main');
+            if (mainArea) {
+                mainArea.onclick = window.cerrarMenu;
+            }
+
+const rol = localStorage.getItem('rol');
+const adminItems = overlay.querySelectorAll('.admin-only');
+
+if (rol && rol.trim().toLowerCase() === 'admin') {
+    adminItems.forEach(item => item.classList.add('show'));
+} else {
+    adminItems.forEach(item => item.classList.remove('show'));
+}
+
+            
+            const sidebar = overlay.querySelector('.menu-sidebar');
+            
+            overlay.classList.add('overlay-opening');
+            if (sidebar) {
+                sidebar.classList.add('menu-opening');
+            }
+            
+            setTimeout(() => {
+                overlay.style.opacity = '1';
+            }, 10);
+        })
+        .catch(error => {
+            console.error('Error cargando el menú:', error);
+            overlay.style.display = 'none';
+        });
+};
+
+window.cerrarMenu = function() {
+    const overlay = document.getElementById('menuOverlay');
+    if (overlay) {
+        const sidebar = overlay.querySelector('.menu-sidebar');
+        
+        overlay.classList.remove('overlay-opening');
+        overlay.classList.add('overlay-closing');
+        
+        if (sidebar) {
+            sidebar.classList.remove('menu-opening');
+            sidebar.classList.add('menu-closing');
+        }
+        
+        // Limpiar después que termine la animación
+        setTimeout(() => {
+            overlay.style.display = 'none';
+            overlay.innerHTML = '';
+            overlay.classList.remove('overlay-closing');
+        }, 300);
+    }
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+        const menuIcon = document.querySelector('.menu-icon');
+        if (menuIcon && !menuIcon.onclick) {
+            menuIcon.onclick = window.abrirMenu;
+            menuIcon.style.cursor = 'pointer';
+        }
+    }, 100);
+});
+
+(function() {
+    var isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    var userLink = document.getElementById('user-link');
+    var userIcon = document.getElementById('user-icon');
+    if (isLoggedIn) {
+        userLink.href = '6perfilPropio.html';
+        userIcon.src = 'Image/mujerGris.jpg'; // Imagen de perfil
+        userIcon.alt = 'Perfil';
+        userIcon.style.borderRadius = '50%';
+        userIcon.style.width = '38px';
+        userIcon.style.height = '38px';
+    } else {
+        userLink.href = '2inicioSesion.html';
+        userIcon.src = 'Image/cuenta.png';
+        userIcon.alt = 'Cuenta';
+        userIcon.style.borderRadius = '';
+        userIcon.style.width = '';
+        userIcon.style.height = '';
+    }
+})();
+</script>
+
+
