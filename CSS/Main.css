@@ -749,6 +749,7 @@
         /* Partidos Actuales */
         .partidos-section {
             padding: 5px 85px 0;
+            margin-bottom: 32px;
         }
 
         .partidos-title {
@@ -826,6 +827,7 @@
             padding: 0px 120px 60px 140px;
             max-width: 1920px;
             margin: 0 auto;
+           
         }
 
         /* Generic two-column layout used by pages like 4busquedaUsuario
@@ -1726,5 +1728,177 @@ body.contrast-theme .arrow-svg-left {
     }
 }
 
+/*
+.CarruselMusica {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+}
 
-        
+.carrusel-track-container {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 16px;
+    min-width: 0;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+
+.carrusel {
+    flex: 0 0 220px;
+    scroll-snap-align: start;
+}
+
+
+*/
+
+h4, h2 small, a{
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    text-decoration: none;
+    
+}
+
+.carrusel {
+   width: 100%;
+   margin: 0px 0px; 
+}
+
+@media (max-width: 768px) {
+    .carrusel {
+        margin: 0px 0px; 
+    }
+}
+
+
+.carrusel h2{
+    font-size: 45px;
+    line-height: 30px;
+    padding: 0px 0px;
+    opacity: 0.9;
+    font-weight: 700;
+    text-align: center;
+    color:#FFFFFF;
+}
+
+.carrusel-list{
+    position:relative;
+    display:flex;
+    align-items:center;
+    width:90vw;
+    height:304px;
+    margin:0 auto;
+    max-width: 90vw;
+    overflow: hidden;
+}
+
+.carrusel-track-container {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    width: max-content;
+    margin: 0 auto;
+    transition: 1.5s ease-in-out;
+}
+
+.carrusel-track{
+    position:relative;
+    top:0;
+    left:0;
+    display:flex;
+    justify-content:center;
+    transition:1.5s ease-in-out;
+}
+
+.carrusel{
+    position :relative;
+    width:210px;
+    flex: 0 0 210px;
+    padding:0px 18px;
+    float:left;
+    box-sizing:border-box;
+    display:flex;
+    height: 100%;
+}
+
+.carrusel > a {
+    display: block;
+    width: 100%;
+}
+
+.carrusel h4{
+    position: absolute;
+    z-index: 1;
+    font-size: 22px;
+    line-height: 23px;
+    color: #FFFFFF;
+    padding: 15px;
+}
+
+.carrusel h4 small{
+    font-size: 15px;
+    Display: block;
+    
+}
+
+.carrusel a img{
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+    height: 300px;
+    width: 200px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px #000000;
+    transition: 0.3s ease-in-out;
+
+}
+
+@media(min-width: 768px){
+    .carrusel{
+        width: 275px;
+                flex-basis: 275px;
+      }
+      .carrusel a image{
+        width: 250px;
+
+      }
+}
+
+.carrusel-arrow{
+    border-radius: 30px;
+    background-color: #FFFFFF;
+    position: absolute;
+    z-index: 4;
+    width: 48px;
+    height: 48px;
+    text-align: center;
+    border: 0;
+    cursor: pointer;
+}
+
+.carrusel-arrow:focus{
+    outline: 0;
+
+}
+
+.carrusel-arrow svg{
+    width: 12px;
+    height: 100%;
+    color: rgba(0, 0, 0, 0.6)
+}
+
+.carrusel-prev {
+    left: 0;
+}
+
+.carrusel-next {
+right: 0px;
+
+}
+
